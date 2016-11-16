@@ -1,1 +1,1 @@
-https:/ices.dk
+https://ices.dk
