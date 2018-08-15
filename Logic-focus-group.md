@@ -1,1 +1,0 @@
-Welcome to the the Logic focus group Wiki page
