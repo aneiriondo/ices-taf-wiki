@@ -74,7 +74,7 @@ POST /egs
 | `name`  | `string`  | **Required**. The name of the expert group. |
 | `description`  | `string`  | The full name of the expert group. |
 
-### Example
+#### Example
 
 ```json
 {
@@ -116,9 +116,11 @@ Status: 200 OK
 ```
 
 ```json
-{
-  "stuff": "goes here"
-}
+[
+  {
+    "stuff": "goes here"
+  }
+]
 ```
 
 ## Add or update expert group analysis
