@@ -2,6 +2,9 @@
 * [List expert groups](#list-expert-groups)
 * [Get expert group](#get-expert-group)
 * [Create expert group](#create-expert-group)
+* [List expert group analyses](#list-expert-group-analyses)
+* [Add or update expert group analysis](#add-or-update-expert-group-analysis)
+* [Remove expert group analysis](#remove-expert-group-analysis)
 
 
 The Expert Groups API allows you to list, view, edit, and create expert groups.  Expert groups
@@ -97,3 +100,55 @@ Status: 201 Created
   "repos_count": 10
 }
 ```
+
+## List expert group analyses
+
+```
+GET egs/:eg_id/analyses
+```
+
+### Response
+
+### Response
+
+```
+Status: 200 OK
+```
+
+```json
+{
+  "stuff": "goes here"
+}
+```
+
+## Add or update expert group analysis
+
+```
+PUT /egs/:eg_id/analyses/:analysis
+```
+
+### Parameters
+
+| Name  | Type | Description |
+| ------------- | ------------- | ---------- |
+| `permission`  | `string`  | Either `read` or `write`. \n  if no body is provided then `read` will be assumed. |
+
+### Response
+
+```
+Status: 204 No Content
+```
+
+## Remove expert group analysis
+
+```
+DELETE /egs/:eg_id/analyses/:analysis
+```
+
+### Response
+
+```
+Status: 204 No Content
+```
+
+
