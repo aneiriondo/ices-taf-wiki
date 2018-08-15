@@ -1,4 +1,9 @@
 
+* [List expert groups](#list-expert-groups)
+* [Get expert group](#get-expert-group)
+* [Create expert group](#create-expert-group)
+
+
 The Expert Groups API allows you to list, view, edit, and create expert groups.  Expert groups
 function like teams and are a way to give groups of TAF users access to analyses of interest to
 their expert group.  A TAF user can be a member of multiple expert groups.
