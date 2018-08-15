@@ -1,1 +1,0 @@
-Welcome to the user focus group Wiki!
