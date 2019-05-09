@@ -1,16 +1,8 @@
-    library(icesTAF)
-    library(data.tree)
-
-    ## Registered S3 methods overwritten by 'ggplot2':
-    ##   method         from 
-    ##   [.quosures     rlang
-    ##   c.quosures     rlang
-    ##   print.quosures rlang
-
-    repoName <- "cod.27.47d20"
-
 Creating a TAF analysis
 =======================
+
+Clone
+-----
 
 The first step is asking the ICES secratariate to create a repository
 for your stock. In this example we will work with North Sea cod:
@@ -18,6 +10,9 @@ cod.27.47d20 in 2019 - the repository name for the assessment will be
 cod.27.47d20. When a new repository is created on GitHub you should
 clone the repository to your own computer. From here we will assume you
 have cloned the
+
+Make skeleton
+-------------
 
 The first step in creating a TAF analysis is to set out the basic folder
 and file structure of the project. This is done using the function
