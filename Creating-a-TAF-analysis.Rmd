@@ -1,0 +1,17 @@
+---
+output: md_document
+---
+
+# Creating a TAF analysis
+
+The first step in creating a TAF analysis is to set out the basic folder and file structure of the project.
+This is done using the function [`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html)
+which creates the following structure in your working directory
+
+```{r taf-skeleton-output, results='asis'}
+icesTAF::taf.skeleton("test")
+paths <- dir("test", full.names = TRUE, recursive = TRUE)
+paths <- c("test/bootstrap/initial/data/", paths)
+data.tree::as.Node(data.frame(pathString = paths))
+```
+
