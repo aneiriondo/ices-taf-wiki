@@ -2,16 +2,34 @@
 output: md_document
 ---
 
+```{r setup}
+library(icesTAF)
+library(data.tree)
+
+repoName <- "cod.27.47d20"
+```
+
 # Creating a TAF analysis
 
+The first step is asking the ICES secratariate to create a repository for your stock.  In this example we will
+work with North Sea cod: `r repoName` in 2019 - the repository name for the assessment will be 
+`r repoName`.  When a new repository is created on GitHub you should clone the repository to your
+own computer.  From here we will assume you have cloned the
+
 The first step in creating a TAF analysis is to set out the basic folder and file structure of the project.
-This is done using the function [`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html)
+This is done using the function [`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html).
 which creates the following structure in your working directory
 
-```{r taf-skeleton-output, results='asis'}
-icesTAF::taf.skeleton("test")
-paths <- dir("test", full.names = TRUE, recursive = TRUE)
-paths <- c("test/bootstrap/initial/data/", paths)
-data.tree::as.Node(data.frame(pathString = paths))
+```{r taf-skeleton-output, results='asis', echo=FALSE}
+taf.skeleton(repoName)
+paths <- dir(repoName, full.names = TRUE, recursive = TRUE)
+paths <- c(paste0(repoName, "/bootstrap/initial/data/"), paths)
+paths <- data.frame(pathString = paths)
+tree <- as.Node(paths)
+res <- c("\`\`\`r",
+  capture.output(print(as.data.frame(tree), row.names = FALSE))[-1],
+  "\`\`\`")
+
+cat(res, sep = "\n")
 ```
 

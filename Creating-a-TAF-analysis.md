@@ -1,15 +1,5 @@
-Creating a TAF analysis
-=======================
-
-The first step in creating a TAF analysis is to set out the basic folder
-and file structure of the project. This is done using the function
-[`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html)
-which creates the following structure in your working directory
-
-    icesTAF::taf.skeleton("test")
-    paths <- dir("test", full.names = TRUE, recursive = TRUE)
-    paths <- c("test/bootstrap/initial/data/", paths)
-    data.tree::as.Node(data.frame(pathString = paths))
+    library(icesTAF)
+    library(data.tree)
 
     ## Registered S3 methods overwritten by 'ggplot2':
     ##   method         from 
@@ -17,11 +7,28 @@ which creates the following structure in your working directory
     ##   c.quosures     rlang
     ##   print.quosures rlang
 
-         levelName
+    repoName <- "cod.27.47d20"
 
-1 test  
-2 ¦–bootstrap  
-3 ¦ °–initial 4 ¦ °–data 5 ¦–data.R  
-6 ¦–model.R  
-7 ¦–output.R  
-8 °–report.R
+Creating a TAF analysis
+=======================
+
+The first step is asking the ICES secratariate to create a repository
+for your stock. In this example we will work with North Sea cod:
+cod.27.47d20 in 2019 - the repository name for the assessment will be
+cod.27.47d20. When a new repository is created on GitHub you should
+clone the repository to your own computer. From here we will assume you
+have cloned the
+
+The first step in creating a TAF analysis is to set out the basic folder
+and file structure of the project. This is done using the function
+[`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html).
+which creates the following structure in your working directory
+
+     cod.27.47d20    
+      ¦--bootstrap   
+      ¦   °--initial 
+      ¦       °--data
+      ¦--data.R      
+      ¦--model.R     
+      ¦--output.R    
+      °--report.R
