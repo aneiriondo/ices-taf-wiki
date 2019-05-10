@@ -13,6 +13,16 @@ formatRcode <- function(x) {
     x,
     "\`\`\`")
 }
+
+printDir <- function() {
+  # get skeleton path structure
+  paths <- dir(repoName, full.names = TRUE, recursive = TRUE)
+
+  # make a data.tree and print it
+  tree <- as.Node(data.frame(pathString = paths))
+  res <- capture.output(print(as.data.frame(tree), row.names = FALSE))[-1]
+  cat(formatRcode(res), sep = "\n")
+}
 ```
 
 # Creating a TAF analysis
@@ -47,3 +57,59 @@ res <- capture.output(print(as.data.frame(tree), row.names = FALSE))[-1]
 cat(formatRcode(res), sep = "\n")
 ```
 
+
+## Upload initial data
+
+The next step is to set up the data requirements for your assessment.  There are three ways to get data into an assessment. 1. upload files directly, 2. get a file from the web, and 3. use some R code to access a webservice.  We will cover 1. and 2. here.
+
+### Upload files
+
+To upload a file called `catch.csv` - the contents might be something like:
+```
+year, catches
+2015, 2109
+2016, 3455
+2017, 3466
+2018, 2050
+```
+
+simply copy the file in to the `bootstrap/initial/data` folder.  The directory structure will now look like this:
+
+```{r data-file, results='asis', echo=FALSE}
+cat("year, catches
+2015, 2109
+2016, 3455
+2017, 3466
+2018, 2050", file = paste0(repoName, "/bootstrap/initial/data/catch.csv"))
+printDir()
+```
+
+### Make data available to assessment
+
+So far we have uploaded data into the intial data folder, but to make it available to the assessment
+it needs to be in the `bootstrap/data` folder, and the only way to do this is to create a file referenceing
+the data and then run the function [`taf.bootstrap`](https://rdrr.io/cran/icesTAF/man/taf.bootstrap.html).
+To reference the data we create a file called `DATA.bib` using the helper function [`draft.data`](https://rdrr.io/cran/icesTAF/man/draft.data.html), and add a few fields:
+
+```{r draft-data, echo=2}
+setwd(repoName)
+draft.data(originator = "WGNSSK", title = "Catch data for cod.27.347d", period = "2015-2018")
+setwd("..")
+```
+
+Then we write this to the `DATA.bib` file by specifying the `file` argument:
+```{r draft-data2, echo=2}
+setwd(repoName)
+draft.data(originator = "WGNSSK", title = "Catch data for cod.27.347d", period = "2015-2018",
+           file = "bootstrap/DATA.bib")
+setwd("..")
+```
+
+Finally we run `taf.bootstrap()` to get the data into the `bootstrap/data` folder, leaving the directory tree
+looking like this:
+```{r taf-bootstrap, echo=FALSE, results='asis', message=FALSE}
+setwd(repoName)
+taf.bootstrap()
+setwd("..")
+printDir()
+```
