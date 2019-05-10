@@ -27,6 +27,10 @@ printDir <- function() {
   res <- capture.output(print(as.data.frame(tree), row.names = FALSE))[-1]
   cat(formatRcode(res), sep = "\n")
 }
+
+taflink <- function(x) {
+  sprintf("[`%1$s`](https://rdrr.io/cran/icesTAF/man/%1$s.html)", x)
+}
 ```
 
 This page was based on using the `icesTAF` package version ```r packageVersion("icesTAF")```
@@ -50,7 +54,7 @@ own computer.  From here we will assume you have cloned the
 ## Make skeleton
 
 The first step in creating a TAF analysis is to set out the basic folder and file structure of the project.
-This is done using the function [`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html).
+This is done using the function `r taflink("taf.skeleton")`.
 which creates the following structure in your working directory
 
 ```{r taf-skeleton-output, results='asis', echo=FALSE}
@@ -101,8 +105,9 @@ printDir()
 
 So far we have uploaded data into the intial data folder, but to make it available to the assessment
 it needs to be in the `bootstrap/data` folder, and the only way to do this is to create a file referenceing
-the data and then run the function [`taf.bootstrap`](https://rdrr.io/cran/icesTAF/man/taf.bootstrap.html).
-To reference the data we create a file called `DATA.bib` using the helper function [`draft.data`](https://rdrr.io/cran/icesTAF/man/draft.data.html), and add a few fields:
+the data and then run the function `r taflink("taf.bootstrap")`.
+To reference the data we create a file called `DATA.bib` using the helper function `r taflink("draft.data")`, 
+and add a few fields:
 
 ```{r draft-data, echo=2}
 setwd(repoName)
