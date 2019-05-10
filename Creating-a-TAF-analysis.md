@@ -22,18 +22,14 @@ and file structure of the project. This is done using the function
 [`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html).
 which creates the following structure in your working directory
 
-     cod.27.47d20             
-      ¦--bootstrap            
-      ¦   ¦--initial          
-      ¦   ¦   °--data         
-      ¦   ¦       °--catch.csv
-      ¦   ¦--DATA.bib         
-      ¦   °--data             
-      ¦       °--catch.csv    
-      ¦--data.R               
-      ¦--model.R              
-      ¦--output.R             
-      °--report.R             
+     cod.27.47d20    
+      ¦--bootstrap   
+      ¦   °--initial 
+      ¦       °--data
+      ¦--data.R      
+      ¦--model.R     
+      ¦--output.R    
+      °--report.R    
 
 Upload initial data
 -------------------
@@ -59,9 +55,6 @@ directory structure will now look like this:
 
      cod.27.47d20             
       ¦--bootstrap            
-      ¦   ¦--DATA.bib         
-      ¦   ¦--data             
-      ¦   ¦   °--catch.csv    
       ¦   °--initial          
       ¦       °--data         
       ¦           °--catch.csv

@@ -8,6 +8,10 @@ library(data.tree)
 
 repoName <- "cod.27.47d20"
 
+if (dir.exists(repoName)) {
+  unlink(repoName, recursive = TRUE)
+}
+
 formatRcode <- function(x) {
   c("\`\`\`r",
     x,
