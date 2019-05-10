@@ -1,6 +1,9 @@
 Creating a TAF analysis
 =======================
 
+This page was based on using the `icesTAF` package version `3.0.0` dated
+`2019-04-25`.
+
 Clone
 -----
 
