@@ -42,7 +42,7 @@ Upload initial data
 
 The next step is to set up the data requirements for your assessment.
 There are three ways to get data into an assessment. 1. upload files
-directly, 2. get a file from the web, and 3. use some R code to access a
+directly, 2. get a file from the web, and 3. use some Rcode to access a
 webservice. We will cover 1. and 2. here.
 
 ### Upload files
@@ -81,7 +81,9 @@ helper function
 [`draft.data`](https://rdrr.io/cran/icesTAF/man/draft.data.html), and
 add a few fields:
 
-    draft.data(originator = "WGNSSK", title = "Catch data for cod.27.347d", period = "2015-2018")
+    draft.data(originator = "WGNSSK", 
+               title = "Catch data for cod.27.347d", 
+               period = "2015-2018")
 
     ## @Misc{catch.csv,
     ##   originator = {WGNSSK},
@@ -94,7 +96,9 @@ add a few fields:
 Then we write this to the `DATA.bib` file by specifying the `file`
 argument:
 
-    draft.data(originator = "WGNSSK", title = "Catch data for cod.27.347d", period = "2015-2018",
+    draft.data(originator = "WGNSSK", 
+               title = "Catch data for cod.27.347d", 
+               period = "2015-2018",
                file = "bootstrap/DATA.bib")
 
 Finally we run `taf.bootstrap()` to get the data into the
