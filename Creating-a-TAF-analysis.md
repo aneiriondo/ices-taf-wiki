@@ -6,6 +6,9 @@ In this guide
 
 -   [Clone](#clone)
 -   [Make Skeleton](#make-skeleton)
+-   [Upload initial data](#upload-initial-data)
+    -   [Upload files](#upload-files)
+    -   [Make data available](#make-data-available-to-assessment)
 
 Clone
 -----
