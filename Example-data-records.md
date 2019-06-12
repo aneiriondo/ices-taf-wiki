@@ -4,7 +4,8 @@ This page was based on using the `icesTAF` package version `3.1.1` dated
 
 ## In this guide
 
-  - [Using a script](#Using-a-script)
+  - [Using a script to download a zip
+    file](#Using-a-script-to-download-a-zip-file)
 
 We will start with an empty repository
 
@@ -19,7 +20,7 @@ We will start with an empty repository
   °--report.R    
 ```
 
-## Using a script
+## Using a script to download a zip file
 
 Consider the following script that downloads a zip file containing ESRI
 shapefiles of ICES areas, unzips it and deletes the zip file
