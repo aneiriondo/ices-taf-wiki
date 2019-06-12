@@ -1,5 +1,5 @@
 ---
-output: md_document
+output: github_document
 ---
 
 Welcome to the doc wiki!
