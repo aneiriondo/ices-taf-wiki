@@ -42,8 +42,8 @@ creating the following meta-data record in `DATA.bib`
 @Misc{icesareas,
   originator = {ICES},
   year       = {2019},
-  title      = {Catch data for cod.27.347d},
-  period     = {2015-2018},
+  title      = {ICES Areas ESRI Shapefile},
+  period     = {},
   source     = {script},
 }
 ```
@@ -55,11 +55,10 @@ called `icesareas.R`. The `DATA.bib` entry can be created using the
 function
 
 ``` r
-draft.data(data.files = "icesareas",
-           originator = "ICES", 
-           title = "Catch data for cod.27.347d", 
-           period = "2015-2018",
-           source = "script",
+  draft.data(data.files = "icesareas",
+             originator = "ICES", 
+             title = "ICES Areas ESRI Shapefile",
+             source = "script",
            file = "bootstrap/DATA.bib")
 ```
 

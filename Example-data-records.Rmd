@@ -50,8 +50,7 @@ the following meta-data record in `DATA.bib`
 meta <- 
   draft.data(data.files = "icesareas",
              originator = "ICES", 
-             title = "Catch data for cod.27.347d", 
-             period = "2015-2018",
+             title = "ICES Areas ESRI Shapefile",
              source = "script")
 cat(formatRcode(meta), sep = "\n")
 ```
@@ -64,11 +63,10 @@ using the `r taflink("draft.data")` function
 
 ```{r draft-data2, echo = 2}
 setwd(repoName)
-draft.data(data.files = "icesareas",
-           originator = "ICES", 
-           title = "Catch data for cod.27.347d", 
-           period = "2015-2018",
-           source = "script",
+  draft.data(data.files = "icesareas",
+             originator = "ICES", 
+             title = "ICES Areas ESRI Shapefile",
+             source = "script",
            file = "bootstrap/DATA.bib")
 setwd("..")
 ```
