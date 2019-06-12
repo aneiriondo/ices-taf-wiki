@@ -1,17 +1,16 @@
+
 This page was based on using the `icesTAF` package version `3.1.1` dated
 `2019-05-24`.
 
-In this guide
--------------
+## In this guide
 
--   [Clone](#clone)
--   [Make Skeleton](#make-skeleton)
--   [Upload initial data](#upload-initial-data)
-    -   [Upload files](#upload-files)
-    -   [Make data available](#make-data-available-to-assessment)
+  - [Clone](#clone)
+  - [Make Skeleton](#make-skeleton)
+  - [Upload initial data](#upload-initial-data)
+      - [Upload files](#upload-files)
+      - [Make data available](#make-data-available-to-assessment)
 
-Clone
------
+## Clone
 
 The first step is asking the ICES secratariate to create a repository
 for your stock. In this example we will work with North Sea cod:
@@ -20,32 +19,32 @@ cod.27.47d20. When a new repository is created on GitHub you should
 clone the repository to your own computer. From here we will assume you
 have cloned the
 
-Make skeleton
--------------
+## Make skeleton
 
 The first step in creating a TAF analysis is to set out the basic folder
 and file structure of the project. This is done using the function
 [`taf.skeleton`](https://rdrr.io/cran/icesTAF/man/taf.skeleton.html).
 which creates the following structure in your working directory
 
-     cod.27.47d20    
-      ¦--bootstrap   
-      ¦   °--initial 
-      ¦       °--data
-      ¦--data.R      
-      ¦--model.R     
-      ¦--output.R    
-      °--report.R    
+``` r
+ cod.27.47d20    
+  ¦--bootstrap   
+  ¦   °--initial 
+  ¦       °--data
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
+```
 
-Upload initial data
--------------------
+## Upload initial data
 
 The next step is to set up the data requirements for your assessment.
 There are three ways to get data into an assessment. 1. upload files
 directly, 2. get a file from the web, and 3. use some Rcode to access a
 webservice. We will cover 1. and 2. here. See
-<a href="https://github.com/ices-taf/doc/wiki/Example-data-records" class="uri">https://github.com/ices-taf/doc/wiki/Example-data-records</a>
-for more information.
+<https://github.com/ices-taf/doc/wiki/Example-data-records> for more
+information.
 
 ### Upload files
 
@@ -61,15 +60,17 @@ like:
 simply copy the file in to the `bootstrap/initial/data` folder. The
 directory structure will now look like this:
 
-     cod.27.47d20             
-      ¦--bootstrap            
-      ¦   °--initial          
-      ¦       °--data         
-      ¦           °--catch.csv
-      ¦--data.R               
-      ¦--model.R              
-      ¦--output.R             
-      °--report.R             
+``` r
+ cod.27.47d20             
+  ¦--bootstrap            
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           °--catch.csv
+  ¦--data.R               
+  ¦--model.R              
+  ¦--output.R             
+  °--report.R             
+```
 
 ### Make data available to assessment
 
@@ -83,9 +84,11 @@ helper function
 [`draft.data`](https://rdrr.io/cran/icesTAF/man/draft.data.html), and
 add a few fields:
 
-    draft.data(originator = "WGNSSK", 
-               title = "Catch data for cod.27.347d", 
-               period = "2015-2018")
+``` r
+draft.data(originator = "WGNSSK", 
+           title = "Catch data for cod.27.347d", 
+           period = "2015-2018")
+```
 
     ## @Misc{catch.csv,
     ##   originator = {WGNSSK},
@@ -98,39 +101,42 @@ add a few fields:
 Then we write this to the `DATA.bib` file by specifying the `file`
 argument:
 
-    draft.data(originator = "WGNSSK", 
-               title = "Catch data for cod.27.347d", 
-               period = "2015-2018",
-               file = "bootstrap/DATA.bib")
+``` r
+draft.data(originator = "WGNSSK", 
+           title = "Catch data for cod.27.347d", 
+           period = "2015-2018",
+           file = "bootstrap/DATA.bib")
+```
 
 Finally we run `taf.bootstrap()` to get the data into the
 `bootstrap/data` folder, leaving the directory tree looking like this:
 
-     cod.27.47d20             
-      ¦--bootstrap            
-      ¦   ¦--DATA.bib         
-      ¦   ¦--data             
-      ¦   ¦   °--catch.csv    
-      ¦   °--initial          
-      ¦       °--data         
-      ¦           °--catch.csv
-      ¦--data.R               
-      ¦--model.R              
-      ¦--output.R             
-      °--report.R             
+``` r
+ cod.27.47d20             
+  ¦--bootstrap            
+  ¦   ¦--DATA.bib         
+  ¦   ¦--data             
+  ¦   ¦   °--catch.csv    
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           °--catch.csv
+  ¦--data.R               
+  ¦--model.R              
+  ¦--output.R             
+  °--report.R             
+```
 
-Preprocess data, write TAF data tables
---------------------------------------
+## Preprocess data, write TAF data tables
 
 Now that you have created the file structure and uploaded your data, its
 time to turn your attention to the `data.R` script. The purpose of this
 script is to do some data processing. This could be (among other
 things):
 
--   calculating plus groups,
--   taking averages of survey indices,
--   calculating fillin values and removing outliers,
--   calculating smoothed time series’
+  - calculating plus groups,
+  - taking averages of survey indices,
+  - calculating fillin values and removing outliers,
+  - calculating smoothed time series’
 
 The `data.R` script should also write out input data into flat csv
 files, so they are readable and reviewable by others.

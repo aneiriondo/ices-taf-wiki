@@ -1,5 +1,5 @@
 ---
-output: md_document
+output: github_document
 ---
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
@@ -105,10 +105,11 @@ printDir()
 ### Make data available to assessment
 
 So far we have uploaded data into the intial data folder, but to make it available to the assessment
-it needs to be in the `bootstrap/data` folder, and the only way to do this is to create a file referenceing
-the data and then run the function `r taflink("taf.bootstrap")`.
-To reference the data we create a file called `DATA.bib` using the helper function `r taflink("draft.data")`, 
-and add a few fields:
+it needs to be in the `bootstrap/data` folder, and the only way to do this is 
+to create a file referenceing the data and then run the function 
+`r taflink("taf.bootstrap")`. To reference the data we create a file called 
+`DATA.bib` using the helper function `r taflink("draft.data")`, and add a few
+fields:
 
 ```{r draft-data, echo=2}
 setwd(repoName)
