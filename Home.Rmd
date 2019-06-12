@@ -1,0 +1,5 @@
+---
+output: md_document
+---
+
+Welcome to the doc wiki!
