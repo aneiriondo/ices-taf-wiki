@@ -1,0 +1,44 @@
+---
+output: md_document
+---
+
+  
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(icesTAF)
+library(data.tree)
+repoName <- "cod.27.47d20"
+
+if (dir.exists(repoName)) {
+  unlink(repoName, recursive = TRUE)
+}
+
+formatRcode <- function(x) {
+  c("\`\`\`r",
+    x,
+    "\`\`\`")
+}
+
+printDir <- function() {
+  # get skeleton path structure
+  paths <- dir(repoName, full.names = TRUE, recursive = TRUE)
+
+  # make a data.tree and print it
+  tree <- as.Node(data.frame(pathString = paths))
+  res <- capture.output(print(as.data.frame(tree), row.names = FALSE))[-1]
+  cat(formatRcode(res), sep = "\n")
+}
+
+taflink <- function(x) {
+  sprintf("[`%1$s`](https://rdrr.io/cran/icesTAF/man/%1$s.html)", x)
+}
+```
+
+This page was based on using the `icesTAF` package version ```r packageVersion("icesTAF")```
+dated ```r packageDate("icesTAF")```.
+
+## In this guide
+
+* [Using a script](#Using-a-script)
+
+## Using a script
+
