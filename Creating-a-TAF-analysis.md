@@ -1,5 +1,5 @@
-This page was based on using the `icesTAF` package version `3.0.0` dated
-`2019-04-25`.
+This page was based on using the `icesTAF` package version `3.1.1` dated
+`2019-05-24`.
 
 In this guide
 -------------
@@ -115,4 +115,24 @@ Finally we run `taf.bootstrap()` to get the data into the
       ¦--data.R               
       ¦--model.R              
       ¦--output.R             
-      °--report.R
+      °--report.R             
+
+Preprocess data, write TAF data tables
+--------------------------------------
+
+Now that you have created the file structure and uploaded your data, its
+time to turn your attention to the `data.R` script. The purpose of this
+script is to do some data processing. This could be (among other
+things):
+
+-   calculating plus groups,
+-   taking averages of survey indices,
+-   calculating fillin values and removing outliers,
+-   calculating smoothed time series’
+
+The `data.R` script should also write out input data into flat csv
+files, so they are readable and reviewable by others.
+
+### Preprocessing
+
+### Writing TAF tables

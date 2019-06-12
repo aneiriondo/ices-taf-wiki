@@ -135,3 +135,19 @@ taf.bootstrap()
 setwd("..")
 printDir()
 ```
+
+## Preprocess data, write TAF data tables
+
+Now that you have created the file structure and uploaded your data, its time to turn your attention to the `data.R` script. The  purpose of this script is to do some data
+processing. This could be (among other things):
+
+* calculating plus groups,
+* taking averages of survey indices,
+* calculating fillin values and removing outliers,
+* calculating smoothed time series'
+
+The `data.R` script should also write out input data into flat csv files, so they are readable and reviewable by others.
+
+### Preprocessing
+
+### Writing TAF tables
