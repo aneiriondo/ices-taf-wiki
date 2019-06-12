@@ -43,7 +43,9 @@ Upload initial data
 The next step is to set up the data requirements for your assessment.
 There are three ways to get data into an assessment. 1. upload files
 directly, 2. get a file from the web, and 3. use some Rcode to access a
-webservice. We will cover 1. and 2. here.
+webservice. We will cover 1. and 2. here. See
+<a href="https://github.com/ices-taf/doc/wiki/Example-data-records" class="uri">https://github.com/ices-taf/doc/wiki/Example-data-records</a>
+for more information.
 
 ### Upload files
 
