@@ -6,6 +6,9 @@ This page was based on using the `icesTAF` package version `3.1.1` dated
 
   - [Using a script to download a zip
     file](#Using-a-script-to-download-a-zip-file)
+  - [Get the ICES word template](#Get-the-ICES-word-template)
+
+## Using a script to download a zip file
 
 We will start with an empty repository
 
@@ -19,8 +22,6 @@ We will start with an empty repository
   ¦--output.R    
   °--report.R    
 ```
-
-## Using a script to download a zip file
 
 Consider the following script that downloads a zip file containing ESRI
 shapefiles of ICES areas, unzips it and deletes the zip file
@@ -104,4 +105,105 @@ taf.bootstrap()
   ¦--model.R                                               
   ¦--output.R                                              
   °--report.R                                              
+```
+
+## Get the ICES word template
+
+We will start with an empty repository
+
+``` r
+ cod.27.47d20                                              
+  ¦--bootstrap                                             
+  ¦   ¦--initial                                           
+  ¦   ¦   °--data                                          
+  ¦   ¦--DATA.bib                                          
+  ¦   ¦--data                                              
+  ¦   ¦   °--icesareas                                     
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.cpg    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.dbf    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.prj    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbn    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbx    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp.xml
+  ¦   ¦       °--ICES_Areas_20160601_cut_dense_3857.shx    
+  ¦   °--icesareas.R                                       
+  ¦--data.R                                                
+  ¦--model.R                                               
+  ¦--output.R                                              
+  °--report.R                                              
+```
+
+To download this file for use in an automated report for a TAF
+assessment, specify the location of the file as the `source` of the data
+record. The file is held in the
+[ices-taf/doc](https://github.com/ices-taf/doc) repository and is called
+reportTemplate.docx. This is done by creating the following meta-data
+record in `DATA.bib`
+
+``` r
+@Misc{reportTemplate.docx,
+  originator = {ICES},
+  year       = {2019},
+  title      = {ICES TAF word template for report automation},
+  period     = {},
+  source     = {https://github.com/ices-taf/doc/raw/master/reportTemplate.docx},
+}
+```
+
+The `DATA.bib` entry can be created using the
+[`draft.data`](https://rdrr.io/cran/icesTAF/man/draft.data.html)
+function
+
+``` r
+  draft.data(data.files = "reportTemplate.docx",
+             originator = "ICES",
+             title = "ICES TAF word template for report automation",
+             source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
+             file = "bootstrap/DATA.bib")
+```
+
+The directory structure should now look like this:
+
+``` r
+ cod.27.47d20                                              
+  ¦--bootstrap                                             
+  ¦   ¦--DATA.bib                                          
+  ¦   ¦--data                                              
+  ¦   ¦   °--icesareas                                     
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.cpg    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.dbf    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.prj    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbn    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbx    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp.xml
+  ¦   ¦       °--ICES_Areas_20160601_cut_dense_3857.shx    
+  ¦   °--icesareas.R                                       
+  ¦--data.R                                                
+  ¦--model.R                                               
+  ¦--output.R                                              
+  °--report.R                                              
+```
+
+Now we can run
+[`taf.bootstrap`](https://rdrr.io/cran/icesTAF/man/taf.bootstrap.html)
+to process the script to download the word template file and now the
+directory structyre will look like this
+
+``` r
+taf.bootstrap()
+```
+
+``` r
+ cod.27.47d20                   
+  ¦--bootstrap                  
+  ¦   ¦--DATA.bib               
+  ¦   ¦--data                   
+  ¦   ¦   °--reportTemplate.docx
+  ¦   °--icesareas.R            
+  ¦--data.R                     
+  ¦--model.R                    
+  ¦--output.R                   
+  °--report.R                   
 ```

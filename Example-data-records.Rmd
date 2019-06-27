@@ -13,7 +13,10 @@ dated ```r packageDate("icesTAF")```.
 ## In this guide
 
 * [Using a script to download a zip file](#Using-a-script-to-download-a-zip-file)
+* [Get the ICES word template](#Get-the-ICES-word-template)
 
+
+## Using a script to download a zip file
 
 We will start with an empty repository
 ```{r taf-skeleton-output, results='asis', echo=FALSE}
@@ -25,9 +28,6 @@ paths <- dir(repoName, full.names = TRUE, recursive = TRUE)
 paths <- c(paste0(repoName, "/bootstrap/initial/data/"), paths)
 printDir(paths)
 ```
-
-
-## Using a script to download a zip file
 
 Consider the following script that downloads a zip file containing ESRI
 shapefiles of ICES areas, unzips it and deletes the zip file
@@ -92,3 +92,61 @@ setwd("..")
 printDir()
 ```
 
+## Get the ICES word template
+
+We will start with an empty repository
+```{r taf-skeleton-output2, results='asis', echo=FALSE}
+# make skeleton
+taf.skeleton(repoName, force = TRUE)
+
+# get skeleton path structure
+paths <- dir(repoName, full.names = TRUE, recursive = TRUE)
+paths <- c(paste0(repoName, "/bootstrap/initial/data/"), paths)
+printDir(paths)
+```
+
+
+To download this file for use in an automated report for a
+TAF assessment, specify the location of the file as the `source` 
+of the data record.  The file is held in the 
+[ices-taf/doc](https://github.com/ices-taf/doc) repository
+and is called reportTemplate.docx. This is done by creating the following 
+meta-data record in `DATA.bib`
+
+```{r draft-data3, results='asis', echo=FALSE}
+meta <- 
+  draft.data(data.files = "reportTemplate.docx",
+             originator = "ICES",
+             title = "ICES TAF word template for report automation",
+             source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx")
+cat(formatRcode(meta), sep = "\n")
+```
+
+The `DATA.bib` entry can be created using the `r taflink("draft.data")`
+function
+
+```{r draft-data4, echo = 2}
+setwd(repoName)
+  draft.data(data.files = "reportTemplate.docx",
+             originator = "ICES",
+             title = "ICES TAF word template for report automation",
+             source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
+             file = "bootstrap/DATA.bib")
+setwd("..")
+```
+
+The directory structure should now look like this:
+
+```{r print-dir, results='asis', echo=FALSE}
+printDir()
+```
+
+Now we can run  `r taflink("taf.bootstrap")` to process the script to
+download the word template file and now the directory structyre will look like this
+
+```{r process-word-template, echo=2, results='asis', message=FALSE}
+setwd(repoName)
+taf.bootstrap()
+setwd("..")
+printDir()
+```
