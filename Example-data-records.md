@@ -112,26 +112,14 @@ taf.bootstrap()
 We will start with an empty repository
 
 ``` r
- cod.27.47d20                                              
-  ¦--bootstrap                                             
-  ¦   ¦--initial                                           
-  ¦   ¦   °--data                                          
-  ¦   ¦--DATA.bib                                          
-  ¦   ¦--data                                              
-  ¦   ¦   °--icesareas                                     
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.cpg    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.dbf    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.prj    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbn    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbx    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp.xml
-  ¦   ¦       °--ICES_Areas_20160601_cut_dense_3857.shx    
-  ¦   °--icesareas.R                                       
-  ¦--data.R                                                
-  ¦--model.R                                               
-  ¦--output.R                                              
-  °--report.R                                              
+ cod.27.47d20    
+  ¦--bootstrap   
+  ¦   °--initial 
+  ¦       °--data
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 To download this file for use in an automated report for a TAF
@@ -166,24 +154,13 @@ function
 The directory structure should now look like this:
 
 ``` r
- cod.27.47d20                                              
-  ¦--bootstrap                                             
-  ¦   ¦--DATA.bib                                          
-  ¦   ¦--data                                              
-  ¦   ¦   °--icesareas                                     
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.cpg    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.dbf    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.prj    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbn    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbx    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp    
-  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp.xml
-  ¦   ¦       °--ICES_Areas_20160601_cut_dense_3857.shx    
-  ¦   °--icesareas.R                                       
-  ¦--data.R                                                
-  ¦--model.R                                               
-  ¦--output.R                                              
-  °--report.R                                              
+ cod.27.47d20    
+  ¦--bootstrap   
+  ¦   °--DATA.bib
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 Now we can run
@@ -199,9 +176,8 @@ taf.bootstrap()
  cod.27.47d20                   
   ¦--bootstrap                  
   ¦   ¦--DATA.bib               
-  ¦   ¦--data                   
-  ¦   ¦   °--reportTemplate.docx
-  ¦   °--icesareas.R            
+  ¦   °--data                   
+  ¦       °--reportTemplate.docx
   ¦--data.R                     
   ¦--model.R                    
   ¦--output.R                   

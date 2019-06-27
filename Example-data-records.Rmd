@@ -94,6 +94,10 @@ printDir()
 
 ## Get the ICES word template
 
+```{r setup2, echo=FALSE, message=FALSE, warning=FALSE}
+source("R/utilities.R")
+```
+
 We will start with an empty repository
 ```{r taf-skeleton-output2, results='asis', echo=FALSE}
 # make skeleton
