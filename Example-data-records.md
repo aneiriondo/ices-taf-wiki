@@ -7,6 +7,7 @@ This page was based on using the `icesTAF` package version `3.1.1` dated
   - [Using a script to download a zip
     file](#Using-a-script-to-download-a-zip-file)
   - [Get the ICES word template](#Get-the-ICES-word-template)
+  - [Further `DATA.bib` entries](#Further-DATA.bib-entries)
 
 ## Using a script to download a zip file
 
@@ -188,14 +189,18 @@ taf.bootstrap()
 
 #### ICES Statistical Rectangles mapped to Ecoregions
 
-    @Misc{ICES_StatRec_mapto_Ecoregions,
-      originator = {DTU Aqua},
-      year       = {2019},
-      title      = {ICES Stat rec ESRI Shapefile},
-      period     = {},
-      source     = {script},
-      url        = {https://gis.ices.dk/geonetwork/srv/metadata/81f68a99-9b91-4762-80d3-31c069731f44}
-    }
+`DATA.bib` entry:
+
+``` r
+@Misc{ICES_StatRec_mapto_Ecoregions,
+  originator = {DTU Aqua},
+  year       = {2019},
+  title      = {ICES Stat rec ESRI Shapefile},
+  period     = {},
+  source     = {script},
+  url        = {https://gis.ices.dk/geonetwork/srv/metadata/81f68a99-9b91-4762-80d3-31c069731f44}
+}
+```
 
 with the R script: `ICES_StatRec_mapto_Ecoregions.R`
 
@@ -210,14 +215,18 @@ unlink(filename)
 
 ### ICES Ecoregion
 
-    @Misc{ICES_ecoregions,
-      originator = {ICES},
-      year       = {2019},
-      title      = {ICES Ecoregion ESRI Shapefile},
-      period     = {},
-      source     = {script},
-      url        = {https://gis.ices.dk/geonetwork/srv/metadata/4745e824-a612-4a1f-bc56-b540772166eb}
-    }
+`DATA.bib` entry:
+
+``` r
+@Misc{ICES_ecoregions,
+  originator = {ICES},
+  year       = {2019},
+  title      = {ICES Ecoregion ESRI Shapefile},
+  period     = {},
+  source     = {script},
+  url        = {https://gis.ices.dk/geonetwork/srv/metadata/4745e824-a612-4a1f-bc56-b540772166eb}
+}
+```
 
 with the r script: `ICES_ecoregions.R`
 
@@ -232,14 +241,18 @@ unlink(filename)
 
 ### Species lookup table from ICES SD database
 
-    @Misc{ICES_SD_species_lookup,
-      originator = {ICES},
-      year       = {2019},
-      title      = {ICES Fisheries Guild lookup table},
-      period     = {},
-      source     = {script},
-      url        = {https://gis.ices.dk/geonetwork/srv/metadata/30541cf4-0236-437f-9757-596c5f793cff}
-    }
+`DATA.bib` entry:
+
+``` r
+@Misc{ICES_SD_species_lookup,
+  originator = {ICES},
+  year       = {2019},
+  title      = {ICES Fisheries Guild lookup table},
+  period     = {},
+  source     = {script},
+  url        = {https://gis.ices.dk/geonetwork/srv/metadata/30541cf4-0236-437f-9757-596c5f793cff}
+}
+```
 
 with the R script: `ICES_SD_species_lookup`
 

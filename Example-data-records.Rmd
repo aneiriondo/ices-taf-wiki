@@ -14,7 +14,7 @@ dated ```r packageDate("icesTAF")```.
 
 * [Using a script to download a zip file](#Using-a-script-to-download-a-zip-file)
 * [Get the ICES word template](#Get-the-ICES-word-template)
-
+* [Further `DATA.bib` entries](#Further-DATA.bib-entries)
 
 ## Using a script to download a zip file
 
@@ -159,7 +159,9 @@ printDir()
 
 #### ICES Statistical Rectangles mapped to Ecoregions
 
-```
+`DATA.bib` entry:
+
+```r
 @Misc{ICES_StatRec_mapto_Ecoregions,
   originator = {DTU Aqua},
   year       = {2019},
@@ -182,7 +184,8 @@ unlink(filename)
 
 ### ICES Ecoregion
 
-```
+`DATA.bib` entry:
+```r
 @Misc{ICES_ecoregions,
   originator = {ICES},
   year       = {2019},
@@ -205,7 +208,8 @@ unlink(filename)
 
 ### Species lookup table from ICES SD database
 
-```
+`DATA.bib` entry:
+```r
 @Misc{ICES_SD_species_lookup,
   originator = {ICES},
   year       = {2019},
