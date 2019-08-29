@@ -243,7 +243,7 @@ unlink(filename)
 
 `DATA.bib` entry:
 
-``` r
+``` bibtex
 @Misc{ICES_SD_species_lookup,
   originator = {ICES},
   year       = {2019},
@@ -254,7 +254,7 @@ unlink(filename)
 }
 ```
 
-with the R script: `ICES_SD_species_lookup`
+with the R script: `ICES_SD_species_lookup.R`
 
 ``` r
 library(icesSD)
