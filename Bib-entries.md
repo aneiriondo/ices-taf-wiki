@@ -1,3 +1,11 @@
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
 A metadata file contains one or more entries that use a general BibTeX format:
 
 ```
