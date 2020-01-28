@@ -3,14 +3,14 @@ See also:
 [Creating a TAF analysis](Creating-a-TAF-analysis),
 [Example data records](Example-data-records).
 
-### Contents
+## In this guide
 
-- [General format](#General-format)
-- [Source field](#Source-field)
-- [Software version](#Software-version)
-- [Multiple URLs](#Multiple-URLs)
-- [Dir field](#Dir-field)
-- [Summary](#Summary)
+- [General format](#general-format)
+- [Source field](#source-field)
+- [Software version](#software-version)
+- [Multiple URLs](#multiple-urls)
+- [Dir field](#dir-field)
+- [Summary](#summary)
 
 ## General format
 
