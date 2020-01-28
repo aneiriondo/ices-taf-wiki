@@ -1,4 +1,7 @@
 
+See also: [Home](Home), [Creating a TAF
+analysis](Creating-a-TAF-analysis), [Bib entries](Bib-entries).
+
 This page was based on using the `icesTAF` package version `3.3.2` dated
 `2020-01-07`.
 
@@ -198,7 +201,6 @@ cod.27.47d20
   originator = {DTU Aqua},
   year       = {2019},
   title      = {ICES Stat rec ESRI Shapefile},
-  period     = {},
   source     = {script},
   url        = {https://gis.ices.dk/geonetwork/srv/metadata/81f68a99-9b91-4762-80d3-31c069731f44}
 }
@@ -224,7 +226,6 @@ unlink(filename)
   originator = {ICES},
   year       = {2019},
   title      = {ICES Ecoregion ESRI Shapefile},
-  period     = {},
   source     = {script},
   url        = {https://gis.ices.dk/geonetwork/srv/metadata/4745e824-a612-4a1f-bc56-b540772166eb}
 }
@@ -250,7 +251,6 @@ unlink(filename)
   originator = {ICES},
   year       = {2019},
   title      = {ICES Fisheries Guild lookup table},
-  period     = {},
   source     = {script},
   url        = {https://gis.ices.dk/geonetwork/srv/metadata/30541cf4-0236-437f-9757-596c5f793cff}
 }
@@ -260,6 +260,7 @@ with the R script: `ICES_SD_species_lookup`
 
 ``` r
 library(icesSD)
+library(magrittr)
 
 sid <- getSD()
 
