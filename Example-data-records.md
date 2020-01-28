@@ -1,12 +1,12 @@
 
-This page was based on using the `icesTAF` package version `3.1.1` dated
-`2019-05-24`.
+This page was based on using the `icesTAF` package version `3.3.2` dated
+`2020-01-07`.
 
 ## In this guide
 
   - [Using a script to download a zip
     file](#Using-a-script-to-download-a-zip-file)
-  - [Get the ICES word template](#Get-the-ICES-word-template)
+  - [Get the ICES Word template](#Get-the-ICES-Word-template)
   - [Further `DATA.bib` entries](#Further-DATA.bib-entries)
 
 ## Using a script to download a zip file
@@ -38,21 +38,21 @@ unlink(filename)
 
 This code can be used to download shapefiles for use in a TAF assessment
 by specifying `script` as the `source` of the data. This is done by
-creating the following meta-data record in `DATA.bib`
+creating the following metadata record in `DATA.bib`
 
 ``` r
 @Misc{icesareas,
   originator = {ICES},
-  year       = {2019},
+  year       = {2020},
   title      = {ICES Areas ESRI Shapefile},
-  period     = {},
+  access     = {Public},
   source     = {script},
 }
 ```
 
-and an accompaning R script. The R script must have the same name as the
-‘key’ feild. In this case the key is `icesareas` so the script must be
-called `icesareas.R`. The `DATA.bib` entry can be created using the
+and an accompanying R script. The R script must have the same name as
+the ‘key’ field. In this case the key is `icesareas` so the script must
+be called `icesareas.R`. The `DATA.bib` entry can be created using the
 [`draft.data`](https://rdrr.io/cran/icesTAF/man/draft.data.html)
 function
 
@@ -60,11 +60,12 @@ function
   draft.data(data.files = "icesareas",
              originator = "ICES",
              title = "ICES Areas ESRI Shapefile",
+             period = FALSE,
              source = "script",
              file = "bootstrap/DATA.bib")
 ```
 
-after you have created the script in the bootstrap folder called
+After you have created the script in the bootstrap folder called
 `icesareas.R` the directory structure should look like this:
 
 ``` r
@@ -81,7 +82,7 @@ cod.27.47d20
 Now we can run
 [`taf.bootstrap`](https://rdrr.io/cran/icesTAF/man/taf.bootstrap.html)
 to process the script to download the process the zip file and now the
-directory structyre will look like this
+directory structure will look like this
 
 ``` r
 taf.bootstrap()
@@ -108,7 +109,7 @@ cod.27.47d20
 °--report.R
 ```
 
-## Get the ICES word template
+## Get the ICES Word template
 
 We will start with an empty repository
 
@@ -127,15 +128,15 @@ To download this file for use in an automated report for a TAF
 assessment, specify the location of the file as the `source` of the data
 record. The file is held in the
 [ices-taf/doc](https://github.com/ices-taf/doc) repository and is called
-reportTemplate.docx. This is done by creating the following meta-data
+reportTemplate.docx. This is done by creating the following metadata
 record in `DATA.bib`
 
 ``` r
 @Misc{reportTemplate.docx,
   originator = {ICES},
-  year       = {2019},
-  title      = {ICES TAF word template for report automation},
-  period     = {},
+  year       = {2020},
+  title      = {ICES TAF Word template for report automation},
+  access     = {Public},
   source     = {https://github.com/ices-taf/doc/raw/master/reportTemplate.docx},
 }
 ```
@@ -147,7 +148,8 @@ function
 ``` r
   draft.data(data.files = "reportTemplate.docx",
              originator = "ICES",
-             title = "ICES TAF word template for report automation",
+             title = "ICES TAF Word template for report automation",
+             period = FALSE,
              source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
              file = "bootstrap/DATA.bib")
 ```
@@ -166,8 +168,8 @@ cod.27.47d20
 
 Now we can run
 [`taf.bootstrap`](https://rdrr.io/cran/icesTAF/man/taf.bootstrap.html)
-to process the script to download the word template file and now the
-directory structyre will look like this
+to process the script to download the Word template file and now the
+directory structure will look like this
 
 ``` r
 taf.bootstrap()
@@ -228,7 +230,7 @@ unlink(filename)
 }
 ```
 
-with the r script: `ICES_ecoregions.R`
+with the R script: `ICES_ecoregions.R`
 
 ``` r
 filename <- "ICES_ecoregions.zip"
