@@ -74,7 +74,7 @@ setwd(repoName)
              title = "ICES Areas ESRI Shapefile",
              period = FALSE,
              source = "script",
-             file = "bootstrap/DATA.bib")
+             file = TRUE)
 setwd("..")
 ```
 
@@ -144,7 +144,7 @@ setwd(repoName)
              title = "ICES TAF Word template for report automation",
              period = FALSE,
              source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
-             file = "bootstrap/DATA.bib")
+             file = TRUE)
 setwd("..")
 ```
 

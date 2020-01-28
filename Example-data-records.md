@@ -65,7 +65,7 @@ function
              title = "ICES Areas ESRI Shapefile",
              period = FALSE,
              source = "script",
-             file = "bootstrap/DATA.bib")
+             file = TRUE)
 ```
 
 After you have created the script in the bootstrap folder called
@@ -154,7 +154,7 @@ function
              title = "ICES TAF Word template for report automation",
              period = FALSE,
              source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
-             file = "bootstrap/DATA.bib")
+             file = TRUE)
 ```
 
 The directory structure should now look like this:
