@@ -1,3 +1,14 @@
+See also: [Example data records](Example-data-records)
+
+### Contents
+
+- [General format](#General-format)
+- [Source field](#Source-field)
+- [Software and version](#Software-and-version)
+- [Multiple URLs](#Multiple-URLs)
+- [Dir field](#Dir-field)
+- [Summary](#Summary)
+
 ## General format
 
 A metadata file contains one or more entries that use a general BibTeX format:
