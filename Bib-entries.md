@@ -1,10 +1,4 @@
-# Heading 1
-
-## Heading 2
-
-### Heading 3
-
-#### Heading 4
+## General format
 
 A metadata file contains one or more entries that use a general BibTeX format:
 
@@ -35,13 +29,15 @@ from 1987 to 2015, and access to this file is public. It is not necessary to
 specify the stock name, since that will be automatically recorded on the TAF
 server.
 
+## Source field
+
 The special value `source = {file}` means that the key, in this case
 `PLE7DFleet_2016.txt`, is the name of the file located inside
 `bootstrap/initial/data`. This file shorthand notation is equivalent to
 specifying the relative path: `source = {initial/data/PLE7DFleet_2016.txt}`.
 
-The *source* field specifies where data or software originate from. The
-following types of values can be used in the source field:
+The source field specifies where data or software originate from. The following
+types of values can be used in the source field:
 
 1. GitHub reference of the form `owner/repo[/subdir]@ref`, identifying a
    specific version of an R package. A fixed reference such as a tag, release,
@@ -73,6 +69,8 @@ and included as a simple `DATA.bib` entry, for example:
   source     = {file},
 }
 ```
+
+## Software and version
 
 Another example metadata entry is from a `SOFTWARE.bib` file:
 
@@ -135,9 +133,13 @@ source code was last modified:
 }
 ```
 
+## Multiple URLs
+
 The source field can specify multiple URLs to download, separated by newlines.
 To shorten the source entries, the prefix field can be useful to specify a
 prefix that is common for all source entries.
+
+## Dir field
 
 The *dir* field is optional and creates a directory to place files in. If the
 dir field is used, it can only have the value `dir = {TRUE}` and the resulting
@@ -145,6 +147,8 @@ directory will be named after the metadata key. The dir field is mainly useful
 when two or more data files that need to be downloaded have the same name. It is
 implied and not necessary to set `dir = TRUE` when `source = {script}` or when
 the source field specifies multiple URLs.
+
+## Summary
 
 In summary, the metadata are similar to bibliographic entries, with the
 important addition of source directives that guide the bootstrap procedure to
