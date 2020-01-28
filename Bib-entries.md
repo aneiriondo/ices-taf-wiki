@@ -7,7 +7,7 @@ See also:
 
 - [General format](#General-format)
 - [Source field](#Source-field)
-- [Software and version](#Software-and-version)
+- [Software version](#Software-version)
 - [Multiple URLs](#Multiple-URLs)
 - [Dir field](#Dir-field)
 - [Summary](#Summary)
@@ -84,7 +84,7 @@ and included as a simple `DATA.bib` entry, for example:
 }
 ```
 
-## Software and version
+## Software version
 
 Another example metadata entry is from a `SOFTWARE.bib` file:
 
