@@ -7,6 +7,7 @@ See also:
 
 - [General format](#general-format)
 - [Source field](#source-field)
+- [Model settings](#model-settings)
 - [Software version](#software-version)
 - [Multiple URLs](#multiple-urls)
 - [Dir field](#dir-field)
@@ -71,6 +72,8 @@ types of values can be used in the source field:
    to fetch data files from a web service. The metadata key is used both to
    identify the script `bootstrap/key.R` and target directory
    `bootstrap/data/key`.
+
+## Model settings
 
 Model settings can be stored in a file or folder inside `bootstrap/initial/data`
 and included as a simple `DATA.bib` entry, for example:
