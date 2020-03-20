@@ -1,5 +1,5 @@
 
-See also: [Home](Home), [Bib entries](Bib-entries), [Example data
+See also: [Bib entries](Bib-entries), [Example data
 records](Example-data-records).
 
 This page was based on using the `icesTAF` package version `3.3.3` dated

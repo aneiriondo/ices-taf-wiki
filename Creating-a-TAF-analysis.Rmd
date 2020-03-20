@@ -7,7 +7,6 @@ source("R/utilities.R")
 ```
 
 See also:
-[Home](Home),
 [Bib entries](Bib-entries),
 [Example data records](Example-data-records).
 
