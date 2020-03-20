@@ -1,3 +1,6 @@
+---
+output: github_document
+---
 
 * [List expert groups](#list-expert-groups)
 * [Get expert group](#get-expert-group)
@@ -152,5 +155,3 @@ DELETE /egs/:eg_id/analyses/:analysis
 ```
 Status: 204 No Content
 ```
-
-

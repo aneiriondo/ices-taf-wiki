@@ -1,3 +1,19 @@
+---
+output: github_document
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+source("R/utilities.R")
+```
+
+See also:
+[Bib entries](Bib-entries),
+[Example data records](Example-data-records).
+
+This page was based on using the `icesTAFWeb` package version ```r packageVersion("icesTAFWeb")```
+dated ```r packageDate("icesTAFWeb")```.
+
+## In this guide
 
 * [List your analyses](#list-your-analyses)
 * [List expert group analyses](#list-expert-group-analyses)
@@ -5,13 +21,19 @@
 * [Create analysis](#create-analysis)
 * [Get analysis](#get-analysis)
 
-
 The Analysis API allows you to list, view, edit, and create TAF analyses.
 
 ## List your analyses
 
 ```
 GET user/analyses
+```
+
+in R, first get a token
+
+```{r}
+jwt <- icesTAFWeb::getToken("colin")
+#icesTAFWeb:::assessments(jwt)
 ```
 
 ### Response
