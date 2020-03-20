@@ -2,10 +2,14 @@
 output: github_document
 ---
 
-
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 source("R/utilities.R")
 ```
+
+See also:
+[Home](Home),
+[Creating a TAF analysis](Creating-a-TAF-analysis),
+[Bib entries](Bib-entries).
 
 This page was based on using the `icesTAF` package version ```r packageVersion("icesTAF")```
 dated ```r packageDate("icesTAF")```.
@@ -13,12 +17,13 @@ dated ```r packageDate("icesTAF")```.
 ## In this guide
 
 * [Using a script to download a zip file](#Using-a-script-to-download-a-zip-file)
-* [Get the ICES word template](#Get-the-ICES-word-template)
+* [Get the ICES Word template](#Get-the-ICES-Word-template)
 * [Further `DATA.bib` entries](#Further-DATA.bib-entries)
 
 ## Using a script to download a zip file
 
 We will start with an empty repository
+
 ```{r taf-skeleton-output, results='asis', echo=FALSE}
 # make skeleton
 taf.skeleton(repoName, force = TRUE)
@@ -31,6 +36,7 @@ printDir(paths)
 
 Consider the following script that downloads a zip file containing ESRI
 shapefiles of ICES areas, unzips it and deletes the zip file
+
 ```{r ices-areas, results='asis', echo=FALSE}
 code <-
 'filename <- "ICES_areas.zip"
@@ -44,34 +50,35 @@ cat(formatRcode(code), sep = "\n")
 
 This code can be used to download shapefiles for use in a TAF assessment by
 specifying `script` as the `source` of the data.  This is done by creating
-the following meta-data record in `DATA.bib`
+the following metadata record in `DATA.bib`
 
 ```{r draft-data, results='asis', echo=FALSE}
 meta <-
   draft.data(data.files = "icesareas",
              originator = "ICES",
              title = "ICES Areas ESRI Shapefile",
+             period = FALSE,
              source = "script")
 cat(formatRcode(meta), sep = "\n")
 ```
 
-and an accompaning R script.  The R script must
-have the same name as the 'key' feild.  In this case the key is `icesareas` so
+and an accompanying R script.  The R script must
+have the same name as the 'key' field.  In this case the key is `icesareas` so
 the script must be called `icesareas.R`.  The `DATA.bib` entry can be created
 using the `r taflink("draft.data")` function
-
 
 ```{r draft-data2, echo = 2}
 setwd(repoName)
   draft.data(data.files = "icesareas",
              originator = "ICES",
              title = "ICES Areas ESRI Shapefile",
+             period = FALSE,
              source = "script",
-           file = "bootstrap/DATA.bib")
+             file = TRUE)
 setwd("..")
 ```
 
-after you have created the script in the bootstrap folder called `icesareas.R`
+After you have created the script in the bootstrap folder called `icesareas.R`
 the directory structure should look like this:
 
 ```{r write-script, results='asis', echo=FALSE}
@@ -83,7 +90,7 @@ printDir()
 ```
 
 Now we can run  `r taflink("taf.bootstrap")` to process the script to download the
-process the zip file and now the directory structyre will look like this
+process the zip file and now the directory structure will look like this
 
 ```{r process-script, echo=2, results='asis', message=FALSE}
 setwd(repoName)
@@ -92,13 +99,14 @@ setwd("..")
 printDir()
 ```
 
-## Get the ICES word template
+## Get the ICES Word template
 
 ```{r setup2, echo=FALSE, message=FALSE, warning=FALSE}
 source("R/utilities.R")
 ```
 
 We will start with an empty repository
+
 ```{r taf-skeleton-output2, results='asis', echo=FALSE}
 # make skeleton
 taf.skeleton(repoName, force = TRUE)
@@ -108,7 +116,6 @@ paths <- dir(repoName, full.names = TRUE, recursive = TRUE)
 paths <- c(paste0(repoName, "/bootstrap/initial/data/"), paths)
 printDir(paths)
 ```
-
 
 To download this file for use in an automated report for a
 TAF assessment, specify the location of the file as the `source`
@@ -121,7 +128,8 @@ meta-data record in `DATA.bib`
 meta <-
   draft.data(data.files = "reportTemplate.docx",
              originator = "ICES",
-             title = "ICES TAF word template for report automation",
+             title = "ICES TAF Word template for report automation",
+             period = FALSE,
              source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx")
 cat(formatRcode(meta), sep = "\n")
 ```
@@ -133,9 +141,10 @@ function
 setwd(repoName)
   draft.data(data.files = "reportTemplate.docx",
              originator = "ICES",
-             title = "ICES TAF word template for report automation",
+             title = "ICES TAF Word template for report automation",
+             period = FALSE,
              source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
-             file = "bootstrap/DATA.bib")
+             file = TRUE)
 setwd("..")
 ```
 
@@ -146,7 +155,7 @@ printDir()
 ```
 
 Now we can run  `r taflink("taf.bootstrap")` to process the script to
-download the word template file and now the directory structyre will look like this
+download the Word template file and now the directory structure will look like this
 
 ```{r process-word-template, echo=2, results='asis', message=FALSE}
 setwd(repoName)
@@ -166,13 +175,13 @@ printDir()
   originator = {DTU Aqua},
   year       = {2019},
   title      = {ICES Stat rec ESRI Shapefile},
-  period     = {},
+  url        = {https://gis.ices.dk/geonetwork/srv/metadata/81f68a99-9b91-4762-80d3-31c069731f44},
   source     = {script},
-  url        = {https://gis.ices.dk/geonetwork/srv/metadata/81f68a99-9b91-4762-80d3-31c069731f44}
 }
 ```
 
 with the R script: `ICES_StatRec_mapto_Ecoregions.R`
+
 ```r
 filename <- "ICES_StatRec_mapto_Ecoregions.zip"
 # download and unzip
@@ -185,18 +194,19 @@ unlink(filename)
 ### ICES Ecoregion
 
 `DATA.bib` entry:
+
 ```r
 @Misc{ICES_ecoregions,
   originator = {ICES},
   year       = {2019},
   title      = {ICES Ecoregion ESRI Shapefile},
-  period     = {},
+  url        = {https://gis.ices.dk/geonetwork/srv/metadata/4745e824-a612-4a1f-bc56-b540772166eb},
   source     = {script},
-  url        = {https://gis.ices.dk/geonetwork/srv/metadata/4745e824-a612-4a1f-bc56-b540772166eb}
 }
 ```
 
-with the r script: `ICES_ecoregions.R`
+with the R script: `ICES_ecoregions.R`
+
 ```r
 filename <- "ICES_ecoregions.zip"
 # download and unzip
@@ -209,20 +219,21 @@ unlink(filename)
 ### Species lookup table from ICES SD database
 
 `DATA.bib` entry:
-```bibtex
+
+```r
 @Misc{ICES_SD_species_lookup,
   originator = {ICES},
   year       = {2019},
   title      = {ICES Fisheries Guild lookup table},
-  period     = {},
+  url        = {https://gis.ices.dk/geonetwork/srv/metadata/30541cf4-0236-437f-9757-596c5f793cff},
   source     = {script},
-  url        = {https://gis.ices.dk/geonetwork/srv/metadata/30541cf4-0236-437f-9757-596c5f793cff}
 }
 ```
 
 with the R script: `ICES_SD_species_lookup.R`
 ```r
 library(icesSD)
+library(magrittr)
 
 sid <- getSD()
 
