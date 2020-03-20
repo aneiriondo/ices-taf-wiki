@@ -44,7 +44,7 @@ download(paste0("http://gis.ices.dk/shapefiles/", filename))
 unzip(filename)
 # delete zip file
 unlink(filename)'
-cat(formatRcode(code), sep = "\n")
+cat(formatCode(code), sep = "\n")
 ```
 
 This code can be used to download shapefiles for use in a TAF assessment by
@@ -60,7 +60,7 @@ meta <-
     period = FALSE,
     source = "script"
   )
-cat(formatRcode(meta), sep = "\n")
+cat(formatCode(meta), sep = "\n")
 ```
 
 and an accompanying R script.  The R script must
@@ -136,7 +136,7 @@ meta <-
     period = FALSE,
     source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx"
   )
-cat(formatRcode(meta), sep = "\n")
+cat(formatCode(meta), sep = "\n")
 ```
 
 The `DATA.bib` entry can be created using the `r taflink("draft.data")`

@@ -1,6 +1,6 @@
 
-See also: [Home](Home), [Creating a TAF
-analysis](Creating-a-TAF-analysis), [Bib entries](Bib-entries).
+See also: [Creating a TAF analysis](Creating-a-TAF-analysis), [Bib
+entries](Bib-entries).
 
 This page was based on using the `icesTAF` package version `3.3.3` dated
 `2020-01-29`.

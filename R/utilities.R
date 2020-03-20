@@ -1,5 +1,6 @@
 library(data.tree)
 library(icesTAF)
+library(icesTAFWeb)
 
 repoName <- "cod.27.47d20"
 
@@ -34,5 +35,13 @@ printDir <- function(paths = NULL) {
 }
 
 taflink <- function(x) {
-  sprintf("[`%1$s`](https://rdrr.io/cran/icesTAF/man/%1$s.html)", x)
+  cranlink("icesTAF", x)
+}
+
+cranlink <- function(package, FUNC) {
+  sprintf(
+    "[`%2$s`](https://rdrr.io/cran/%1$s/man/%2$s.html)",
+    package,
+    FUNC
+  )
 }
