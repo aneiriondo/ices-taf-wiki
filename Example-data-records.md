@@ -17,14 +17,14 @@ This page was based on using the `icesTAF` package version `3.3.3` dated
 We will start with an empty repository
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   °--initial
-¦       °--data
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20    
+  ¦--bootstrap   
+  ¦   °--initial 
+  ¦       °--data
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 Consider the following script that downloads a zip file containing ESRI
@@ -60,26 +60,28 @@ be called `icesareas.R`. The `DATA.bib` entry can be created using the
 function
 
 ``` r
-  draft.data(data.files = "icesareas",
-             originator = "ICES",
-             title = "ICES Areas ESRI Shapefile",
-             period = FALSE,
-             source = "script",
-             file = TRUE)
+  draft.data(
+    data.files = "icesareas",
+    originator = "ICES",
+    title = "ICES Areas ESRI Shapefile",
+    period = FALSE,
+    source = "script",
+    file = TRUE
+  )
 ```
 
 After you have created the script in the bootstrap folder called
 `icesareas.R` the directory structure should look like this:
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   ¦--DATA.bib
-¦   °--icesareas.R
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20       
+  ¦--bootstrap      
+  ¦   ¦--DATA.bib   
+  ¦   °--icesareas.R
+  ¦--data.R         
+  ¦--model.R        
+  ¦--output.R       
+  °--report.R       
 ```
 
 Now we can run
@@ -92,24 +94,24 @@ taf.bootstrap()
 ```
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   ¦--DATA.bib
-¦   ¦--data
-¦   ¦   °--icesareas
-¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.cpg
-¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.dbf
-¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.prj
-¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbn
-¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbx
-¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp
-¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp.xml
-¦   ¦       °--ICES_Areas_20160601_cut_dense_3857.shx
-¦   °--icesareas.R
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20                                              
+  ¦--bootstrap                                             
+  ¦   ¦--DATA.bib                                          
+  ¦   ¦--data                                              
+  ¦   ¦   °--icesareas                                     
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.cpg    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.dbf    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.prj    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbn    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.sbx    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp    
+  ¦   ¦       ¦--ICES_Areas_20160601_cut_dense_3857.shp.xml
+  ¦   ¦       °--ICES_Areas_20160601_cut_dense_3857.shx    
+  ¦   °--icesareas.R                                       
+  ¦--data.R                                                
+  ¦--model.R                                               
+  ¦--output.R                                              
+  °--report.R                                              
 ```
 
 ## Get the ICES Word template
@@ -117,14 +119,14 @@ cod.27.47d20
 We will start with an empty repository
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   °--initial
-¦       °--data
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20    
+  ¦--bootstrap   
+  ¦   °--initial 
+  ¦       °--data
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 To download this file for use in an automated report for a TAF
@@ -149,24 +151,26 @@ The `DATA.bib` entry can be created using the
 function
 
 ``` r
-  draft.data(data.files = "reportTemplate.docx",
-             originator = "ICES",
-             title = "ICES TAF Word template for report automation",
-             period = FALSE,
-             source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
-             file = TRUE)
+  draft.data(
+    data.files = "reportTemplate.docx",
+    originator = "ICES",
+    title = "ICES TAF Word template for report automation",
+    period = FALSE,
+    source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
+    file = TRUE
+  )
 ```
 
 The directory structure should now look like this:
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   °--DATA.bib
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20    
+  ¦--bootstrap   
+  ¦   °--DATA.bib
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 Now we can run
@@ -179,15 +183,15 @@ taf.bootstrap()
 ```
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   ¦--DATA.bib
-¦   °--data
-¦       °--reportTemplate.docx
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20                   
+  ¦--bootstrap                  
+  ¦   ¦--DATA.bib               
+  ¦   °--data                   
+  ¦       °--reportTemplate.docx
+  ¦--data.R                     
+  ¦--model.R                    
+  ¦--output.R                   
+  °--report.R                   
 ```
 
 ## Further `DATA.bib` entries
@@ -268,10 +272,19 @@ sid <- getSD()
 species_lookup <-
   sid %>%
   filter(ActiveYear > 2018) %>%
-  select(SpeciesScientificName, SpeciesCommonName, FisheriesGuild) %>%
-  mutate(FisheriesGuild = tolower(FisheriesGuild)) %>%
-  filter(!is.na(FisheriesGuild) & !is.na(SpeciesScientificName)) %>%
-  unique
+  select(
+    SpeciesScientificName,
+    SpeciesCommonName,
+    FisheriesGuild
+  ) %>%
+  mutate(
+    FisheriesGuild = tolower(FisheriesGuild)
+  ) %>%
+  filter(
+    !is.na(FisheriesGuild) &
+    !is.na(SpeciesScientificName)
+  ) %>%
+  unique()
 
 write.taf(species_lookup, quote = TRUE)
 ```

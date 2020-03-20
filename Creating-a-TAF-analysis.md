@@ -30,14 +30,14 @@ and file structure of the project. This is done using the function
 which creates the following structure in your working directory
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   °--initial
-¦       °--data
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20    
+  ¦--bootstrap   
+  ¦   °--initial 
+  ¦       °--data
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 ## Upload initial data
@@ -63,15 +63,15 @@ Simply copy the file in to the `bootstrap/initial/data` folder. The
 directory structure will now look like this:
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   °--initial
-¦       °--data
-¦           °--catch.csv
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20             
+  ¦--bootstrap            
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           °--catch.csv
+  ¦--data.R               
+  ¦--model.R              
+  ¦--output.R             
+  °--report.R             
 ```
 
 ### Make data available to assessment
@@ -87,10 +87,12 @@ helper function
 add a few fields:
 
 ``` r
-draft.data(originator = "WGNSSK",
-           year = 2019,
-           title = "Catch data for cod.27.347d",
-           period = "2015-2018")
+draft.data(
+  originator = "WGNSSK",
+  year = 2019,
+  title = "Catch data for cod.27.347d",
+  period = "2015-2018"
+)
 ```
 
     ## @Misc{catch.csv,
@@ -105,29 +107,31 @@ draft.data(originator = "WGNSSK",
 Then we write this to the `DATA.bib` file by specifying `file = TRUE`:
 
 ``` r
-draft.data(originator = "WGNSSK",
-           year = 2019,
-           title = "Catch data for cod.27.347d",
-           period = "2015-2018",
-           file = TRUE)
+draft.data(
+  originator = "WGNSSK",
+  year = 2019,
+  title = "Catch data for cod.27.347d",
+  period = "2015-2018",
+  file = TRUE
+)
 ```
 
 Finally we run `taf.bootstrap()` to get the data into the
 `bootstrap/data` folder, leaving the directory tree looking like this:
 
 ``` r
-cod.27.47d20
-¦--bootstrap
-¦   ¦--DATA.bib
-¦   ¦--data
-¦   ¦   °--catch.csv
-¦   °--initial
-¦       °--data
-¦           °--catch.csv
-¦--data.R
-¦--model.R
-¦--output.R
-°--report.R
+ cod.27.47d20             
+  ¦--bootstrap            
+  ¦   ¦--DATA.bib         
+  ¦   ¦--data             
+  ¦   ¦   °--catch.csv    
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           °--catch.csv
+  ¦--data.R               
+  ¦--model.R              
+  ¦--output.R             
+  °--report.R             
 ```
 
 ## Preprocess data, write TAF data tables

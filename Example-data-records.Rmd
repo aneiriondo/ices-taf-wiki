@@ -54,11 +54,13 @@ the following metadata record in `DATA.bib`
 
 ```{r draft-data, results='asis', echo=FALSE}
 meta <-
-  draft.data(data.files = "icesareas",
-             originator = "ICES",
-             title = "ICES Areas ESRI Shapefile",
-             period = FALSE,
-             source = "script")
+  draft.data(
+    data.files = "icesareas",
+    originator = "ICES",
+    title = "ICES Areas ESRI Shapefile",
+    period = FALSE,
+    source = "script"
+  )
 cat(formatRcode(meta), sep = "\n")
 ```
 
@@ -69,12 +71,14 @@ using the `r taflink("draft.data")` function
 
 ```{r draft-data2, echo = 2}
 setwd(repoName)
-  draft.data(data.files = "icesareas",
-             originator = "ICES",
-             title = "ICES Areas ESRI Shapefile",
-             period = FALSE,
-             source = "script",
-             file = TRUE)
+  draft.data(
+    data.files = "icesareas",
+    originator = "ICES",
+    title = "ICES Areas ESRI Shapefile",
+    period = FALSE,
+    source = "script",
+    file = TRUE
+  )
 setwd("..")
 ```
 
@@ -126,11 +130,13 @@ meta-data record in `DATA.bib`
 
 ```{r draft-data3, results='asis', echo=FALSE}
 meta <-
-  draft.data(data.files = "reportTemplate.docx",
-             originator = "ICES",
-             title = "ICES TAF Word template for report automation",
-             period = FALSE,
-             source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx")
+  draft.data(
+    data.files = "reportTemplate.docx",
+    originator = "ICES",
+    title = "ICES TAF Word template for report automation",
+    period = FALSE,
+    source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx"
+  )
 cat(formatRcode(meta), sep = "\n")
 ```
 
@@ -139,12 +145,14 @@ function
 
 ```{r draft-data4, echo = 2}
 setwd(repoName)
-  draft.data(data.files = "reportTemplate.docx",
-             originator = "ICES",
-             title = "ICES TAF Word template for report automation",
-             period = FALSE,
-             source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
-             file = TRUE)
+  draft.data(
+    data.files = "reportTemplate.docx",
+    originator = "ICES",
+    title = "ICES TAF Word template for report automation",
+    period = FALSE,
+    source = "https://github.com/ices-taf/doc/raw/master/reportTemplate.docx",
+    file = TRUE
+  )
 setwd("..")
 ```
 
@@ -241,10 +249,19 @@ sid <- getSD()
 species_lookup <-
   sid %>%
   filter(ActiveYear > 2018) %>%
-  select(SpeciesScientificName, SpeciesCommonName, FisheriesGuild) %>%
-  mutate(FisheriesGuild = tolower(FisheriesGuild)) %>%
-  filter(!is.na(FisheriesGuild) & !is.na(SpeciesScientificName)) %>%
-  unique
+  select(
+    SpeciesScientificName,
+    SpeciesCommonName,
+    FisheriesGuild
+  ) %>%
+  mutate(
+    FisheriesGuild = tolower(FisheriesGuild)
+  ) %>%
+  filter(
+    !is.na(FisheriesGuild) &
+    !is.na(SpeciesScientificName)
+  ) %>%
+  unique()
 
 write.taf(species_lookup, quote = TRUE)
 ```
