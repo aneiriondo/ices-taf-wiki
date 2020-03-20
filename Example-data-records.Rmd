@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-  
+
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 source("R/utilities.R")
 ```
@@ -32,7 +32,7 @@ printDir(paths)
 Consider the following script that downloads a zip file containing ESRI
 shapefiles of ICES areas, unzips it and deletes the zip file
 ```{r ices-areas, results='asis', echo=FALSE}
-code <- 
+code <-
 'filename <- "ICES_areas.zip"
 # download and unzip
 download(paste0("http://gis.ices.dk/shapefiles/", filename))
@@ -47,9 +47,9 @@ specifying `script` as the `source` of the data.  This is done by creating
 the following meta-data record in `DATA.bib`
 
 ```{r draft-data, results='asis', echo=FALSE}
-meta <- 
+meta <-
   draft.data(data.files = "icesareas",
-             originator = "ICES", 
+             originator = "ICES",
              title = "ICES Areas ESRI Shapefile",
              source = "script")
 cat(formatRcode(meta), sep = "\n")
@@ -64,7 +64,7 @@ using the `r taflink("draft.data")` function
 ```{r draft-data2, echo = 2}
 setwd(repoName)
   draft.data(data.files = "icesareas",
-             originator = "ICES", 
+             originator = "ICES",
              title = "ICES Areas ESRI Shapefile",
              source = "script",
            file = "bootstrap/DATA.bib")
@@ -82,7 +82,7 @@ setwd("..")
 printDir()
 ```
 
-Now we can run  `r taflink("taf.bootstrap")` to process the script to download the 
+Now we can run  `r taflink("taf.bootstrap")` to process the script to download the
 process the zip file and now the directory structyre will look like this
 
 ```{r process-script, echo=2, results='asis', message=FALSE}
@@ -111,14 +111,14 @@ printDir(paths)
 
 
 To download this file for use in an automated report for a
-TAF assessment, specify the location of the file as the `source` 
-of the data record.  The file is held in the 
+TAF assessment, specify the location of the file as the `source`
+of the data record.  The file is held in the
 [ices-taf/doc](https://github.com/ices-taf/doc) repository
-and is called reportTemplate.docx. This is done by creating the following 
+and is called reportTemplate.docx. This is done by creating the following
 meta-data record in `DATA.bib`
 
 ```{r draft-data3, results='asis', echo=FALSE}
-meta <- 
+meta <-
   draft.data(data.files = "reportTemplate.docx",
              originator = "ICES",
              title = "ICES TAF word template for report automation",
@@ -227,7 +227,7 @@ library(icesSD)
 sid <- getSD()
 
 # get lookup table for species, common name and Fisheries guild from SID
-species_lookup <- 
+species_lookup <-
   sid %>%
   filter(ActiveYear > 2018) %>%
   select(SpeciesScientificName, SpeciesCommonName, FisheriesGuild) %>%
@@ -237,4 +237,3 @@ species_lookup <-
 
 write.taf(species_lookup, quote = TRUE)
 ```
-
