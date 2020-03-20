@@ -17,22 +17,26 @@ data records](Example-data-records).
 A metadata file contains one or more entries that use a general BibTeX
 format:
 
-    @Type{key,
-      field = {value},
-      ...,
-    }
+``` bibtex
+@Type{key,
+  field = {value},
+  ...,
+}
+```
 
 Consider, for example, the following metadata entry from a `DATA.bib`
 file:
 
-    @Misc{PLE7DFleet_2016.txt,
-      originator = {WGNSSK},
-      year       = {2016},
-      title      = {Survey indices: UK_BTS, FR_GFS, IN_YFS},
-      period     = {1987-2015},
-      access     = {Public},
-      source     = {file},
-    }
+``` bibtex
+@Misc{PLE7DFleet_2016.txt,
+  originator = {WGNSSK},
+  year       = {2016},
+  title      = {Survey indices: UK_BTS, FR_GFS, IN_YFS},
+  period     = {1987-2015},
+  access     = {Public},
+  source     = {file},
+}
+```
 
 Here, a data file is described using the `@Misc` entry type and the
 string following the entry type is called a *key*. The next fields state
@@ -77,25 +81,29 @@ Model settings can be stored in a file or folder inside
 `bootstrap/initial/data` and included as a simple `DATA.bib` entry, for
 example:
 
-    @Misc{config,
-      originator = {HAWG},
-      year       = {2019},
-      title      = {Model settings},
-      source     = {file},
-    }
+``` bibtex
+@Misc{config,
+  originator = {HAWG},
+  year       = {2019},
+  title      = {Model settings},
+  source     = {file},
+}
+```
 
 ## Software version
 
 Another example metadata entry is from a `SOFTWARE.bib` file:
 
-    @Manual{FLAssess,
-      author  = {Laurence T Kell},
-      year    = {2018},
-      title   = {{FLAssess}: Generic classes and methods for stock assessment
-                 models},
-      version = {2.6.2, released 2018-07-18},
-      source  = {flr/FLAssess@v2.6.2},
-    }
+``` bibtex
+@Manual{FLAssess,
+  author  = {Laurence T Kell},
+  year    = {2018},
+  title   = {{FLAssess}: Generic classes and methods for stock assessment
+             models},
+  version = {2.6.2, released 2018-07-18},
+  source  = {flr/FLAssess@v2.6.2},
+}
+```
 
 This entry describes a specific version of an R package that is required
 for the TAF analysis. It is similar, but not identical, to the output
@@ -104,14 +112,14 @@ the version number and release date. When an R package is not an
 official release but a development version, the version and source may
 look like this,
 
-``` 
+``` bibtex
   version = {2.6.3, committed 2018-10-09},
   source  = {flr/FLAssess@f1e5acb},
 ```
 
 or this:
 
-``` 
+``` bibtex
   version = {0.5.4 components branch, committed 2018-03-12},
   source  = {fishfollower/SAM/stockassessment@25b3591},
 ```
@@ -131,18 +139,20 @@ model source code (`sole.tpl`) and executables for different platforms
 number, so the version field contains the year in which the model is
 used, along with the date when the source code was last modified:
 
-    @Article{sole,
-      author  = {G. Aarts and J.J. Poos},
-      year    = {2009},
-      title   = {Comprehensive discard reconstruction and abundance estimation
-                 using flexible selectivity functions},
-      journal = {ICES Journal of Marine Science},
-      volume  = {66},
-      pages   = {763-771},
-      doi     = {10.1093/icesjms/fsp033},
-      version = {2016, last modified 2016-04-27},
-      source  = {initial/software/sole},
-    }
+``` bibtex
+@Article{sole,
+  author  = {G. Aarts and J.J. Poos},
+  year    = {2009},
+  title   = {Comprehensive discard reconstruction and abundance estimation
+             using flexible selectivity functions},
+  journal = {ICES Journal of Marine Science},
+  volume  = {66},
+  pages   = {763-771},
+  doi     = {10.1093/icesjms/fsp033},
+  version = {2016, last modified 2016-04-27},
+  source  = {initial/software/sole},
+}
+```
 
 ## Multiple URLs
 
