@@ -165,7 +165,7 @@ The *dir* field is optional and creates a directory to place files in. If the
 dir field is used, it can only have the value `dir = {TRUE}` and the resulting
 directory will be named after the metadata key. The dir field is mainly useful
 when two or more data files that need to be downloaded have the same name. It is
-implied and not necessary to set `dir = TRUE` when `source = {script}` or when
+implied and not necessary to set `dir = {TRUE}` when `source = {script}` or when
 the source field specifies multiple URLs.
 
 ## Summary
