@@ -22,7 +22,7 @@ printDir <- function(paths = NULL) {
   # make a data.tree and print it
   tree <- as.Node(data.frame(pathString = paths))
   res <- capture.output(print(as.data.frame(tree), row.names = FALSE))[-1]
-  res <- trimws(res)
+  #res <- trimws(res)
   cat(formatRcode(res), sep = "\n")
 }
 
