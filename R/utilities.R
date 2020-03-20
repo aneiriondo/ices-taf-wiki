@@ -7,10 +7,12 @@ if (dir.exists(repoName)) {
   unlink(repoName, recursive = TRUE)
 }
 
-formatRcode <- function(x) {
-  c("\`\`\`r",
+formatCode <- function(x, language = "r") {
+  c(
+    sprintf("\`\`\`%s", language),
     x,
-    "\`\`\`")
+    "\`\`\`"
+  )
 }
 
 printDir <- function(paths = NULL) {
@@ -21,9 +23,14 @@ printDir <- function(paths = NULL) {
 
   # make a data.tree and print it
   tree <- as.Node(data.frame(pathString = paths))
-  res <- capture.output(print(as.data.frame(tree), row.names = FALSE))[-1]
-  #res <- trimws(res)
-  cat(formatRcode(res), sep = "\n")
+  res <-
+    capture.output(
+      print(
+        as.data.frame(tree),
+        row.names = FALSE
+      )
+    )
+  cat(formatCode(res[-1]), sep = "\n")
 }
 
 taflink <- function(x) {
