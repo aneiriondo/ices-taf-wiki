@@ -131,7 +131,7 @@ To download this file for use in an automated report for a TAF
 assessment, specify the location of the file as the `source` of the data
 record. The file is held in the
 [ices-taf/doc](https://github.com/ices-taf/doc) repository and is called
-reportTemplate.docx. This is done by creating the following metadata
+reportTemplate.docx. This is done by creating the following meta-data
 record in `DATA.bib`
 
 ``` r
@@ -246,7 +246,7 @@ unlink(filename)
 
 `DATA.bib` entry:
 
-``` bibtex
+``` r
 @Misc{ICES_SD_species_lookup,
   originator = {ICES},
   year       = {2019},
