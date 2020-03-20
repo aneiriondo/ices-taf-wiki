@@ -1,0 +1,14 @@
+---
+output: github_document
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+source("R/utilities.R")
+```
+
+This page was based on using the `icesTAFWeb` package version ```r packageVersion("icesTAFWeb")```
+dated ```r packageDate("icesTAFWeb")```.
+
+## In this guide
+
+Under construction
