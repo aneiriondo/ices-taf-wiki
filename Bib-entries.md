@@ -67,8 +67,8 @@ following types of values can be used in the source field:
 3.  Relative path starting with `initial`, identifying the location of a
     file or directory provided by the user.
 
-4.  Special value `file`, indicating that the metadata key points to a
-    file location.
+4.  Special value `file` or `folder`, indicating that the metadata key
+    points to a file or folder location.
 
 5.  Special value `script`, indicating that a bootstrap data script
     should be run to fetch data files from a web service. The metadata
