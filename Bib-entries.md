@@ -57,12 +57,13 @@ The source field specifies where data or software originate from. The
 following types of values can be used in the source field:
 
 1.  GitHub reference of the form `owner/repo[/subdir]@ref`, identifying
-    a specific version of an R package. A fixed reference such as a tag,
-    release, or SHA-1 hash is recommended. Branch names, such as
-    `master`, are pointers that are subject to change, and are therefore
-    not reliable as long-term references.
+    a specific version of GitHub resource, such as an R package. A fixed
+    reference such as a tag, release, or SHA-1 hash is recommended.
+    Branch names, such as `master`, are pointers that are subject to
+    change, and are therefore not reliable as long-term references.
 
-2.  URL starting with `http` or `https`, identifying a file to download.
+2.  URL starting with `http://`, `https://`, or `ftp://`, identifying a
+    file to download.
 
 3.  Relative path starting with `initial`, identifying the location of a
     file or directory provided by the user.
