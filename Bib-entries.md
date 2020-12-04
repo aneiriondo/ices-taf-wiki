@@ -65,16 +65,16 @@ following types of values can be used in the source field:
 2.  URL starting with `http://`, `https://`, or `ftp://`, identifying a
     file to download.
 
-3.  Relative path starting with `initial`, identifying the location of a
+3.  Special value `script`, indicating that a bootstrap script should be
+    run to fetch files from a web service. The metadata key is used both
+    to identify the script `bootstrap/key.R` and target directory
+    `bootstrap/data/key`.
+
+4.  Relative path starting with `initial`, identifying the location of a
     file or directory provided by the user.
 
-4.  Special value `file` or `folder`, indicating that the metadata key
+5.  Special value `file` or `folder`, indicating that the metadata key
     points to a file or folder location.
-
-5.  Special value `script`, indicating that a bootstrap data script
-    should be run to fetch data files from a web service. The metadata
-    key is used both to identify the script `bootstrap/key.R` and target
-    directory `bootstrap/data/key`.
 
 ## Model settings
 
@@ -158,8 +158,8 @@ used, along with the date when the source code was last modified:
 ## Multiple URLs
 
 The source field can specify multiple URLs to download, separated by
-newlines. To shorten the source entries, the prefix field can be useful
-to specify a prefix that is common for all source entries.
+newlines. To shorten the source entries, the *prefix* field can be
+useful to specify a prefix that is common for all source entries.
 
 ## Dir field
 
