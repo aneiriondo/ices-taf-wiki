@@ -11,4 +11,11 @@ dated ```r packageDate("icesTAFWeb")```.
 
 ## In this guide
 
-Under construction
+## List your analyses
+
+in R, first get a token
+
+```{r}
+jwt <- icesTAFWeb::getToken("colin")
+icesTAFWeb:::taf_assessments(2019, jwt = jwt)
+```
