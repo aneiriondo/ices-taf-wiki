@@ -12,6 +12,7 @@
       - [Reading TAF files](Reading-TAF-files)
   - Resources
       - [List of presentations](List-of-presentations)
+      - [Code Snippets](Code-Snippets)
 
 <!--
 * [API](API)
