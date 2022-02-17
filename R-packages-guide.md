@@ -1,0 +1,324 @@
+
+# Very quick giude to developing R packages
+
+time to work through: \~ 1hr
+
+## reading list:
+
+  - main reference
+      - <https://r-pkgs.org/>
+  - documenting R packages using roxygen2
+      - <https://CRAN.R-project.org/package=roxygen2>
+      - <https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html>
+  - some example packages:
+      - <https://github.com/ices-tools-prod>
+
+<!-- end list -->
+
+``` r
+library(devtools)
+library(usethis)
+library(git2r)
+# install_github("fledge-iot/fledge")
+library(fledge)
+unlink("myTest", recursive = TRUE)
+```
+
+### minimal package
+
+``` r
+create_package("myTest", fields = list(Date = Sys.Date()))
+git2r::init()
+git2r::add(path = "*")
+git2r::commit(message = "initial create")
+```
+
+### Add a license
+
+ICES DIG is proposing to go down an open source license root. MIT is
+designed to be an interuseable license, so that your software can be
+reused in many other projects, while still retaining a reference back to
+you as copyright holder
+
+``` r
+copyrightHolders <-
+  c(
+    "Colin Millar",
+    "Where I work maybe",
+    "Other authors"
+  )
+use_mit_license(copyrightHolders)
+git2r::add(path = "*")
+git2r::commit(message = "add license")
+```
+
+### develop, document and check cycle
+
+  - create a new file, with the same name as the function
+  - code up the function
+  - add documentation
+  - create documentation
+  - check
+
+<!-- end list -->
+
+``` r
+cat(
+"
+#' Capitalise the first letter of each word in a string of words
+#'
+#' @export
+capitalise <- function(string) {
+  words <- strsplit(string, ' ')[[1]]
+  Words <-
+    paste0(
+      toupper(substring(words, 1, 1)),
+      substring(words, 2)
+    )
+  paste(Words, collapse = ' ')
+}
+",
+file = "R/capitalise.R")
+```
+
+document and check
+
+``` r
+devtools::document()
+devtools::check()
+```
+
+fix the warnings: undocumented arguments
+
+``` r
+cat(
+"
+#' Capitalise the first letter of each word in a string of words
+#'
+#' @param string a character string with words seperated by a space
+#'
+#' @export
+capitalise <- function(string) {
+  words <- strsplit(string, ' ')[[1]]
+  Words <-
+    paste0(
+      toupper(substring(words, 1, 1)),
+      substring(words, 2)
+    )
+  paste(Words, collapse = ' ')
+}
+",
+file = "R/capitalise.R")
+```
+
+document and check
+
+``` r
+devtools::document()
+devtools::check()
+```
+
+all OK now :) commit news worthy item (put a star (\*) in front of
+message)
+
+``` r
+git2r::add(path = "*")
+git2r::commit(message = "* added capitalise() function")
+```
+
+### add a data set
+
+``` r
+usethis::use_data_raw()
+# remove DATASET.R created by use_data_raw()
+# useful to look at though
+unlink("data-raw/DATASET.R")
+cat("
+salmon <- read.csv(
+  'https://data.marine.gov.scot/sites/default/files//Girnock_Baddoch_Emigrant_Numbers_by_Year_of_Emigration_2020.csv'
+)
+names(salmon) <- tolower(names(salmon))
+usethis::use_data(salmon, overwrite = TRUE)
+",
+  file = "data-raw/salmon.R"
+)
+# source this - but in practice you just run from your editor
+source("data-raw/salmon.R")
+```
+
+check should fail
+
+``` r
+devtools::check()
+```
+
+now document data set:
+
+``` r
+cat("
+#' Girnock and Baddoch: Emigrant Numbers by Year of Emigration.
+#'
+#' The Girnock and Baddoch catchments are long-term monitoring sites
+#' where the population dynamics of spring salmon have been assessed
+#' since 1966 and 1988 respectively. These sites include a pair of
+#' fixed traps designed to catch returning adult salmon and descending
+#' juvenile emigrants. The descending traps are whole river traps based
+#' on a modified Wolf trap, and operate on permanent weirs. They are
+#' routinely operated in both autumn and spring, providing counts of
+#' emigrant salmon. Trap protocols have been similar, although not
+#' identical, over this long period.
+#'
+#' @format A data frame with 54 rows and 5 variables:
+#' \\describe{
+#'   \\item{year}{year of counts}
+#'   \\item{girnock.smolts}{counts of smolts at the Girnock trap}
+#'   \\item{girnock.parr}{counts of parr at the Girnock trap}
+#'   \\item{baddoch.smolts}{counts of smolts at the Baddoch trap}
+#'   \\item{baddoch.parr}{counts of parr at the Baddoch trap}
+#' }
+#' @source \\url{https://data.marine.gov.scot/dataset/girnock-and-baddoch-emigrant-numbers-year-emigration}
+'salmon'
+",
+  file = "R/data.R"
+)
+```
+
+document and check
+
+``` r
+devtools::document()
+devtools::check()
+```
+
+checks pass - make sure items match with column names etc.
+
+commit news worthy item
+
+``` r
+git2r::add(
+  path = c(
+    "data/salmon.rda", "data-raw/salmon.R",
+    "R/data.R", "man/salmon.Rd",
+    ".Rbuildignore",
+    "DESCRIPTION"
+  )
+)
+git2r::commit(message = "* added salmon dataset")
+```
+
+### bump version (if you are maintainer)
+
+this collects all news worth commits and adds them to the news file
+
+``` r
+fledge::bump_version()
+```
+
+### local testing
+
+``` r
+# development
+devtools::load_all()
+# check package as a user
+devtools::install()
+library("rdbesTest")
+?salmon
+?capitalise
+```
+
+### testing - simple
+
+add an example to the function capitalise()
+
+``` r
+cat(
+"
+#' Capitalise the first letter of each word in a string of words
+#'
+#' @param string a character string with words seperated by a space
+#'
+#' @examples
+#' capitalise('hello world')
+#'
+#' @export
+capitalise <- function(string) {
+  words <- strsplit(string, ' ')[[1]]
+  Words <-
+    paste0(
+      toupper(substring(words, 1, 1)),
+      substring(words, 2)
+    )
+  paste(Words, collapse = ' ')
+}
+",
+file = "R/capitalise.R")
+```
+
+document and check
+
+``` r
+devtools::document()
+devtools::check()
+# check package as a user
+devtools::install()
+library("myTest")
+?capitalise
+example(capitalise)
+# the ultimate is pushing to github and installing via:
+# devtools::install_github("mygithubaccount/myTest")
+```
+
+commit non-news worthy item
+
+``` r
+git2r::add(path = "*")
+git2r::commit(message = "added examples to capitalise")
+```
+
+### testing
+
+use testhat package
+
+``` r
+# set up structure for testing
+usethis::use_testthat()
+usethis::use_test("capitalise")
+# overwrite capitalise.R script - it is useful to read it before
+# we overwrite though.
+cat("# test strings
+hello_world <- 'hello world'
+test_that('a single string is returned', {
+  testthat::expect_length(capitalise(hello_world), 1)
+})
+",
+  file = "tests/testthat/test-capitalise.R"
+)
+```
+
+run tests
+
+``` r
+devtools::test()
+```
+
+commit news worthy item
+
+``` r
+git2r::add(
+  path = c(
+    "tests/*",
+    "DESCRIPTION"
+  )
+)
+git2r::commit(message = "* added tests for capitalise")
+```
+
+### review commit history
+
+``` r
+git2r::commits()
+```
+
+### ReadMe markdown file
+
+still to do\!

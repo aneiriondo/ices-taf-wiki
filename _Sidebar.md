@@ -13,6 +13,7 @@
   - Resources
       - [List of presentations](List-of-presentations)
       - [Code Snippets](Code-Snippets)
+      - [R packages guide](R-packages-guide)
 
 <!--
 * [API](API)
