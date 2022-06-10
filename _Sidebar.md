@@ -18,10 +18,24 @@
 -----
 
   - TAF Workshop material
-      - test one
-          - sub 1
-          - sub 2
-      - test two
+      - Getting Started with TAF
+      - A minimal working example
+      - Running an existing analysis
+      - TAF hints and tips
+      - Working with GitHub
+      - The Bootstrap phase
+          - Adding data sets
+          - Making data sets avalailable to your analysis
+      - The analysis phase
+          - (data.R) Processing data
+          - (model.R) Running a model
+          - (output.R) Processing model output
+          - (report.R) creating formated output, plots and documents
+      - Worked examples and templates
+          - SAM model on stockassessment.org
+          - SAM model using the stockassessment R package
+          - SS3
+          - DLS
 
 <!--
 * [API](API)
