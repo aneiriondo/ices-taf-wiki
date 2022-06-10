@@ -18,6 +18,7 @@ output: github_document
   * [Code Snippets](Code-Snippets)
   * [R packages guide](R-packages-guide)
 
+---
 
 * TAF Workshop material
   * test one
