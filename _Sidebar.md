@@ -21,8 +21,7 @@
       - Preliminaries
       - Getting Started with TAF
       - A minimal working example
-      - [Running an existing
-        analysis](TAFWorkshopMaterial/Running-an-existing-analysis)
+      - [Running an existing analysis](Running-an-existing-analysis)
       - TAF hints and tips
       - Working with GitHub
       - The Bootstrap phase
