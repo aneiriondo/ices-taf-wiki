@@ -1,5 +1,5 @@
 
-# Very quick giude to developing R packages
+# Very quick guide to developing R packages
 
 time to work through: \~ 1hr
 
@@ -17,6 +17,11 @@ time to work through: \~ 1hr
 
 ``` r
 library(devtools)
+```
+
+    ## Loading required package: usethis
+
+``` r
 library(usethis)
 library(git2r)
 # install_github("fledge-iot/fledge")

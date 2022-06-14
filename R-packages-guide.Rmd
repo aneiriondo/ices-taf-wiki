@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-# Very quick giude to developing R packages
+# Very quick guide to developing R packages
 
 time to work through: ~ 1hr
 
