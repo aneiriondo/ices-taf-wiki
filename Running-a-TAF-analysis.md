@@ -53,7 +53,7 @@ which results in the following files and directories:
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-142546                   
+  °--2019_san.sa.6-20220912-143519                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   °--initial                                 
@@ -109,15 +109,15 @@ oldwd <- setwd(run_dir)
 taf.bootstrap()
 ```
 
-    ## [14:25:48] Bootstrap procedure running...
+    ## [14:35:21] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [14:25:48] * reportTemplate.docx
+    ## [14:35:21] * reportTemplate.docx
 
-    ## [14:25:49] * sandeel_assessment_1982_2018.csv
+    ## [14:35:21] * sandeel_assessment_1982_2018.csv
 
-    ## [14:25:49] Bootstrap procedure done
+    ## [14:35:21] Bootstrap procedure done
 
 ``` r
 setwd(oldwd)
@@ -128,7 +128,7 @@ which gathers data and software specified in the `DATA.bib` and
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-142546                   
+  °--2019_san.sa.6-20220912-143519                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   ¦--data                                    
@@ -160,39 +160,21 @@ oldwd <- setwd(run_dir)
 sourceAll()
 ```
 
-    ## [14:25:49] utilities.R running...
+    ## [14:35:21] utilities.R running...
 
-    ## [14:25:49]   utilities.R done
+    ## [14:35:21]   utilities.R done
 
-    ## [14:25:49] data.R running...
+    ## [14:35:21] data.R running...
 
-    ## 
-    ## Attaching package: 'dplyr'
+    ## [14:35:22]   data.R done
 
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-    ## [14:25:49]   data.R done
-
-    ## [14:25:49] output.R running...
+    ## [14:35:22] output.R running...
 
     ## Warning in write.taf(sag_info, dir = "output"): duplicated column names
 
-    ## [14:25:49]   output.R done
+    ## [14:35:22]   output.R done
 
-    ## [14:25:49] report.R running...
-
-    ## 
-    ## Attaching package: 'ggplot2'
-
-    ## The following object is masked from 'package:cpmtools':
-    ## 
-    ##     scale_shape
+    ## [14:35:22] report.R running...
 
     ## 
     ## 
@@ -260,7 +242,7 @@ sourceAll()
     ## 
     ## Output created: report.docx
 
-    ## [14:25:55]   report.R done
+    ## [14:35:27]   report.R done
 
 ``` r
 setwd(oldwd)
@@ -270,7 +252,7 @@ and gives us the complete output from the TAF analyses.
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-142546                   
+  °--2019_san.sa.6-20220912-143519                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   ¦--data                                    
@@ -300,4 +282,27 @@ and gives us the complete output from the TAF analyses.
       ¦--report_plots.R                              
       ¦--report_tables.R                             
       °--utilities.R                                 
+```
+
+## Rounding up
+
+The files in the TAF analyses we have just run should the same as on the
+[TAF web application
+page](https://taf.ices.dk/app/demo#!/2019/san.sa.6). Differences can
+occur in some more complicated analyses, and this is to be expected with
+differences in software between different machines.
+
+All together, to get and run a TAF analysis stored on a GitHub
+reposuitory, run the following lines of code in R:
+
+``` r
+# get code
+run_dir <- download.analysis("ices-taf/2019_san.sa.6", dir = ".")
+# install packages
+install.deps()
+# run
+oldwd <- setwd(run_dir)
+taf.bootstrap()
+sourceAll()
+setwd(oldwd)
 ```

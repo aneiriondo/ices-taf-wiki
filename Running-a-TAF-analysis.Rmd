@@ -116,6 +116,26 @@ paths <- dir(run_dir, full.names = TRUE, recursive = TRUE)
 printDir(paths)
 ```
 
+## Rounding up
+
+The files in the TAF analyses we have just run should the same as on the [TAF web application
+page](https://taf.ices.dk/app/demo#!/2019/san.sa.6).  Differences can occur in some more complicated
+analyses, and this is to be expected with differences in software between different machines.
+
+All together, to get and run a TAF analysis stored on a GitHub reposuitory, run the following lines
+of code in R:
+```{r, eval = FALSE}
+# get code
+run_dir <- download.analysis("ices-taf/2019_san.sa.6", dir = ".")
+# install packages
+install.deps()
+# run
+oldwd <- setwd(run_dir)
+taf.bootstrap()
+sourceAll()
+setwd(oldwd)
+```
+
 
 ```{r cleanup, echo = FALSE}
 unlink(run_dir, recursive = TRUE)
