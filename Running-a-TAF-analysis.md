@@ -28,7 +28,7 @@ In the following example we will select the 2019 sandeel in area 6
 assessment, and the application gives a link to the github repository
 for the code as `ices-taf/2019_san.sa.6`. as seen below:
 
-[![taf application
+[![taf application (sandeel)
 screenshot](img/taf-app-sandeel.png)](https://taf.ices.dk/app/demo#!/2019/san.sa.6)
 
-##
+## Getting the code
