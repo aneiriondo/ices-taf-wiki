@@ -7,6 +7,7 @@ TAF.
 
 Suggested pages to begin with:
 
+  - [Running a TAF analysis](Running-a-TAF-analysis)
   - [Creating a TAF analysis](Creating-a-TAF-analysis)
   - [Bib entries](Bib-entries)
   - [Example data records (bib entries)](Example-data-records)

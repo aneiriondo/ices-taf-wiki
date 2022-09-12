@@ -27,6 +27,6 @@ available and require to be reviewed. Public analyses are accessed by clicking t
 "Manage stock assessments" button - this is only available to logged in users of the 
 ICES network and specifically to members of ICES stock assessment working groups.
 
-![img/taf-app.png]
+![taf application screenshot](img/taf-app.png)
 
 ## 
