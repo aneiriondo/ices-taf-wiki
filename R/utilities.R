@@ -95,5 +95,6 @@ download.analysis <- function(repo, dir = tempdir()) {
   unlink(destfile)
   unlink(zipdir, recursive = TRUE)
 
+  message("repo: ", repo, " has been downloaded to: ", dir)
   outdir  
 }

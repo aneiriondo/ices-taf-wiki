@@ -50,7 +50,7 @@ working directory that your R sessions is running in (see `getwd()` to find out 
 run_dir <- download.analysis("ices-taf/2019_san.sa.6", dir = ".")
 ```
 
-which results in the following files the directory created by the above function:
+which results in the following files and directories:
 ```{r taf-skeleton-output, results='asis', echo=FALSE}
 # get skeleton path structure
 paths <- dir(run_dir, full.names = TRUE, recursive = TRUE)

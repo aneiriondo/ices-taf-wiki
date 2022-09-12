@@ -47,12 +47,13 @@ choose the current working directory that your R sessions is running in
 run_dir <- download.analysis("ices-taf/2019_san.sa.6", dir = ".")
 ```
 
-which results in the following files the directory created by the above
-function:
+    ## repo: ices-taf/2019_san.sa.6 has been downloaded to: .
+
+which results in the following files and directories:
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-135833                   
+  °--2019_san.sa.6-20220912-140110                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   °--initial                                 
