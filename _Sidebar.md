@@ -4,6 +4,7 @@
 -->
 
   - [Home](Home)
+  - [Running a TAF analysis](Running-a-TAF-analysis)
   - [Creating a TAF analysis](Creating-a-TAF-analysis)
   - BIB entries
       - [Bib entries](Bib-entries)
