@@ -59,7 +59,9 @@ printDir(paths)
 
 ## Running the code
 
-There are three steps to running a TAF analysis.
+There are three steps to running a TAF analysis. All these steps are contained
+in the function `run.analysis()`, but for the sake of explaition, we will present each in
+turn, before showing the two lines of code you need to run in the Rounding up section.
 
 1. install all relavant packages: `install.deps()`
 2. run the data and software boot procedure: `taf.bootstrap()`
@@ -104,7 +106,7 @@ by the TAF analysis scripts in the next section.
 
 The final step is to run `sourceAll()`, which runs, in sequence, the `data.R`, `model.R`, 
 `output.R` and `report.R` scripts.
-```{r}
+```{r, message=FALSE}
 oldwd <- setwd(run_dir)
 sourceAll()
 setwd(oldwd)
@@ -127,13 +129,8 @@ of code in R:
 ```{r, eval = FALSE}
 # get code
 run_dir <- download.analysis("ices-taf/2019_san.sa.6", dir = ".")
-# install packages
-install.deps()
-# run
-oldwd <- setwd(run_dir)
-taf.bootstrap()
-sourceAll()
-setwd(oldwd)
+# run analysis
+run.analysis(run_dir)
 ```
 
 

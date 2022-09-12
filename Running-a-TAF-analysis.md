@@ -53,7 +53,7 @@ which results in the following files and directories:
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-143519                   
+  °--2019_san.sa.6-20220912-145808                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   °--initial                                 
@@ -71,7 +71,10 @@ which results in the following files and directories:
 
 ## Running the code
 
-There are three steps to running a TAF analysis.
+There are three steps to running a TAF analysis. All these steps are
+contained in the function `run.analysis()`, but for the sake of
+explaition, we will present each in turn, before showing the two lines
+of code you need to run in the Rounding up section.
 
 1.  install all relavant packages: `install.deps()`
 2.  run the data and software boot procedure: `taf.bootstrap()`
@@ -109,15 +112,15 @@ oldwd <- setwd(run_dir)
 taf.bootstrap()
 ```
 
-    ## [14:35:21] Bootstrap procedure running...
+    ## [14:58:10] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [14:35:21] * reportTemplate.docx
+    ## [14:58:10] * reportTemplate.docx
 
-    ## [14:35:21] * sandeel_assessment_1982_2018.csv
+    ## [14:58:10] * sandeel_assessment_1982_2018.csv
 
-    ## [14:35:21] Bootstrap procedure done
+    ## [14:58:10] Bootstrap procedure done
 
 ``` r
 setwd(oldwd)
@@ -128,7 +131,7 @@ which gathers data and software specified in the `DATA.bib` and
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-143519                   
+  °--2019_san.sa.6-20220912-145808                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   ¦--data                                    
@@ -160,25 +163,7 @@ oldwd <- setwd(run_dir)
 sourceAll()
 ```
 
-    ## [14:35:21] utilities.R running...
-
-    ## [14:35:21]   utilities.R done
-
-    ## [14:35:21] data.R running...
-
-    ## [14:35:22]   data.R done
-
-    ## [14:35:22] output.R running...
-
     ## Warning in write.taf(sag_info, dir = "output"): duplicated column names
-
-    ## [14:35:22]   output.R done
-
-    ## [14:35:22] report.R running...
-
-    ## 
-    ## 
-    ## processing file: report.Rmd
 
     ##   |                                                                                                      |                                                                                              |   0%  |                                                                                                      |.......                                                                                       |   7%
     ##   ordinary text without R code
@@ -234,15 +219,9 @@ sourceAll()
     ## List of 2
     ##  $ fig.cap : symbol cap_in
     ##  $ fig.path: chr "report/summary.png"
-
-    ## output file: report.knit.md
-
-    ## "C:/Users/colin/AppData/Local/CONTIN~1/MINICO~1/Library/bin/pandoc" +RTS -K512m -RTS report.knit.md --to docx --from markdown+autolink_bare_uris+tex_math_single_backslash --output report.docx --lua-filter "D:\R\win-library\4.2\rmarkdown\rmarkdown\lua\pagebreak.lua" --table-of-contents --toc-depth 3 --highlight-style tango --reference-doc "bootstrap\data\reportTemplate.docx"
-
     ## 
-    ## Output created: report.docx
-
-    ## [14:35:27]   report.R done
+    ## 
+    ## "C:/Users/colin/AppData/Local/CONTIN~1/MINICO~1/Library/bin/pandoc" +RTS -K512m -RTS report.knit.md --to docx --from markdown+autolink_bare_uris+tex_math_single_backslash --output report.docx --lua-filter "D:\R\win-library\4.2\rmarkdown\rmarkdown\lua\pagebreak.lua" --table-of-contents --toc-depth 3 --highlight-style tango --reference-doc "bootstrap\data\reportTemplate.docx"
 
 ``` r
 setwd(oldwd)
@@ -252,7 +231,7 @@ and gives us the complete output from the TAF analyses.
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-143519                   
+  °--2019_san.sa.6-20220912-145808                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   ¦--data                                    
@@ -298,11 +277,6 @@ reposuitory, run the following lines of code in R:
 ``` r
 # get code
 run_dir <- download.analysis("ices-taf/2019_san.sa.6", dir = ".")
-# install packages
-install.deps()
-# run
-oldwd <- setwd(run_dir)
-taf.bootstrap()
-sourceAll()
-setwd(oldwd)
+# run analysis
+run.analysis(run_dir)
 ```

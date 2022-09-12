@@ -98,3 +98,16 @@ download.analysis <- function(repo, dir = tempdir()) {
   message("repo: ", repo, " has been downloaded to: ", dir)
   outdir  
 }
+
+run.analysis <- function(dir) {
+  # install packages
+  install.deps(dir)
+  # run
+  oldwd <- setwd(dir)
+  taf.bootstrap()
+  sourceAll()
+  setwd(oldwd)
+  
+  message("Taf analysis in directory: ", dir, " has been run.")
+  invisible()
+}
