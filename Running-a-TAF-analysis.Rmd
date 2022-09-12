@@ -81,9 +81,13 @@ install.deps()
 
 ### 2. run the data and software boot procedure: `taf.bootstrap()`
 
-the next step is to run
+the next step is to run `taf.bootstrap()`.  But before we do this we need to set the working
+direcory to the location of the TAF scripts.  Note here that the function `setwd()` returns the
+current working directory so we can return to where we were when we are finished.
 ```{r}
+oldwd <- setwd(run_dir)
 taf.bootstrap()
+setwd(oldwd)
 ```
 
 which gathers data and software specified in the `DATA.bib` and `SOFTWARE.bib` files, and
@@ -101,7 +105,9 @@ by the TAF analysis scripts in the next section.
 The final step is to run `sourceAll()`, which runs, in sequence, the `data.R`, `model.R`, 
 `output.R` and `report.R` scripts.
 ```{r}
+oldwd <- setwd(run_dir)
 sourceAll()
+setwd(oldwd)
 ```
 
 and gives us the complete output from the TAF analyses.

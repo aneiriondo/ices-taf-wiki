@@ -53,7 +53,7 @@ which results in the following files and directories:
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-142209                   
+  °--2019_san.sa.6-20220912-142546                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
       ¦   °--initial                                 
@@ -99,23 +99,41 @@ install.deps()
 
 ### 2\. run the data and software boot procedure: `taf.bootstrap()`
 
-the next step is to run
+the next step is to run `taf.bootstrap()`. But before we do this we need
+to set the working direcory to the location of the TAF scripts. Note
+here that the function `setwd()` returns the current working directory
+so we can return to where we were when we are finished.
 
 ``` r
+oldwd <- setwd(run_dir)
 taf.bootstrap()
 ```
 
-    ## Warning in taf.bootstrap(): 'bootstrap' folder does not exists.
-    ## Are you sure you are in the correct working directory?
+    ## [14:25:48] Bootstrap procedure running...
+
+    ## Processing DATA.bib
+
+    ## [14:25:48] * reportTemplate.docx
+
+    ## [14:25:49] * sandeel_assessment_1982_2018.csv
+
+    ## [14:25:49] Bootstrap procedure done
+
+``` r
+setwd(oldwd)
+```
 
 which gathers data and software specified in the `DATA.bib` and
 `SOFTWARE.bib` files, and results in the following
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-142209                   
+  °--2019_san.sa.6-20220912-142546                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
+      ¦   ¦--data                                    
+      ¦   ¦   ¦--reportTemplate.docx                 
+      ¦   ¦   °--sandeel_assessment_1982_2018.csv    
       ¦   °--initial                                 
       ¦       °--data                                
       ¦           °--sandeel_assessment_1982_2018.csv
@@ -138,23 +156,146 @@ The final step is to run `sourceAll()`, which runs, in sequence, the
 `data.R`, `model.R`, `output.R` and `report.R` scripts.
 
 ``` r
+oldwd <- setwd(run_dir)
 sourceAll()
+```
+
+    ## [14:25:49] utilities.R running...
+
+    ## [14:25:49]   utilities.R done
+
+    ## [14:25:49] data.R running...
+
+    ## 
+    ## Attaching package: 'dplyr'
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     filter, lag
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     intersect, setdiff, setequal, union
+
+    ## [14:25:49]   data.R done
+
+    ## [14:25:49] output.R running...
+
+    ## Warning in write.taf(sag_info, dir = "output"): duplicated column names
+
+    ## [14:25:49]   output.R done
+
+    ## [14:25:49] report.R running...
+
+    ## 
+    ## Attaching package: 'ggplot2'
+
+    ## The following object is masked from 'package:cpmtools':
+    ## 
+    ##     scale_shape
+
+    ## 
+    ## 
+    ## processing file: report.Rmd
+
+    ##   |                                                                                                      |                                                                                              |   0%  |                                                                                                      |.......                                                                                       |   7%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                      |.............                                                                                 |  14%
+    ## label: libraries (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                      |....................                                                                          |  21%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                      |...........................                                                                   |  29%
+    ## label: chunk_setup (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                      |..................................                                                            |  36%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                      |........................................                                                      |  43%
+    ## label: pander_settings (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                      |...............................................                                               |  50%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                      |......................................................                                        |  57%
+    ## label: caption_counters (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                      |............................................................                                  |  64%
+    ##    inline R code fragments
+    ## 
+    ##   |                                                                                                      |...................................................................                           |  71%
+    ## label: catch_table
+    ##   |                                                                                                      |..........................................................................                    |  79%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                      |.................................................................................             |  86%
+    ## label: catch_plot (with options) 
+    ## List of 2
+    ##  $ fig.cap : symbol cap_in
+    ##  $ fig.path: chr "report/summary.png"
+    ## 
+    ##   |                                                                                                      |.......................................................................................       |  93%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                      |..............................................................................................| 100%
+    ## label: catch_plot2 (with options) 
+    ## List of 2
+    ##  $ fig.cap : symbol cap_in
+    ##  $ fig.path: chr "report/summary.png"
+
+    ## output file: report.knit.md
+
+    ## "C:/Users/colin/AppData/Local/CONTIN~1/MINICO~1/Library/bin/pandoc" +RTS -K512m -RTS report.knit.md --to docx --from markdown+autolink_bare_uris+tex_math_single_backslash --output report.docx --lua-filter "D:\R\win-library\4.2\rmarkdown\rmarkdown\lua\pagebreak.lua" --table-of-contents --toc-depth 3 --highlight-style tango --reference-doc "bootstrap\data\reportTemplate.docx"
+
+    ## 
+    ## Output created: report.docx
+
+    ## [14:25:55]   report.R done
+
+``` r
+setwd(oldwd)
 ```
 
 and gives us the complete output from the TAF analyses.
 
 ``` r
  .                                                   
-  °--2019_san.sa.6-20220912-142209                   
+  °--2019_san.sa.6-20220912-142546                   
       ¦--bootstrap                                   
       ¦   ¦--DATA.bib                                
+      ¦   ¦--data                                    
+      ¦   ¦   ¦--reportTemplate.docx                 
+      ¦   ¦   °--sandeel_assessment_1982_2018.csv    
       ¦   °--initial                                 
       ¦       °--data                                
       ¦           °--sandeel_assessment_1982_2018.csv
       ¦--data.R                                      
+      ¦--data                                        
+      ¦   °--summary_catch.csv                       
       ¦--output.R                                    
+      ¦--output                                      
+      ¦   ¦--sag_fishdata.csv                        
+      ¦   ¦--sag_info.csv                            
+      ¦   °--sag_upload.xml                          
       ¦--report.R                                    
       ¦--report.Rmd                                  
+      ¦--report                                      
+      ¦   ¦--catches_by_halfyear_bar.png             
+      ¦   ¦--catches_by_halfyear_stack.png           
+      ¦   ¦--report.docx                             
+      ¦   ¦--summary_catch.csv                       
+      ¦   ¦--summary_catch.html                      
+      ¦   °--summary_catch.png                       
       ¦--report_doc.R                                
       ¦--report_plots.R                              
       ¦--report_tables.R                             
