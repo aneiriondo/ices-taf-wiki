@@ -44,7 +44,7 @@ From the previous section we have found the github address of the code we want t
 only need the name of the repository which is: `ices-taf/2019_san.sa.6`.  The following code
 will download the code into a directory that you specify, otherwise it will download
 into a temporary directory on your computer (default).  In this case we will choose the current
-working directory that your R sessions is running in (see `getwd()` to find out what this is).
+working directory (specified by `"."`) that your R sessions is running in (see `getwd()` to find out what this is).
 
 ```{r}
 run_dir <- download.analysis("ices-taf/2019_san.sa.6", dir = ".")
@@ -60,9 +60,56 @@ printDir(paths)
 ## Running the code
 
 There are three steps to running a TAF analysis.
+
 1. install all relavant packages: `install.deps()`
 2. run the data and software boot procedure: `taf.bootstrap()`
 3. run the TAF analysis scripts: `sourceAll()`
+
+### 1. install all relavant packages: `install.deps()`
+
+Some analyses may use R packages that are widely available but that you do not have installed
+on your own computer. The `deps()` function provides a list of packages used in an analysis,
+for example in the example we are working with we have:
+```{r}
+deps(run_dir)
+```
+
+and the following function installs all of those packages that you do not have installed
+```{r}
+install.deps()
+```
+
+### 2. run the data and software boot procedure: `taf.bootstrap()`
+
+the next step is to run
+```{r}
+taf.bootstrap()
+```
+
+which gathers data and software specified in the `DATA.bib` and `SOFTWARE.bib` files, and
+results in the following
+```{r taf-bootstrap-output, results='asis', echo=FALSE}
+paths <- dir(run_dir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
+notice that there is a new folder `bootstrap/data` which contains files that can now be used
+by the TAF analysis scripts in the next section.
+
+### 3. run the TAF analysis scripts: `sourceAll()`
+
+The final step is to run `sourceAll()`, which runs, in sequence, the `data.R`, `model.R`, 
+`output.R` and `report.R` scripts.
+```{r}
+sourceAll()
+```
+
+and gives us the complete output from the TAF analyses.
+```{r taf-sourceall-output, results='asis', echo=FALSE}
+paths <- dir(run_dir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
 
 ```{r cleanup, echo = FALSE}
 unlink(run_dir, recursive = TRUE)
