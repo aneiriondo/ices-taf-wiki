@@ -9,6 +9,6 @@ Suggested pages to begin with:
 
   - [Getting set up](Getting-set-up)
   - [Running a TAF analysis](Running-a-TAF-analysis)
-  - [Creating a TAF analysis](Creating-a-TAF-analysis)
+  - [Creating TAF datasets](Creating-TAF-datasets)
   - [Bib entries](Bib-entries)
   - [Example data records (bib entries)](Example-data-records)
