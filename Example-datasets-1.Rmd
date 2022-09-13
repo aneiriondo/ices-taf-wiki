@@ -12,7 +12,23 @@ See also:
 [Example data records (bib entries)](Example-data-records).
 
 This page was based on using the `icesTAF` package version ```r packageVersion("icesTAF")```
-dated ```r packageDate("icesTAF")```.
+dated ```r packageDate("icesTAF")```.  
+
+The resulting TAF analysis created from this example is 
+on GitHub: [github.com/ices-taf-dev/wiki-example-1](https://github.com/ices-taf-dev/wiki-example-1).
+
+```{r, eval = FALSE}
+# get code
+run_dir <- download.analysis("ices-taf-dev/wiki-example-1")
+# view downloaded code
+browseURL(run_dir)
+
+# run analysis
+run.analysis(run_dir)
+# view result
+browseURL(run_dir)
+```
+
 
 ## In this guide
 
@@ -244,7 +260,8 @@ printDir(paths)
 ```
 
 and are decsribed in more detail in [Bib entries](Bib-entries). We then document it and add an 
-entry to the `DATA.bib` file as before:
+entry to the `DATA.bib` however there are to differences to note:
+
 
 ```{r, echo=-1}
 setwd(tafdir)

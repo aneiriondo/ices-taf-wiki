@@ -6,6 +6,21 @@ entries)](Example-data-records).
 This page was based on using the `icesTAF` package version `4.0.0` dated
 `2022-09-07`.
 
+The resulting TAF analysis created from this example is on GitHub:
+[github.com/ices-taf-dev/wiki-example-1](https://github.com/ices-taf-dev/wiki-example-1).
+
+``` r
+# get code
+run_dir <- download.analysis("ices-taf-dev/wiki-example-1")
+# view downloaded code
+browseURL(run_dir)
+
+# run analysis
+run.analysis(run_dir)
+# view result
+browseURL(run_dir)
+```
+
 ## In this guide
 
   - [Creating an empty TAF project](#creating-an-empty-TAF-project)
@@ -95,13 +110,13 @@ after running
 taf.bootstrap()
 ```
 
-    ## [09:53:05] Bootstrap procedure running...
+    ## [13:07:36] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [09:53:05] * trees.csv
+    ## [13:07:36] * trees.csv
 
-    ## [09:53:05] Bootstrap procedure done
+    ## [13:07:36] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -186,15 +201,15 @@ after running
 taf.bootstrap()
 ```
 
-    ## [09:53:05] Bootstrap procedure running...
+    ## [13:07:37] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [09:53:05] * trees.csv
+    ## [13:07:37] * trees.csv
 
-    ## [09:53:05] * my-collection
+    ## [13:07:37] * my-collection
 
-    ## [09:53:05] Bootstrap procedure done
+    ## [13:07:37] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -259,17 +274,17 @@ after running
 taf.bootstrap()
 ```
 
-    ## [09:53:05] Bootstrap procedure running...
+    ## [13:07:37] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [09:53:05] * trees.csv
+    ## [13:07:37] * trees.csv
 
-    ## [09:53:05] * my-collection
+    ## [13:07:37] * my-collection
 
-    ## [09:53:05] * HadSST.4.0.1.0_median.nc
+    ## [13:07:37] * HadSST.4.0.1.0_median.nc
 
-    ## [09:53:05] Bootstrap procedure done
+    ## [13:07:37] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -361,7 +376,8 @@ bootsrap scripts such as this one, goes in the `bootstrap` folder,
 ```
 
 and are decsribed in more detail in [Bib entries](Bib-entries). We then
-document it and add an entry to the `DATA.bib` file as before:
+document it and add an entry to the `DATA.bib` however there are to
+differences to note:
 
 ``` r
 draft.data(
@@ -380,21 +396,19 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [09:53:06] Bootstrap procedure running...
+    ## [13:07:38] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [09:53:06] * trees.csv
+    ## [13:07:38] * trees.csv
 
-    ## [09:53:06] * my-collection
+    ## [13:07:38] * my-collection
 
-    ## [09:53:06] * HadSST.4.0.1.0_median.nc
+    ## [13:07:38] * HadSST.4.0.1.0_median.nc
 
     ##   Skipping download of 'HadSST.4.0.1.0_median.nc' (already in place).
 
-    ## [09:53:06] * ices-areas
-
-    ## Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE
+    ## [13:07:38] * ices-areas
 
     ## Reading layer `ICES_Areas_20160601_cut_dense_3857' from data source 
     ##   `D:\projects\git\ices-taf\other\doc.wiki\example-1\bootstrap\data\ices-areas\ICES_Areas_20160601_cut_dense_3857.shp' 
@@ -408,7 +422,7 @@ taf.bootstrap()
     ## options:        GEOMETRY=AS_WKT 
     ## Writing 66 features with 10 fields and geometry type Multi Polygon.
 
-    ## [09:53:55] Bootstrap procedure done
+    ## [13:08:27] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -438,4 +452,5 @@ your project should now look like this:
   °--report.R                        
 ```
 
-Now we have
+Now we have a folder with the same name as the script we created, and
+inside this is any files created by the script.
