@@ -120,6 +120,8 @@ for (file in files) {
 )
 ```
 
+We can then add records for these scripts in the DATA.bib file using:
+
 ``` r
 draft.data(
   data.files = NULL,
@@ -133,21 +135,35 @@ draft.data(
 )
 ```
 
+resulting the project looking like this:
+
+``` r
+ example-2         
+  ¦--bootstrap     
+  ¦   ¦--DATA.bib  
+  ¦   ¦--sam_data.R
+  ¦   °--sam_fit.R 
+  ¦--data.R        
+  ¦--model.R       
+  ¦--output.R      
+  °--report.R      
+```
+
 and after running
 
 ``` r
 taf.bootstrap()
 ```
 
-    ## [16:01:15] Bootstrap procedure running...
+    ## [16:03:14] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [16:01:16] * sam_data
+    ## [16:03:14] * sam_data
 
-    ## [16:01:16] * sam_fit
+    ## [16:03:15] * sam_fit
 
-    ## [16:01:17] Bootstrap procedure done
+    ## [16:03:16] Bootstrap procedure done
 
 your project should now look like this:
 

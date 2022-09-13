@@ -120,9 +120,7 @@ for (file in files) {
 )
 ```
 
-
-
-
+We can then add records for these scripts in the DATA.bib file using:
 
 ```{r, echo=-1}
 setwd(tafdir)
@@ -137,6 +135,14 @@ draft.data(
   append = FALSE
 )
 ```
+
+resulting the project looking like this:
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
 
 and after running
 ```{r, echo = -1}
