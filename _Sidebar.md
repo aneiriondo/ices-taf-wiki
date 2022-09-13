@@ -10,6 +10,8 @@
   - BIB entries
       - [Bib entries](Bib-entries)
       - [Example data records](Example-data-records)
+  - Worked Examples
+      - [Example datasets 1](Example-datasets-1)
   - Resources
       - [R packages guide](R-packages-guide)
         <!--  * [List of presentations](List-of-presentations) -->
