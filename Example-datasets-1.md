@@ -27,18 +27,14 @@ setwd("example-1")
 resulting in the following:
 
 ``` r
- example-1                
-  ¦--bootstrap            
-  ¦   ¦--initial          
-  ¦   ¦   °--data         
-  ¦   ¦       °--trees.csv
-  ¦   ¦--DATA.bib         
-  ¦   °--data             
-  ¦       °--trees.csv    
-  ¦--data.R               
-  ¦--model.R              
-  ¦--output.R             
-  °--report.R             
+ example-1       
+  ¦--bootstrap   
+  ¦   °--initial 
+  ¦       °--data
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 ## Adding a local dataset
@@ -61,12 +57,9 @@ and now your project should look like this:
 ``` r
  example-1                
   ¦--bootstrap            
-  ¦   ¦--initial          
-  ¦   ¦   °--data         
-  ¦   ¦       °--trees.csv
-  ¦   ¦--DATA.bib         
-  ¦   °--data             
-  ¦       °--trees.csv    
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           °--trees.csv
   ¦--data.R               
   ¦--model.R              
   ¦--output.R             
@@ -99,13 +92,13 @@ after running
 taf.bootstrap()
 ```
 
-    ## [09:22:27] Bootstrap procedure running...
+    ## [09:27:17] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [09:22:27] * trees.csv
+    ## [09:27:17] * trees.csv
 
-    ## [09:22:27] Bootstrap procedure done
+    ## [09:27:17] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -190,15 +183,15 @@ after running
 taf.bootstrap()
 ```
 
-    ## [09:22:27] Bootstrap procedure running...
+    ## [09:27:17] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [09:22:27] * trees.csv
+    ## [09:27:17] * trees.csv
 
-    ## [09:22:27] * my-collection
+    ## [09:27:17] * my-collection
 
-    ## [09:22:27] Bootstrap procedure done
+    ## [09:27:17] Bootstrap procedure done
 
 your project should now look like this:
 
