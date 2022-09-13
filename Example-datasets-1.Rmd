@@ -19,6 +19,8 @@ dated ```r packageDate("icesTAF")```.
 * [Creating an empty TAF project](#creating-an-empty-TAF-project)
 * [Adding a local dataset](#adding-a-local-dataset)
 * [Adding a local collection of data files](#adding-a-local-collection-of-data-files)
+* [Adding a file from a URL](#adding-a-file-from-a-URL)
+* [Adding data via a bootstrap script](#adding-data-via-a-bootstrap-script)
 
 ## Creating an empty TAF project
 
@@ -155,6 +157,121 @@ printDir(paths)
 and you will have succesfully save, documented and imported (via running `taf.bootstrap()`) a
 local dataset, and a local collection of data files into your project.
 
+
+## Adding a file from a URL
+
+So far we have been importing local datasets and files, and so the `bootstrap/initial/data` folder
+is identical to the `bootstrap/data` folder, and you may be wondering, 'what is the point?'.  An 
+important purpose of this step is to add documentation to a dataset, to add provenance, so that 
+every dataset in `bootstrap/data` has a coresponding record in `DATA.bib`. 
+
+But this step does not just copy files from one place to the other. It can also fetch data and files
+from other locations. In this example, we get a file from an URL, in this case, a raster file
+of sea surface temperatures from the UK metoffice 
+[www.metoffice.gov.uk/hadobs/hadsst4/](https://www.metoffice.gov.uk/hadobs/hadsst4/), and we can create
+the entry in the `DATA.bib` file, again using `draft.data()`.
+
+```{r, echo=-1}
+setwd(tafdir)
+draft.data(
+  data.files = "HadSST.4.0.1.0_median.nc",
+  data.scripts = NULL,
+  originator = "UK MET office",
+  title = "Met Office Hadley Centre observations datasets",
+  year = 2022,
+  source = "https://www.metoffice.gov.uk/hadobs/hadsst4/data/netcdf/HadSST.4.0.1.0_median.nc",
+  file = TRUE,
+  append = TRUE
+)
+```
+
+after running
+```{r, echo = -1}
+setwd(tafdir)
+taf.bootstrap()
+```
+your project should now look like this:
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
+and you will have succesfully downloaded, documented and imported (via running `taf.bootstrap()`) a
+dataset from a URL, and you will notice that the `bootstrap/data` folder now contains more than
+what is in `bootstrap/initial/data`.
+
+## Adding data via a bootstrap script
+
+Sometimes it is not possible to download a dataset from a single url, and it requires multiple
+steps to fetch and process data from an online source.  This is common with data accessed via
+web services.  In this example we create a script where we write a short recipe of how to get
+our data, and then register this in the `DATA.bib` file.  Firstly you need to write a script,
+and for this example the following code will do that for you:
+
+```{r, echo=-1}
+setwd(tafdir)
+
+cat('library(icesTAF)
+library(sf)
+
+download(
+  "http://gis.ices.dk/shapefiles/ICES_areas.zip"
+)
+
+unzip("ICES_areas.zip")
+unlink("ICES_areas.zip")
+
+areas <- st_read("ICES_Areas_20160601_cut_dense_3857.shp")
+
+# write as csv
+st_write(
+  areas, "ices-areas.csv",
+  layer_options = "GEOMETRY=AS_WKT"
+)
+
+unlink(dir(pattern = "ICES_Areas_20160601_cut_dense_3857"))
+',
+  file = "bootstrap/ices-areas.R"
+)
+```
+
+bootsrap scripts such as this one, goes in the `bootstrap` folder, 
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
+and are decsribed in more detail in [Bib entries](Bib-entries). We then document it and add an 
+entry to the `DATA.bib` file as before:
+
+```{r, echo=-1}
+setwd(tafdir)
+draft.data(
+  data.files = NULL,
+  data.scripts = "ices-areas.R",
+  originator = "ICES",
+  title = "ICES areas",
+  file = TRUE,
+  append = TRUE
+)
+```
+
+and after running
+```{r, echo = -1}
+setwd(tafdir)
+taf.bootstrap()
+```
+your project should now look like this:
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
+Now we have a folder with the same name as the script we created, and inside this is any files
+created by the script.
 
 ```{r, echo = FALSE}
 unlink("example-1", recursive = TRUE)
