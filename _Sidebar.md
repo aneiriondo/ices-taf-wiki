@@ -4,6 +4,7 @@
 -->
 
   - [Home](Home)
+  - [Getting set up](Getting-set-up)
   - [Running a TAF analysis](Running-a-TAF-analysis)
   - [Creating a TAF analysis](Creating-a-TAF-analysis)
   - BIB entries
