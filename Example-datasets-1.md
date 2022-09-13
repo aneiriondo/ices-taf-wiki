@@ -46,28 +46,14 @@ setwd("example-1")
 resulting in the following:
 
 ``` r
- example-1                           
-  ¦--bootstrap                       
-  ¦   ¦--initial                     
-  ¦   ¦   °--data                    
-  ¦   ¦       ¦--my-collection       
-  ¦   ¦       ¦   ¦--cars.csv        
-  ¦   ¦       ¦   °--trees.csv       
-  ¦   ¦       °--trees.csv           
-  ¦   ¦--DATA.bib                    
-  ¦   ¦--data                        
-  ¦   ¦   ¦--HadSST.4.0.1.0_median.nc
-  ¦   ¦   ¦--ices-areas              
-  ¦   ¦   ¦   °--ICES_areas.zip      
-  ¦   ¦   ¦--my-collection           
-  ¦   ¦   ¦   ¦--cars.csv            
-  ¦   ¦   ¦   °--trees.csv           
-  ¦   ¦   °--trees.csv               
-  ¦   °--ices-areas.R                
-  ¦--data.R                          
-  ¦--model.R                         
-  ¦--output.R                        
-  °--report.R                        
+ example-1       
+  ¦--bootstrap   
+  ¦   °--initial 
+  ¦       °--data
+  ¦--data.R      
+  ¦--model.R     
+  ¦--output.R    
+  °--report.R    
 ```
 
 ## Adding a local dataset
@@ -88,28 +74,15 @@ write.taf(trees, dir = "bootstrap/initial/data")
 and now your project should look like this:
 
 ``` r
- example-1                           
-  ¦--bootstrap                       
-  ¦   ¦--initial                     
-  ¦   ¦   °--data                    
-  ¦   ¦       ¦--my-collection       
-  ¦   ¦       ¦   ¦--cars.csv        
-  ¦   ¦       ¦   °--trees.csv       
-  ¦   ¦       °--trees.csv           
-  ¦   ¦--DATA.bib                    
-  ¦   ¦--data                        
-  ¦   ¦   ¦--HadSST.4.0.1.0_median.nc
-  ¦   ¦   ¦--ices-areas              
-  ¦   ¦   ¦   °--ICES_areas.zip      
-  ¦   ¦   ¦--my-collection           
-  ¦   ¦   ¦   ¦--cars.csv            
-  ¦   ¦   ¦   °--trees.csv           
-  ¦   ¦   °--trees.csv               
-  ¦   °--ices-areas.R                
-  ¦--data.R                          
-  ¦--model.R                         
-  ¦--output.R                        
-  °--report.R                        
+ example-1                
+  ¦--bootstrap            
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           °--trees.csv
+  ¦--data.R               
+  ¦--model.R              
+  ¦--output.R             
+  °--report.R             
 ```
 
 The way TAF works, is that only data in `bootstrap/data` are allowed to
@@ -138,39 +111,29 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:15:43] Bootstrap procedure running...
-
-    ##   cleaned bootstrap/data/HadSST.4.0.1.0_median.nc
-
-    ##   cleaned bootstrap/data/ices-areas
-
-    ##   cleaned bootstrap/data/my-collection
+    ## [13:16:50] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:15:43] * trees.csv
+    ## [13:16:50] * trees.csv
 
-    ## [13:15:43] Bootstrap procedure done
+    ## [13:16:50] Bootstrap procedure done
 
 your project should now look like this:
 
 ``` r
- example-1                    
-  ¦--bootstrap                
-  ¦   ¦--DATA.bib             
-  ¦   ¦--data                 
-  ¦   ¦   °--trees.csv        
-  ¦   ¦--ices-areas.R         
-  ¦   °--initial              
-  ¦       °--data             
-  ¦           ¦--my-collection
-  ¦           ¦   ¦--cars.csv 
-  ¦           ¦   °--trees.csv
-  ¦           °--trees.csv    
-  ¦--data.R                   
-  ¦--model.R                  
-  ¦--output.R                 
-  °--report.R                 
+ example-1                
+  ¦--bootstrap            
+  ¦   ¦--DATA.bib         
+  ¦   ¦--data             
+  ¦   ¦   °--trees.csv    
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           °--trees.csv
+  ¦--data.R               
+  ¦--model.R              
+  ¦--output.R             
+  °--report.R             
 ```
 
 and you will have succesfully save, documented and imported (via running
@@ -200,7 +163,6 @@ and now your project should look like this:
   ¦   ¦--DATA.bib             
   ¦   ¦--data                 
   ¦   ¦   °--trees.csv        
-  ¦   ¦--ices-areas.R         
   ¦   °--initial              
   ¦       °--data             
   ¦           ¦--my-collection
@@ -240,15 +202,15 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:15:43] Bootstrap procedure running...
+    ## [13:16:51] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:15:43] * trees.csv
+    ## [13:16:51] * trees.csv
 
-    ## [13:15:43] * my-collection
+    ## [13:16:51] * my-collection
 
-    ## [13:15:43] Bootstrap procedure done
+    ## [13:16:51] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -261,7 +223,6 @@ your project should now look like this:
   ¦   ¦   ¦   ¦--cars.csv     
   ¦   ¦   ¦   °--trees.csv    
   ¦   ¦   °--trees.csv        
-  ¦   ¦--ices-areas.R         
   ¦   °--initial              
   ¦       °--data             
   ¦           ¦--my-collection
@@ -314,17 +275,17 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:15:43] Bootstrap procedure running...
+    ## [13:16:51] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:15:43] * trees.csv
+    ## [13:16:51] * trees.csv
 
-    ## [13:15:43] * my-collection
+    ## [13:16:51] * my-collection
 
-    ## [13:15:43] * HadSST.4.0.1.0_median.nc
+    ## [13:16:51] * HadSST.4.0.1.0_median.nc
 
-    ## [13:15:44] Bootstrap procedure done
+    ## [13:16:53] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -338,7 +299,6 @@ your project should now look like this:
   ¦   ¦   ¦   ¦--cars.csv            
   ¦   ¦   ¦   °--trees.csv           
   ¦   ¦   °--trees.csv               
-  ¦   ¦--ices-areas.R                
   ¦   °--initial                     
   ¦       °--data                    
   ¦           ¦--my-collection       
@@ -403,7 +363,6 @@ bootsrap scripts such as this one, goes in the `bootstrap` folder,
   ¦   ¦   ¦   ¦--cars.csv            
   ¦   ¦   ¦   °--trees.csv           
   ¦   ¦   °--trees.csv               
-  ¦   ¦--ices-areas.R                
   ¦   ¦--initial                     
   ¦   ¦   °--data                    
   ¦   ¦       ¦--my-collection       
@@ -438,19 +397,19 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [13:15:44] Bootstrap procedure running...
+    ## [13:16:53] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:15:44] * trees.csv
+    ## [13:16:53] * trees.csv
 
-    ## [13:15:44] * my-collection
+    ## [13:16:53] * my-collection
 
-    ## [13:15:44] * HadSST.4.0.1.0_median.nc
+    ## [13:16:53] * HadSST.4.0.1.0_median.nc
 
     ##   Skipping download of 'HadSST.4.0.1.0_median.nc' (already in place).
 
-    ## [13:15:44] * ospar-areas
+    ## [13:16:53] * ospar-areas
 
     ## Reading layer `OSPAR_subregions_20160418_3857' from data source 
     ##   `D:\projects\git\ices-taf\other\doc.wiki\example-1\bootstrap\data\ospar-areas\OSPAR_subregions_20160418_3857.shp' 
@@ -464,7 +423,7 @@ taf.bootstrap()
     ## options:        GEOMETRY=AS_WKT 
     ## Writing 50 features with 4 fields and geometry type Multi Polygon.
 
-    ## [13:15:46] Bootstrap procedure done
+    ## [13:17:07] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -481,7 +440,6 @@ your project should now look like this:
   ¦   ¦   ¦   ¦--DISCLAIMER_GIS.txt  
   ¦   ¦   ¦   °--ospar-areas.csv     
   ¦   ¦   °--trees.csv               
-  ¦   ¦--ices-areas.R                
   ¦   ¦--initial                     
   ¦   ¦   °--data                    
   ¦   ¦       ¦--my-collection       
