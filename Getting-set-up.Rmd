@@ -34,8 +34,10 @@ install.packages("icesTAF", repos = "https://ices-tools-prod.r-universe.dev")
 ## Additional software to install
 
 If you wish to also use GitHub to version control your code, then you also need to install:
+
 * Git: [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
 And finally if you are using Windows, and you wish to install some special R packages from GitHub
 you will need to install:
+
 * Rtools: [cran.r-project.org/bin/windows/Rtools](https://cran.r-project.org/bin/windows/Rtools/)
