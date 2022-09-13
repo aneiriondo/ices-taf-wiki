@@ -16,3 +16,4 @@ Suggested pages to begin with:
 ## Worked examples
 
   - [Example datasets 1](Example-datasets-1)
+  - [Example datasets 2](Example-datasets-2)
