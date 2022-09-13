@@ -7,7 +7,8 @@ This page was based on using the `icesTAF` package version `4.0.0` dated
 `2022-09-07`.
 
 The resulting TAF analysis created from this example is on GitHub:
-[github.com/ices-taf-dev/wiki-example-1](https://github.com/ices-taf-dev/wiki-example-1).
+[github.com/ices-taf-dev/wiki-example-1](https://github.com/ices-taf-dev/wiki-example-1),
+and can be run on your computer by:
 
 ``` r
 # get code
@@ -45,14 +46,28 @@ setwd("example-1")
 resulting in the following:
 
 ``` r
- example-1       
-  ¦--bootstrap   
-  ¦   °--initial 
-  ¦       °--data
-  ¦--data.R      
-  ¦--model.R     
-  ¦--output.R    
-  °--report.R    
+ example-1                           
+  ¦--bootstrap                       
+  ¦   ¦--initial                     
+  ¦   ¦   °--data                    
+  ¦   ¦       ¦--my-collection       
+  ¦   ¦       ¦   ¦--cars.csv        
+  ¦   ¦       ¦   °--trees.csv       
+  ¦   ¦       °--trees.csv           
+  ¦   ¦--DATA.bib                    
+  ¦   ¦--data                        
+  ¦   ¦   ¦--HadSST.4.0.1.0_median.nc
+  ¦   ¦   ¦--ices-areas              
+  ¦   ¦   ¦   °--ICES_areas.zip      
+  ¦   ¦   ¦--my-collection           
+  ¦   ¦   ¦   ¦--cars.csv            
+  ¦   ¦   ¦   °--trees.csv           
+  ¦   ¦   °--trees.csv               
+  ¦   °--ices-areas.R                
+  ¦--data.R                          
+  ¦--model.R                         
+  ¦--output.R                        
+  °--report.R                        
 ```
 
 ## Adding a local dataset
@@ -73,15 +88,28 @@ write.taf(trees, dir = "bootstrap/initial/data")
 and now your project should look like this:
 
 ``` r
- example-1                
-  ¦--bootstrap            
-  ¦   °--initial          
-  ¦       °--data         
-  ¦           °--trees.csv
-  ¦--data.R               
-  ¦--model.R              
-  ¦--output.R             
-  °--report.R             
+ example-1                           
+  ¦--bootstrap                       
+  ¦   ¦--initial                     
+  ¦   ¦   °--data                    
+  ¦   ¦       ¦--my-collection       
+  ¦   ¦       ¦   ¦--cars.csv        
+  ¦   ¦       ¦   °--trees.csv       
+  ¦   ¦       °--trees.csv           
+  ¦   ¦--DATA.bib                    
+  ¦   ¦--data                        
+  ¦   ¦   ¦--HadSST.4.0.1.0_median.nc
+  ¦   ¦   ¦--ices-areas              
+  ¦   ¦   ¦   °--ICES_areas.zip      
+  ¦   ¦   ¦--my-collection           
+  ¦   ¦   ¦   ¦--cars.csv            
+  ¦   ¦   ¦   °--trees.csv           
+  ¦   ¦   °--trees.csv               
+  ¦   °--ices-areas.R                
+  ¦--data.R                          
+  ¦--model.R                         
+  ¦--output.R                        
+  °--report.R                        
 ```
 
 The way TAF works, is that only data in `bootstrap/data` are allowed to
@@ -110,29 +138,39 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:07:36] Bootstrap procedure running...
+    ## [13:15:43] Bootstrap procedure running...
+
+    ##   cleaned bootstrap/data/HadSST.4.0.1.0_median.nc
+
+    ##   cleaned bootstrap/data/ices-areas
+
+    ##   cleaned bootstrap/data/my-collection
 
     ## Processing DATA.bib
 
-    ## [13:07:36] * trees.csv
+    ## [13:15:43] * trees.csv
 
-    ## [13:07:36] Bootstrap procedure done
+    ## [13:15:43] Bootstrap procedure done
 
 your project should now look like this:
 
 ``` r
- example-1                
-  ¦--bootstrap            
-  ¦   ¦--DATA.bib         
-  ¦   ¦--data             
-  ¦   ¦   °--trees.csv    
-  ¦   °--initial          
-  ¦       °--data         
-  ¦           °--trees.csv
-  ¦--data.R               
-  ¦--model.R              
-  ¦--output.R             
-  °--report.R             
+ example-1                    
+  ¦--bootstrap                
+  ¦   ¦--DATA.bib             
+  ¦   ¦--data                 
+  ¦   ¦   °--trees.csv        
+  ¦   ¦--ices-areas.R         
+  ¦   °--initial              
+  ¦       °--data             
+  ¦           ¦--my-collection
+  ¦           ¦   ¦--cars.csv 
+  ¦           ¦   °--trees.csv
+  ¦           °--trees.csv    
+  ¦--data.R                   
+  ¦--model.R                  
+  ¦--output.R                 
+  °--report.R                 
 ```
 
 and you will have succesfully save, documented and imported (via running
@@ -162,6 +200,7 @@ and now your project should look like this:
   ¦   ¦--DATA.bib             
   ¦   ¦--data                 
   ¦   ¦   °--trees.csv        
+  ¦   ¦--ices-areas.R         
   ¦   °--initial              
   ¦       °--data             
   ¦           ¦--my-collection
@@ -201,15 +240,15 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:07:37] Bootstrap procedure running...
+    ## [13:15:43] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:07:37] * trees.csv
+    ## [13:15:43] * trees.csv
 
-    ## [13:07:37] * my-collection
+    ## [13:15:43] * my-collection
 
-    ## [13:07:37] Bootstrap procedure done
+    ## [13:15:43] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -222,6 +261,7 @@ your project should now look like this:
   ¦   ¦   ¦   ¦--cars.csv     
   ¦   ¦   ¦   °--trees.csv    
   ¦   ¦   °--trees.csv        
+  ¦   ¦--ices-areas.R         
   ¦   °--initial              
   ¦       °--data             
   ¦           ¦--my-collection
@@ -274,17 +314,17 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:07:37] Bootstrap procedure running...
+    ## [13:15:43] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:07:37] * trees.csv
+    ## [13:15:43] * trees.csv
 
-    ## [13:07:37] * my-collection
+    ## [13:15:43] * my-collection
 
-    ## [13:07:37] * HadSST.4.0.1.0_median.nc
+    ## [13:15:43] * HadSST.4.0.1.0_median.nc
 
-    ## [13:07:37] Bootstrap procedure done
+    ## [13:15:44] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -298,6 +338,7 @@ your project should now look like this:
   ¦   ¦   ¦   ¦--cars.csv            
   ¦   ¦   ¦   °--trees.csv           
   ¦   ¦   °--trees.csv               
+  ¦   ¦--ices-areas.R                
   ¦   °--initial                     
   ¦       °--data                    
   ¦           ¦--my-collection       
@@ -330,23 +371,23 @@ cat('library(icesTAF)
 library(sf)
 
 download(
-  "http://gis.ices.dk/shapefiles/ICES_areas.zip"
+  "https://gis.ices.dk/shapefiles/OSPAR_Subregions.zip"
 )
 
-unzip("ICES_areas.zip")
-unlink("ICES_areas.zip")
+unzip("OSPAR_Subregions.zip")
+unlink("OSPAR_Subregions.zip")
 
-areas <- st_read("ICES_Areas_20160601_cut_dense_3857.shp")
+areas <- st_read("OSPAR_subregions_20160418_3857.shp")
 
 # write as csv
 st_write(
-  areas, "ices-areas.csv",
+  areas, "ospar-areas.csv",
   layer_options = "GEOMETRY=AS_WKT"
 )
 
-unlink(dir(pattern = "ICES_Areas_20160601_cut_dense_3857"))
+unlink(dir(pattern = "OSPAR_subregions_20160418_3857"))
 ',
-  file = "bootstrap/ices-areas.R"
+  file = "bootstrap/ospar-areas.R"
 )
 ```
 
@@ -363,12 +404,13 @@ bootsrap scripts such as this one, goes in the `bootstrap` folder,
   ¦   ¦   ¦   °--trees.csv           
   ¦   ¦   °--trees.csv               
   ¦   ¦--ices-areas.R                
-  ¦   °--initial                     
-  ¦       °--data                    
-  ¦           ¦--my-collection       
-  ¦           ¦   ¦--cars.csv        
-  ¦           ¦   °--trees.csv       
-  ¦           °--trees.csv           
+  ¦   ¦--initial                     
+  ¦   ¦   °--data                    
+  ¦   ¦       ¦--my-collection       
+  ¦   ¦       ¦   ¦--cars.csv        
+  ¦   ¦       ¦   °--trees.csv       
+  ¦   ¦       °--trees.csv           
+  ¦   °--ospar-areas.R               
   ¦--data.R                          
   ¦--model.R                         
   ¦--output.R                        
@@ -382,9 +424,9 @@ differences to note:
 ``` r
 draft.data(
   data.files = NULL,
-  data.scripts = "ices-areas.R",
-  originator = "ICES",
-  title = "ICES areas",
+  data.scripts = "ospar-areas.R",
+  originator = "OSPAR",
+  title = "OSPAR areas",
   file = TRUE,
   append = TRUE
 )
@@ -396,33 +438,33 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [13:07:38] Bootstrap procedure running...
+    ## [13:15:44] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:07:38] * trees.csv
+    ## [13:15:44] * trees.csv
 
-    ## [13:07:38] * my-collection
+    ## [13:15:44] * my-collection
 
-    ## [13:07:38] * HadSST.4.0.1.0_median.nc
+    ## [13:15:44] * HadSST.4.0.1.0_median.nc
 
     ##   Skipping download of 'HadSST.4.0.1.0_median.nc' (already in place).
 
-    ## [13:07:38] * ices-areas
+    ## [13:15:44] * ospar-areas
 
-    ## Reading layer `ICES_Areas_20160601_cut_dense_3857' from data source 
-    ##   `D:\projects\git\ices-taf\other\doc.wiki\example-1\bootstrap\data\ices-areas\ICES_Areas_20160601_cut_dense_3857.shp' 
+    ## Reading layer `OSPAR_subregions_20160418_3857' from data source 
+    ##   `D:\projects\git\ices-taf\other\doc.wiki\example-1\bootstrap\data\ospar-areas\OSPAR_subregions_20160418_3857.shp' 
     ##   using driver `ESRI Shapefile'
-    ## Simple feature collection with 66 features and 10 fields
+    ## Simple feature collection with 50 features and 4 fields
     ## Geometry type: MULTIPOLYGON
     ## Dimension:     XY
-    ## Bounding box:  xmin: -4898058 ymin: 4300621 xmax: 7625385 ymax: 30240970
+    ## Bounding box:  xmin: -4898295 ymin: 4300621 xmax: 5677353 ymax: 30240970
     ## Projected CRS: WGS 84 / Pseudo-Mercator
-    ## Writing layer `ices-areas' to data source `ices-areas.csv' using driver `CSV'
+    ## Writing layer `ospar-areas' to data source `ospar-areas.csv' using driver `CSV'
     ## options:        GEOMETRY=AS_WKT 
-    ## Writing 66 features with 10 fields and geometry type Multi Polygon.
+    ## Writing 50 features with 4 fields and geometry type Multi Polygon.
 
-    ## [13:08:27] Bootstrap procedure done
+    ## [13:15:46] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -432,20 +474,21 @@ your project should now look like this:
   ¦   ¦--DATA.bib                    
   ¦   ¦--data                        
   ¦   ¦   ¦--HadSST.4.0.1.0_median.nc
-  ¦   ¦   ¦--ices-areas              
-  ¦   ¦   ¦   ¦--DISCLAIMER_GIS.txt  
-  ¦   ¦   ¦   °--ices-areas.csv      
   ¦   ¦   ¦--my-collection           
   ¦   ¦   ¦   ¦--cars.csv            
   ¦   ¦   ¦   °--trees.csv           
+  ¦   ¦   ¦--ospar-areas             
+  ¦   ¦   ¦   ¦--DISCLAIMER_GIS.txt  
+  ¦   ¦   ¦   °--ospar-areas.csv     
   ¦   ¦   °--trees.csv               
   ¦   ¦--ices-areas.R                
-  ¦   °--initial                     
-  ¦       °--data                    
-  ¦           ¦--my-collection       
-  ¦           ¦   ¦--cars.csv        
-  ¦           ¦   °--trees.csv       
-  ¦           °--trees.csv           
+  ¦   ¦--initial                     
+  ¦   ¦   °--data                    
+  ¦   ¦       ¦--my-collection       
+  ¦   ¦       ¦   ¦--cars.csv        
+  ¦   ¦       ¦   °--trees.csv       
+  ¦   ¦       °--trees.csv           
+  ¦   °--ospar-areas.R               
   ¦--data.R                          
   ¦--model.R                         
   ¦--output.R                        

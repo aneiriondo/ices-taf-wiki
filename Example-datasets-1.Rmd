@@ -15,7 +15,8 @@ This page was based on using the `icesTAF` package version ```r packageVersion("
 dated ```r packageDate("icesTAF")```.  
 
 The resulting TAF analysis created from this example is 
-on GitHub: [github.com/ices-taf-dev/wiki-example-1](https://github.com/ices-taf-dev/wiki-example-1).
+on GitHub: [github.com/ices-taf-dev/wiki-example-1](https://github.com/ices-taf-dev/wiki-example-1),
+and can be run on your computer by:
 
 ```{r, eval = FALSE}
 # get code
@@ -232,23 +233,23 @@ cat('library(icesTAF)
 library(sf)
 
 download(
-  "http://gis.ices.dk/shapefiles/ICES_areas.zip"
+  "https://gis.ices.dk/shapefiles/OSPAR_Subregions.zip"
 )
 
-unzip("ICES_areas.zip")
-unlink("ICES_areas.zip")
+unzip("OSPAR_Subregions.zip")
+unlink("OSPAR_Subregions.zip")
 
-areas <- st_read("ICES_Areas_20160601_cut_dense_3857.shp")
+areas <- st_read("OSPAR_subregions_20160418_3857.shp")
 
 # write as csv
 st_write(
-  areas, "ices-areas.csv",
+  areas, "ospar-areas.csv",
   layer_options = "GEOMETRY=AS_WKT"
 )
 
-unlink(dir(pattern = "ICES_Areas_20160601_cut_dense_3857"))
+unlink(dir(pattern = "OSPAR_subregions_20160418_3857"))
 ',
-  file = "bootstrap/ices-areas.R"
+  file = "bootstrap/ospar-areas.R"
 )
 ```
 
@@ -267,9 +268,9 @@ entry to the `DATA.bib` however there are to differences to note:
 setwd(tafdir)
 draft.data(
   data.files = NULL,
-  data.scripts = "ices-areas.R",
-  originator = "ICES",
-  title = "ICES areas",
+  data.scripts = "ospar-areas.R",
+  originator = "OSPAR",
+  title = "OSPAR areas",
   file = TRUE,
   append = TRUE
 )
