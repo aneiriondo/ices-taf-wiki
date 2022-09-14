@@ -87,15 +87,15 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [08:53:53] Bootstrap procedure running...
+    ## [09:10:48] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [08:53:53] * sam_data
+    ## [09:10:48] * sam_data
 
-    ## [08:53:54] * sam_fit
+    ## [09:10:49] * sam_fit
 
-    ## [08:53:55] Bootstrap procedure done
+    ## [09:10:49] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -247,9 +247,9 @@ And this concludes the data script. To test the script you can run
 sourceTAF("data")
 ```
 
-    ## [08:53:55] data.R running...
+    ## [09:10:50] data.R running...
 
-    ## [08:53:55]   data.R done
+    ## [09:10:50]   data.R done
 
 your project should now look like this:
 
@@ -324,9 +324,9 @@ And this concludes the model script. To test the script you can run
 sourceTAF("model")
 ```
 
-    ## [08:53:55] model.R running...
+    ## [09:10:50] model.R running...
 
-    ## [08:54:09]   model.R done
+    ## [09:11:06]   model.R done
 
 your project should now look like this:
 
@@ -442,11 +442,11 @@ This concludes the ouput script. To test the script you can run
 sourceTAF("output")
 ```
 
-    ## [08:54:09] output.R running...
+    ## [09:11:06] output.R running...
 
     ## Warning in FUN(X[[i]], ...): duplicated column names
 
-    ## [08:54:09]   output.R done
+    ## [09:11:06]   output.R done
 
 your project should now look like this:
 
@@ -499,3 +499,213 @@ your project should now look like this:
 ```
 
 ## Formatted output for reporting
+
+It is often of use to split up the reporting into several scripts. This
+can be done in any section, but is most common in the report section. Do
+do this, you create scripts called `report_*.R` and your `report.R`
+script becomes a like a recipe, that sources each relavent script in
+turn. In this example we are going to make three seperate scripts, and
+an R markdown script to create a report:
+
+  - report\_plots.R
+  - report\_tables.R
+  - report\_doc.R
+  - report.Rmd
+
+This means that the central `report.R` script will look like this:
+
+``` r
+## Prepare plots and tables for report
+
+## Before:
+## After:
+
+library(icesTAF)
+
+mkdir("report")
+
+sourceTAF("report_plots.R")
+sourceTAF("report_tables.R")
+sourceTAF("report_doc.R")
+```
+
+The contents of these scripts are very much incomplete and are here just
+to serve as an example. A simple example of the `report_plots.R` script
+is:
+
+``` r
+library(icesTAF)
+library(stockassessment)
+
+mkdir("report")
+
+load("model/fit.rData")
+load("model/retro_fit.rData")
+
+## input data plots
+
+## ....
+
+## model output plots ##
+taf.png("summary", width = 1600, height = 2000)
+plot(fit)
+dev.off()
+
+taf.png("SSB")
+ssbplot(fit, addCI = TRUE)
+dev.off()
+
+taf.png("Fbar")
+fbarplot(fit, xlab = "", partial = FALSE)
+dev.off()
+
+taf.png("Rec")
+recplot(fit, xlab = "")
+dev.off()
+
+taf.png("Landings")
+catchplot(fit, xlab = "")
+dev.off()
+
+taf.png("retrospective", width = 1600, height = 2000)
+plot(retro_fit)
+dev.off()
+```
+
+and this can be run and tested using `sourceTAF("report_plots")`, or
+simply `source("report_plots.R")`
+
+A simple `report_tables.R` script is
+
+``` r
+mkdir("report")
+
+(load("model/fit.RData"))
+
+years <- unique(fit$data$aux[, "year"])
+
+## catage
+catage <- read.taf("data/catage.csv")
+# row.names(catage) <- years[1:nrow(catage)]
+
+catage <- cbind(catage, total = rowSums(catage))
+catage <- rbind(catage, mean = colMeans(catage))
+
+write.taf(catage, "report/catage.csv")
+```
+
+And the `report_doc.R` script will generally look like this
+
+``` r
+library(rmarkdown)
+
+source("utilities.R")
+
+mkdir("report")
+
+# combine into a word and html document
+render("report.Rmd",
+  output_format = c("word_document", "html_document"),
+  encoding = "UTF-8"
+)
+
+# move to report folder
+cp("report.html", "report", move = TRUE)
+cp("report.docx", "report", move = TRUE)
+```
+
+The `report.Rmd` script is very much an example and not a suggestion.
+(more to come later).
+
+The code is found here:
+[report.Rmd](https://github.com/ices-taf-dev/wiki-example-stockassessment/blob/main/report.Rmd)
+
+Once all this code is in place the whole report section can be run
+`sourceTAF("report")`
+
+``` r
+sourceTAF("report")
+```
+
+    ## [09:11:06] report.R running...
+
+    ## [09:11:06] report_plots.R running...
+
+    ## [09:11:08]   report_plots.R done
+
+    ## [09:11:08] report_tables.R running...
+
+    ## [09:11:08]   report_tables.R done
+
+    ## [09:11:08] report_doc.R running...
+
+    ## Warning in file(filename, "r", encoding = encoding): cannot open file 'utilities.R': No such file or directory
+
+    ## Error in file(filename, "r", encoding = encoding) : 
+    ##   cannot open the connection
+
+    ## [09:11:08]   report_doc.R failed
+
+    ## [09:11:08]   report.R done
+
+your completed project should now look like this:
+
+``` r
+ example-4                 
+  ¦--bootstrap             
+  ¦   ¦--DATA.bib          
+  ¦   ¦--data              
+  ¦   ¦   ¦--sam_data      
+  ¦   ¦   ¦   ¦--cn.dat    
+  ¦   ¦   ¦   ¦--cw.dat    
+  ¦   ¦   ¦   ¦--dw.dat    
+  ¦   ¦   ¦   ¦--lf.dat    
+  ¦   ¦   ¦   ¦--lw.dat    
+  ¦   ¦   ¦   ¦--mo.dat    
+  ¦   ¦   ¦   ¦--nm.dat    
+  ¦   ¦   ¦   ¦--pf.dat    
+  ¦   ¦   ¦   ¦--pm.dat    
+  ¦   ¦   ¦   ¦--survey.dat
+  ¦   ¦   ¦   °--sw.dat    
+  ¦   ¦   °--sam_fit       
+  ¦   ¦       °--fit.rData 
+  ¦   ¦--sam_data.R        
+  ¦   °--sam_fit.R         
+  ¦--data.R                
+  ¦--data                  
+  ¦   ¦--catage.csv        
+  ¦   ¦--datage.csv        
+  ¦   ¦--landfrac.csv      
+  ¦   ¦--latage.csv        
+  ¦   ¦--natmort.csv       
+  ¦   ¦--propf.csv         
+  ¦   ¦--propm.csv         
+  ¦   ¦--wcatch.csv        
+  ¦   ¦--wdiscards.csv     
+  ¦   ¦--wlandings.csv     
+  ¦   °--wstock.csv        
+  ¦--model.R               
+  ¦--model                 
+  ¦   ¦--fit.RData         
+  ¦   °--retro_fit.RData   
+  ¦--output.R              
+  ¦--output                
+  ¦   ¦--fatage.csv        
+  ¦   ¦--mohns_rho.csv     
+  ¦   ¦--natage.csv        
+  ¦   ¦--partab.csv        
+  ¦   °--tab_summary.csv   
+  ¦--report.R              
+  ¦--report.Rmd            
+  ¦--report                
+  ¦   ¦--catage.csv        
+  ¦   ¦--Fbar.png          
+  ¦   ¦--Landings.png      
+  ¦   ¦--Rec.png           
+  ¦   ¦--retrospective.png 
+  ¦   ¦--SSB.png           
+  ¦   °--summary.png       
+  ¦--report_doc.R          
+  ¦--report_plots.R        
+  °--report_tables.R       
+```

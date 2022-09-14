@@ -316,13 +316,139 @@ paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
 printDir(paths)
 ```
 
-
-
-
-
-
-
 ## Formatted output for reporting 
+
+It is often of use to split up the reporting into several scripts. This can be done in any section, 
+but is most common in the report section.  Do do this, you create scripts called `report_*.R` and
+your `report.R` script becomes a like a recipe, that sources each relavent script in turn.  In this 
+example we are going to make three seperate scripts, and an R markdown script to create a report:
+
+* report_plots.R
+* report_tables.R
+* report_doc.R
+* report.Rmd
+
+This means that the central `report.R` script will look like this:
+```{r, eval=FALSE}
+## Prepare plots and tables for report
+
+## Before:
+## After:
+
+library(icesTAF)
+
+mkdir("report")
+
+sourceTAF("report_plots.R")
+sourceTAF("report_tables.R")
+sourceTAF("report_doc.R")
+```
+
+The contents of these scripts are very much incomplete and are here just to serve as an example. A 
+simple example of the `report_plots.R` script is:
+
+```{r, eval=FALSE}
+
+library(icesTAF)
+library(stockassessment)
+
+mkdir("report")
+
+load("model/fit.rData")
+load("model/retro_fit.rData")
+
+## input data plots
+
+## ....
+
+## model output plots ##
+taf.png("summary", width = 1600, height = 2000)
+plot(fit)
+dev.off()
+
+taf.png("SSB")
+ssbplot(fit, addCI = TRUE)
+dev.off()
+
+taf.png("Fbar")
+fbarplot(fit, xlab = "", partial = FALSE)
+dev.off()
+
+taf.png("Rec")
+recplot(fit, xlab = "")
+dev.off()
+
+taf.png("Landings")
+catchplot(fit, xlab = "")
+dev.off()
+
+taf.png("retrospective", width = 1600, height = 2000)
+plot(retro_fit)
+dev.off()
+```
+
+and this can be run and tested using `sourceTAF("report_plots")`, or simply `source("report_plots.R")`
+
+A simple `report_tables.R` script is
+
+```{r, eval=FALSE}
+mkdir("report")
+
+(load("model/fit.RData"))
+
+years <- unique(fit$data$aux[, "year"])
+
+## catage
+catage <- read.taf("data/catage.csv")
+# row.names(catage) <- years[1:nrow(catage)]
+
+catage <- cbind(catage, total = rowSums(catage))
+catage <- rbind(catage, mean = colMeans(catage))
+
+write.taf(catage, "report/catage.csv")
+```
+
+And the `report_doc.R` script will generally look like this
+```{r, eval=FALSE}
+library(rmarkdown)
+
+source("utilities.R")
+
+mkdir("report")
+
+# combine into a word and html document
+render("report.Rmd",
+  output_format = c("word_document", "html_document"),
+  encoding = "UTF-8"
+)
+
+# move to report folder
+cp("report.html", "report", move = TRUE)
+cp("report.docx", "report", move = TRUE)
+```
+
+The `report.Rmd` script is very much an example and not a suggestion. (more to come later).
+
+The code is found here: [report.Rmd](https://github.com/ices-taf-dev/wiki-example-stockassessment/blob/main/report.Rmd)
+
+Once all this code is in place the whole report section can be run `sourceTAF("report")`
+
+```{r, echo=7}
+cp(file.path(run_dir, "report.R"), file.path(tafdir))
+cp(file.path(run_dir, "report_plots.R"), file.path(tafdir))
+cp(file.path(run_dir, "report_tables.R"), file.path(tafdir))
+cp(file.path(run_dir, "report_doc.R"), file.path(tafdir))
+cp(file.path(run_dir, "report.Rmd"), file.path(tafdir))
+setwd(tafdir)
+sourceTAF("report")
+```
+your completed project should now look like this:
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
 
 ```{r, echo = FALSE}
 unlink("example-4", recursive = TRUE)
