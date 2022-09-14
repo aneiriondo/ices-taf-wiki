@@ -61,6 +61,7 @@ setwd("example-4")
 
 resulting in the following:
 ```{r, echo = FALSE, results="asis"}
+run_dir <- download.analysis("ices-taf-dev/wiki-example-stockassessment")
 tafdir <- "example-4"
 # get skeleton path structure
 paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
@@ -188,6 +189,10 @@ write.taf(
 ```
 
 And this concludes the data script. To test the script you can run `sourceTAF("data")
+
+```{r, echo=FALSE}
+cp(file.path(run_dir, "data.R"), file.path(tafdir))
+```
 
 ```{r, echo=-1}
 setwd(tafdir)

@@ -52,10 +52,20 @@ folder. We do this by running
 
 ``` r
 taf.skeleton.sa.org("example-4", "WBCod_2021_cand01")
+```
+
+    ## To run this template please ensure you have the package:
+    ##  stockasessment
+    ## by running:
+    ##  install.packages("stockassessment", repos = "https://fishfollower.r-universe.dev")
+
+``` r
 setwd("example-4")
 ```
 
 resulting in the following:
+
+    ## repo: ices-taf-dev/wiki-example-stockassessment has been downloaded to: C:\Users\colin\AppData\Local\Temp\RtmpCQwXHh
 
 ``` r
  example-4         
@@ -77,15 +87,20 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [08:37:42] Bootstrap procedure running...
+    ## [08:46:25] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [08:37:42] * sam_data
+    ## [08:46:25] * sam_data
 
-    ## [08:37:43] * sam_fit
+    ## [08:46:26] * sam_fit
 
-    ## [08:37:44] Bootstrap procedure done
+    ## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
+    ## TMB was built with Matrix version 1.4.1
+    ## Current Matrix version is 1.5.0
+    ## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
+
+    ## [08:46:27] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -237,9 +252,9 @@ And this concludes the data script. To test the script you can run
 sourceTAF("data")
 ```
 
-    ## [08:37:44] data.R running...
+    ## [08:46:27] data.R running...
 
-    ## [08:37:44]   data.R done
+    ## [08:46:27]   data.R done
 
 your project should now look like this:
 
@@ -265,6 +280,18 @@ your project should now look like this:
   ¦   ¦--sam_data.R        
   ¦   °--sam_fit.R         
   ¦--data.R                
+  ¦--data                  
+  ¦   ¦--catage.csv        
+  ¦   ¦--datage.csv        
+  ¦   ¦--landfrac.csv      
+  ¦   ¦--latage.csv        
+  ¦   ¦--natmort.csv       
+  ¦   ¦--propf.csv         
+  ¦   ¦--propm.csv         
+  ¦   ¦--wcatch.csv        
+  ¦   ¦--wdiscards.csv     
+  ¦   ¦--wlandings.csv     
+  ¦   °--wstock.csv        
   ¦--model.R               
   ¦--output.R              
   °--report.R              
