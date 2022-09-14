@@ -34,107 +34,40 @@ browseURL(run_dir)
 
 ## In this guide
 
-  - [Creating an empty stockassessment.org TAF
-    project](#creating-an-empty-stockassessment.org-TAF-project)
-  - [Preprocess the data](#preprocess-the-data)
-  - [Running a model](#running-a-model)
-  - [Writing TAF tables](#writing-taf-tables)
-  - [Formatted output for reporting](#formatted-output-for-reporting)
+  - [The excercise](#the-excercise)
 
-## Creating an empty stockassessment.org TAF project
+## The excercise
 
-First we create an empty TAF project set up with a bootstrap section for
-a stock assessment created on stock
-[stockassessment.org/](https://stockassessment.org/), and in this case
-we will call it `example-3`, and then moving our working directory to
-this folder. We do this by running
+In this example the aim is to convert the following simple code, taken
+from the help file from the `trees` dataset (run `?trees` in R), into
+the TAF structure.
 
 ``` r
-taf.skeleton.sa.org("example-3", "WBCod_2021_cand01")
-setwd("example-3")
+# an example (very simple) analysis
+# excercise is to move this into a TAF structure
+
+# load data
+data(trees)
+
+# some plotting
+pairs(trees, panel = panel.smooth, main = "trees data")
+plot(Volume ~ Girth, data = trees, log = "xy")
+coplot(log(Volume) ~ log(Girth) | Height,
+  data = trees,
+  panel = panel.smooth
+)
+
+# modeling and summarising
+
+# model
+fm1 <- lm(log(Volume) ~ log(Girth), data = trees)
+fm2 <- update(fm1, ~ . + log(Height), data = trees)
+step(fm2)
+
+summary(fm1)
+summary(fm2)
 ```
 
-resulting in the following:
+The steps you should follow are:
 
-``` r
- example-3         
-  ¦--bootstrap     
-  ¦   ¦--initial   
-  ¦   ¦   °--data  
-  ¦   ¦--DATA.bib  
-  ¦   ¦--sam_data.R
-  ¦   °--sam_fit.R 
-  ¦--data.R        
-  ¦--model.R       
-  ¦--output.R      
-  °--report.R      
-```
-
-and after running
-
-``` r
-taf.bootstrap()
-```
-
-    ## [08:10:03] Bootstrap procedure running...
-
-    ## Processing DATA.bib
-
-    ## [08:10:03] * sam_data
-
-    ## [08:10:04] * sam_fit
-
-    ## [08:10:04] Bootstrap procedure done
-
-your project should now look like this:
-
-``` r
- example-3                 
-  ¦--bootstrap             
-  ¦   ¦--DATA.bib          
-  ¦   ¦--data              
-  ¦   ¦   ¦--sam_data      
-  ¦   ¦   ¦   ¦--cn.dat    
-  ¦   ¦   ¦   ¦--cw.dat    
-  ¦   ¦   ¦   ¦--dw.dat    
-  ¦   ¦   ¦   ¦--lf.dat    
-  ¦   ¦   ¦   ¦--lw.dat    
-  ¦   ¦   ¦   ¦--mo.dat    
-  ¦   ¦   ¦   ¦--nm.dat    
-  ¦   ¦   ¦   ¦--pf.dat    
-  ¦   ¦   ¦   ¦--pm.dat    
-  ¦   ¦   ¦   ¦--survey.dat
-  ¦   ¦   ¦   °--sw.dat    
-  ¦   ¦   °--sam_fit       
-  ¦   ¦       °--fit.rData 
-  ¦   ¦--sam_data.R        
-  ¦   °--sam_fit.R         
-  ¦--data.R                
-  ¦--model.R               
-  ¦--output.R              
-  °--report.R              
-```
-
-Now we have a folder with the same name as the script we created, and
-inside this is any files created by the script.
-
-## Preprocess the data
-
-Now that you have created the file structure and uploaded your data,
-it’s time to turn your attention to the `data.R` script. The purpose
-of this script is to do some data processing. This could be (among other
-things):
-
-  - calculating a plus group,
-  - taking averages of survey indices,
-  - calculating fill-in values and removing outliers,
-  - calculating smoothed time series
-
-The `data.R` script should also write out input data into flat `.csv`
-files, so they are readable and reviewable by others.
-
-## Running a model
-
-## Writing TAF tables
-
-## Formatted output for reporting
+1.  Create a
