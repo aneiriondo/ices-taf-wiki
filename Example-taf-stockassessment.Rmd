@@ -188,13 +188,10 @@ write.taf(
 )
 ```
 
-And this concludes the data script. To test the script you can run `sourceTAF("data")
+And this concludes the data script. To test the script you can run `sourceTAF("data")`
 
-```{r, echo=FALSE}
+```{r, echo=3}
 cp(file.path(run_dir, "data.R"), file.path(tafdir))
-```
-
-```{r, echo=-1}
 setwd(tafdir)
 sourceTAF("data")
 ```
@@ -205,8 +202,43 @@ paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
 printDir(paths)
 ```
 
-
 ## Running a model
+
+Although in this example the model has already been run elsewhere, we can still choose to rerun the 
+model or even conduct further analyses. Here we load the model from the `bootstrap/data` folder and
+run a retrospective analysis. then save the results in the model folder.
+
+```{r, eval=FALSE}
+## Run analysis, write model results
+
+## Before:
+## After:
+
+library(icesTAF)
+
+mkdir("model")
+
+(load(taf.data.path("sam_fit/fit.RData")))
+
+retro_fit <- stockassessment::retro(fit, year = 2017:2021)
+
+save(fit, file = "model/fit.RData")
+save(retro_fit, file = "model/retro_fit.RData")
+```
+
+And this concludes the model script. To test the script you can run `sourceTAF("model")`
+
+```{r, echo=3}
+cp(file.path(run_dir, "model.R"), file.path(tafdir))
+setwd(tafdir)
+sourceTAF("model")
+```
+your project should now look like this:
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
 
 ## Writing TAF tables
 

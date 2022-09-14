@@ -87,20 +87,15 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [08:46:25] Bootstrap procedure running...
+    ## [08:50:14] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [08:46:25] * sam_data
+    ## [08:50:14] * sam_data
 
-    ## [08:46:26] * sam_fit
+    ## [08:50:15] * sam_fit
 
-    ## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
-    ## TMB was built with Matrix version 1.4.1
-    ## Current Matrix version is 1.5.0
-    ## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
-
-    ## [08:46:27] Bootstrap procedure done
+    ## [08:50:15] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -246,15 +241,15 @@ write.taf(
 ```
 
 And this concludes the data script. To test the script you can run
-\`sourceTAF(“data”)
+`sourceTAF("data")`
 
 ``` r
 sourceTAF("data")
 ```
 
-    ## [08:46:27] data.R running...
+    ## [08:50:15] data.R running...
 
-    ## [08:46:27]   data.R done
+    ## [08:50:15]   data.R done
 
 your project should now look like this:
 
@@ -298,6 +293,84 @@ your project should now look like this:
 ```
 
 ## Running a model
+
+Although in this example the model has already been run elsewhere, we
+can still choose to rerun the model or even conduct further analyses.
+Here we load the model from the `bootstrap/data` folder and run a
+retrospective analysis. then save the results in the model folder.
+
+``` r
+## Run analysis, write model results
+
+## Before:
+## After:
+
+library(icesTAF)
+
+mkdir("model")
+
+(load(taf.data.path("sam_fit/fit.RData")))
+
+retro_fit <- stockassessment::retro(fit, year = 2017:2021)
+
+save(fit, file = "model/fit.RData")
+save(retro_fit, file = "model/retro_fit.RData")
+```
+
+And this concludes the model script. To test the script you can run
+`sourceTAF("model")`
+
+``` r
+sourceTAF("model")
+```
+
+    ## [08:50:15] model.R running...
+
+    ## [08:50:29]   model.R done
+
+your project should now look like this:
+
+``` r
+ example-4                 
+  ¦--bootstrap             
+  ¦   ¦--DATA.bib          
+  ¦   ¦--data              
+  ¦   ¦   ¦--sam_data      
+  ¦   ¦   ¦   ¦--cn.dat    
+  ¦   ¦   ¦   ¦--cw.dat    
+  ¦   ¦   ¦   ¦--dw.dat    
+  ¦   ¦   ¦   ¦--lf.dat    
+  ¦   ¦   ¦   ¦--lw.dat    
+  ¦   ¦   ¦   ¦--mo.dat    
+  ¦   ¦   ¦   ¦--nm.dat    
+  ¦   ¦   ¦   ¦--pf.dat    
+  ¦   ¦   ¦   ¦--pm.dat    
+  ¦   ¦   ¦   ¦--survey.dat
+  ¦   ¦   ¦   °--sw.dat    
+  ¦   ¦   °--sam_fit       
+  ¦   ¦       °--fit.rData 
+  ¦   ¦--sam_data.R        
+  ¦   °--sam_fit.R         
+  ¦--data.R                
+  ¦--data                  
+  ¦   ¦--catage.csv        
+  ¦   ¦--datage.csv        
+  ¦   ¦--landfrac.csv      
+  ¦   ¦--latage.csv        
+  ¦   ¦--natmort.csv       
+  ¦   ¦--propf.csv         
+  ¦   ¦--propm.csv         
+  ¦   ¦--wcatch.csv        
+  ¦   ¦--wdiscards.csv     
+  ¦   ¦--wlandings.csv     
+  ¦   °--wstock.csv        
+  ¦--model.R               
+  ¦--model                 
+  ¦   ¦--fit.RData         
+  ¦   °--retro_fit.RData   
+  ¦--output.R              
+  °--report.R              
+```
 
 ## Writing TAF tables
 
