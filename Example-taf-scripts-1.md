@@ -70,4 +70,12 @@ summary(fm2)
 
 The steps you should follow are:
 
-1.  Create a
+1.  Create a `DATA.bib` file
+2.  Extract the code for the `data.R` section
+3.  Extract the code for the `model.R` section
+4.  Extract the code for the `output.R` section
+5.  Extract the code for the `report.R` section
+
+At each stage you can test with `taf.bootstrap()` and `sourceTAF()` as
+appropriate, and finally check the whole thing runs by calling
+`taf.bootsrap(taf=TRUE)` and `sourceAll()`
