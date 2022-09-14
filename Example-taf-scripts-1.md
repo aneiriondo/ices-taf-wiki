@@ -6,14 +6,6 @@ datasets](Creating-TAF-datasets).
 This page was based on using the `icesTAF` package version `4.0.1` dated
 `2022-09-07`.
 
-This example requires a package to be installed that is not on CRAN.
-Please ensure you have the package `stockasessment` by running
-
-``` r
-# Download and install stockassessment in R
-install.packages("stockassessment", repos = "https://fishfollower.r-universe.dev")
-```
-
 The resulting TAF analysis created from this example is on GitHub:
 [github.com/ices-taf-dev/wiki-example-3](https://github.com/ices-taf-dev/wiki-example-3),
 if you dont want to build up the code yourself by following the example,
@@ -35,6 +27,7 @@ browseURL(run_dir)
 ## In this guide
 
   - [The excercise](#the-excercise)
+  - [The answer](#the-answer)
 
 ## The excercise
 
@@ -78,4 +71,36 @@ The steps you should follow are:
 
 At each stage you can test with `taf.bootstrap()` and `sourceTAF()` as
 appropriate, and finally check the whole thing runs by calling
-`taf.bootsrap(taf=TRUE)` and `sourceAll()`
+`taf.bootsrap(taf=TRUE)` and `sourceAll()`.
+
+## The answer
+
+The final project should look like this:
+
+``` r
+ example-3                
+  ¦--bootstrap            
+  ¦   ¦--DATA.bib         
+  ¦   ¦--data             
+  ¦   ¦   ¦--cars.csv     
+  ¦   ¦   °--trees.csv    
+  ¦   °--initial          
+  ¦       °--data         
+  ¦           ¦--cars.csv 
+  ¦           °--trees.csv
+  ¦--data.R               
+  ¦--data                 
+  ¦   °--trees.csv        
+  ¦--model.R              
+  ¦--model                
+  ¦   °--fits.Rdata       
+  ¦--output.R             
+  ¦--output               
+  ¦   °--tree_fits.csv    
+  ¦--report.R             
+  °--report               
+      ¦--coplot.png       
+      ¦--pairs_plot.png   
+      ¦--scatter_plot.png 
+      °--taf_fits_rnd.csv 
+```

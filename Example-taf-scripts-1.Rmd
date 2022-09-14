@@ -14,13 +14,6 @@ See also:
 This page was based on using the `icesTAF` package version ```r packageVersion("icesTAF")```
 dated ```r packageDate("icesTAF")```.  
 
-This example requires a package to be installed that is not on CRAN. Please ensure you have the
-package `stockasessment` by running
-```{r, eval = FALSE}
-# Download and install stockassessment in R
-install.packages("stockassessment", repos = "https://fishfollower.r-universe.dev")
-```
-
 The resulting TAF analysis created from this example is 
 on GitHub: [github.com/ices-taf-dev/wiki-example-3](https://github.com/ices-taf-dev/wiki-example-3),
 if you dont want to build up the code yourself by following the example, you can skip to the end 
@@ -41,6 +34,7 @@ browseURL(run_dir)
 ## In this guide
 
 * [The excercise](#the-excercise)
+* [The answer](#the-answer)
 
 ## The excercise
 
@@ -82,4 +76,26 @@ The steps you should follow are:
 5. Extract the code for the `report.R` section
 
 At each stage you can test with `taf.bootstrap()` and `sourceTAF()` as appropriate, and finally check
-the whole thing runs by calling `taf.bootsrap(taf=TRUE)` and `sourceAll()`
+the whole thing runs by calling `taf.bootsrap(taf=TRUE)` and `sourceAll()`. 
+
+## The answer
+
+The final project should look like this:
+
+```{r, message=FALSE, echo=FALSE}
+run_dir <- download.analysis("ices-taf-dev/wiki-example-3")
+x <- capture.output(run.analysis(run_dir))
+mkdir("example-3")
+cp(file.path(run_dir, "*"), "example-3")
+```
+
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir("example-3", full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
+
+```{r, echo = FALSE}
+unlink("example-3", recursive = TRUE)
+```
