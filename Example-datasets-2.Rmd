@@ -23,7 +23,8 @@ install.packages("stockassessment", repos = "https://fishfollower.r-universe.dev
 
 The resulting TAF analysis created from this example is 
 on GitHub: [github.com/ices-taf-dev/wiki-example-2](https://github.com/ices-taf-dev/wiki-example-2),
-and can be run on your computer by:
+if you dont want to build up the code yourself by following the example, you can skip to the end 
+and run on your computer by downloading the complete code and running it like this:
 
 ```{r, eval = FALSE}
 # get code

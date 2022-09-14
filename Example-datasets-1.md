@@ -8,7 +8,9 @@ This page was based on using the `icesTAF` package version `4.0.0` dated
 
 The resulting TAF analysis created from this example is on GitHub:
 [github.com/ices-taf-dev/wiki-example-1](https://github.com/ices-taf-dev/wiki-example-1),
-and can be run on your computer by:
+if you dont want to build up the code yourself by following the example,
+you can skip to the end and run on your computer by downloading the
+complete code and running it like this:
 
 ``` r
 # get code
@@ -111,13 +113,13 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:16:50] Bootstrap procedure running...
+    ## [07:26:47] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:16:50] * trees.csv
+    ## [07:26:47] * trees.csv
 
-    ## [13:16:50] Bootstrap procedure done
+    ## [07:26:47] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -202,15 +204,15 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:16:51] Bootstrap procedure running...
+    ## [07:26:47] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:16:51] * trees.csv
+    ## [07:26:47] * trees.csv
 
-    ## [13:16:51] * my-collection
+    ## [07:26:47] * my-collection
 
-    ## [13:16:51] Bootstrap procedure done
+    ## [07:26:47] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -275,17 +277,17 @@ after running
 taf.bootstrap()
 ```
 
-    ## [13:16:51] Bootstrap procedure running...
+    ## [07:26:48] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:16:51] * trees.csv
+    ## [07:26:48] * trees.csv
 
-    ## [13:16:51] * my-collection
+    ## [07:26:48] * my-collection
 
-    ## [13:16:51] * HadSST.4.0.1.0_median.nc
+    ## [07:26:48] * HadSST.4.0.1.0_median.nc
 
-    ## [13:16:53] Bootstrap procedure done
+    ## [07:26:48] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -397,23 +399,24 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [13:16:53] Bootstrap procedure running...
+    ## [07:26:49] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [13:16:53] * trees.csv
+    ## [07:26:49] * trees.csv
 
-    ## [13:16:53] * my-collection
+    ## [07:26:49] * my-collection
 
-    ## [13:16:53] * HadSST.4.0.1.0_median.nc
+    ## [07:26:49] * HadSST.4.0.1.0_median.nc
 
     ##   Skipping download of 'HadSST.4.0.1.0_median.nc' (already in place).
 
-    ## [13:16:53] * ospar-areas
+    ## [07:26:49] * ospar-areas
+
+    ## Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE
 
     ## Reading layer `OSPAR_subregions_20160418_3857' from data source 
-    ##   `D:\projects\git\ices-taf\other\doc.wiki\example-1\bootstrap\data\ospar-areas\OSPAR_subregions_20160418_3857.shp' 
-    ##   using driver `ESRI Shapefile'
+    ##   `D:\projects\git\ices-taf\other\doc.wiki\example-1\bootstrap\data\ospar-areas\OSPAR_subregions_20160418_3857.shp' using driver `ESRI Shapefile'
     ## Simple feature collection with 50 features and 4 fields
     ## Geometry type: MULTIPOLYGON
     ## Dimension:     XY
@@ -423,7 +426,7 @@ taf.bootstrap()
     ## options:        GEOMETRY=AS_WKT 
     ## Writing 50 features with 4 fields and geometry type Multi Polygon.
 
-    ## [13:17:07] Bootstrap procedure done
+    ## [07:26:51] Bootstrap procedure done
 
 your project should now look like this:
 

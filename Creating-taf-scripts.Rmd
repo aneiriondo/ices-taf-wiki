@@ -1,0 +1,40 @@
+---
+output: github_document
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+source("R/utilities.R")
+```
+
+See also:
+[Bib entries](Bib-entries),
+[Example data records](Example-data-records).
+
+This page was based on using the `icesTAF` package version ```r packageVersion("icesTAF")```
+dated ```r packageDate("icesTAF")```.
+
+## In this guide
+
+* [Clone](#clone)
+* [Make Skeleton](#make-skeleton)
+* [Upload initial data](#upload-initial-data)
+  - [Upload files](#upload-files)
+  - [Make data available](#make-data-available-to-assessment)
+
+## Preprocess data
+
+Now that you have created the file structure and uploaded your data, it's time to turn your attention to the `data.R` script. The  purpose of this script is to do some data
+processing. This could be (among other things):
+
+* calculating a plus group,
+* taking averages of survey indices,
+* calculating fill-in values and removing outliers,
+* calculating smoothed time series
+
+The `data.R` script should also write out input data into flat `.csv` files, so they are readable and reviewable by others.
+
+## Running a model
+
+## Writing TAF tables
+
+## Formatted output for reporting

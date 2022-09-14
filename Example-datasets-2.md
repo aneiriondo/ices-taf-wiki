@@ -16,7 +16,9 @@ install.packages("stockassessment", repos = "https://fishfollower.r-universe.dev
 
 The resulting TAF analysis created from this example is on GitHub:
 [github.com/ices-taf-dev/wiki-example-2](https://github.com/ices-taf-dev/wiki-example-2),
-and can be run on your computer by:
+if you dont want to build up the code yourself by following the example,
+you can skip to the end and run on your computer by downloading the
+complete code and running it like this:
 
 ``` r
 # get code
@@ -155,15 +157,20 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [16:03:14] Bootstrap procedure running...
+    ## [07:26:55] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [16:03:14] * sam_data
+    ## [07:26:55] * sam_data
 
-    ## [16:03:15] * sam_fit
+    ## [07:26:56] * sam_fit
 
-    ## [16:03:16] Bootstrap procedure done
+    ## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
+    ## TMB was built with Matrix version 1.4.1
+    ## Current Matrix version is 1.5.0
+    ## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
+
+    ## [07:26:57] Bootstrap procedure done
 
 your project should now look like this:
 
