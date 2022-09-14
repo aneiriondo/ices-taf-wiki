@@ -34,13 +34,14 @@ browseURL(run_dir)
 
 ## In this guide
 
-  - [Creating an empty TAF project](#creating-an-empty-TAF-project)
+  - [Creating an empty stockassessment.org TAF
+    project](#creating-an-empty-stockassessment.org-TAF-project)
   - [Preprocess the data](#preprocess-the-data)
   - [Running a model](#running-a-model)
   - [Writing TAF tables](#writing-taf-tables)
   - [Formatted output for reporting](#formatted-output-for-reporting)
 
-## Creating an empty TAF project
+## Creating an empty stockassessment.org TAF project
 
 First we create an empty TAF project set up with a bootstrap section for
 a stock assessment created on stock
@@ -75,15 +76,15 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [08:08:26] Bootstrap procedure running...
+    ## [08:10:03] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [08:08:26] * sam_data
+    ## [08:10:03] * sam_data
 
-    ## [08:08:27] * sam_fit
+    ## [08:10:04] * sam_fit
 
-    ## [08:08:27] Bootstrap procedure done
+    ## [08:10:04] Bootstrap procedure done
 
 your project should now look like this:
 

@@ -41,13 +41,13 @@ browseURL(run_dir)
 
 ## In this guide
 
-* [Creating an empty TAF project](#creating-an-empty-TAF-project)
+* [Creating an empty stockassessment.org TAF project](#creating-an-empty-stockassessment.org-TAF-project)
 * [Preprocess the data](#preprocess-the-data)
 * [Running a model](#running-a-model)
 * [Writing TAF tables](#writing-taf-tables)
 * [Formatted output for reporting](#formatted-output-for-reporting)
 
-## Creating an empty TAF project
+## Creating an empty stockassessment.org TAF project
 
 First we create an empty TAF project set up with a bootstrap section for a stock assessment
 created on stock [stockassessment.org/](https://stockassessment.org/), and in this case we will 
