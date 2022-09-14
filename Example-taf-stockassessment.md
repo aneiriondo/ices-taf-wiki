@@ -87,15 +87,15 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [08:50:14] Bootstrap procedure running...
+    ## [08:53:53] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [08:50:14] * sam_data
+    ## [08:53:53] * sam_data
 
-    ## [08:50:15] * sam_fit
+    ## [08:53:54] * sam_fit
 
-    ## [08:50:15] Bootstrap procedure done
+    ## [08:53:55] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -247,9 +247,9 @@ And this concludes the data script. To test the script you can run
 sourceTAF("data")
 ```
 
-    ## [08:50:15] data.R running...
+    ## [08:53:55] data.R running...
 
-    ## [08:50:15]   data.R done
+    ## [08:53:55]   data.R done
 
 your project should now look like this:
 
@@ -324,9 +324,9 @@ And this concludes the model script. To test the script you can run
 sourceTAF("model")
 ```
 
-    ## [08:50:15] model.R running...
+    ## [08:53:55] model.R running...
 
-    ## [08:50:29]   model.R done
+    ## [08:54:09]   model.R done
 
 your project should now look like this:
 
@@ -373,5 +373,129 @@ your project should now look like this:
 ```
 
 ## Writing TAF tables
+
+In the output section we take the model and any aditional analyses and
+create human readable, but full precision, outputs. This is much like
+the data section, but we are dealing with model outputs.
+
+``` r
+## Extract results of interest, write TAF output tables
+
+## Before:
+## After:
+
+library(icesTAF)
+
+mkdir("output")
+
+## Extract results of interest, write TAF output tables
+
+## Before:
+## After: csv tables of assessment output
+
+library(icesTAF)
+library(stockassessment)
+
+mkdir("output")
+
+# load fit
+(load("model/fit.rData"))
+
+# Model Parameters
+partab <- partable(fit)
+
+# Fs
+fatage <- faytable(fit)
+fatage <- fatage[, -1]
+fatage <- as.data.frame(fatage)
+
+# Ns
+natage <- as.data.frame(ntable(fit))
+
+# Catch
+catab <- as.data.frame(catchtable(fit))
+colnames(catab) <- c("Catch", "Low", "High")
+
+# TSB
+tsb <- as.data.frame(tsbtable(fit))
+colnames(tsb) <- c("TSB", "Low", "High")
+
+# Summary Table
+tab.summary <- cbind(as.data.frame(summary(fit)), tsb)
+tab.summary <- cbind(tab.summary, rbind(catab, NA))
+# should probably make Low and High column names unique R_Low etc.
+
+mohns_rho <- mohn(retro_fit)
+mohns_rho <- as.data.frame(t(mohns_rho))
+
+## Write tables to output directory
+write.taf(
+  c("partab", "tab.summary", "natage", "fatage", "mohns_rho"),
+  dir = "output"
+)
+```
+
+This concludes the ouput script. To test the script you can run
+`sourceTAF("output")`
+
+``` r
+sourceTAF("output")
+```
+
+    ## [08:54:09] output.R running...
+
+    ## Warning in FUN(X[[i]], ...): duplicated column names
+
+    ## [08:54:09]   output.R done
+
+your project should now look like this:
+
+``` r
+ example-4                 
+  ¦--bootstrap             
+  ¦   ¦--DATA.bib          
+  ¦   ¦--data              
+  ¦   ¦   ¦--sam_data      
+  ¦   ¦   ¦   ¦--cn.dat    
+  ¦   ¦   ¦   ¦--cw.dat    
+  ¦   ¦   ¦   ¦--dw.dat    
+  ¦   ¦   ¦   ¦--lf.dat    
+  ¦   ¦   ¦   ¦--lw.dat    
+  ¦   ¦   ¦   ¦--mo.dat    
+  ¦   ¦   ¦   ¦--nm.dat    
+  ¦   ¦   ¦   ¦--pf.dat    
+  ¦   ¦   ¦   ¦--pm.dat    
+  ¦   ¦   ¦   ¦--survey.dat
+  ¦   ¦   ¦   °--sw.dat    
+  ¦   ¦   °--sam_fit       
+  ¦   ¦       °--fit.rData 
+  ¦   ¦--sam_data.R        
+  ¦   °--sam_fit.R         
+  ¦--data.R                
+  ¦--data                  
+  ¦   ¦--catage.csv        
+  ¦   ¦--datage.csv        
+  ¦   ¦--landfrac.csv      
+  ¦   ¦--latage.csv        
+  ¦   ¦--natmort.csv       
+  ¦   ¦--propf.csv         
+  ¦   ¦--propm.csv         
+  ¦   ¦--wcatch.csv        
+  ¦   ¦--wdiscards.csv     
+  ¦   ¦--wlandings.csv     
+  ¦   °--wstock.csv        
+  ¦--model.R               
+  ¦--model                 
+  ¦   ¦--fit.RData         
+  ¦   °--retro_fit.RData   
+  ¦--output.R              
+  ¦--output                
+  ¦   ¦--fatage.csv        
+  ¦   ¦--mohns_rho.csv     
+  ¦   ¦--natage.csv        
+  ¦   ¦--partab.csv        
+  ¦   °--tab_summary.csv   
+  °--report.R              
+```
 
 ## Formatted output for reporting

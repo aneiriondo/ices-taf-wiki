@@ -242,6 +242,86 @@ printDir(paths)
 
 ## Writing TAF tables
 
+In the output section we take the model and any aditional analyses and create human readable, but 
+full precision, outputs. This is much like the data section, but we are dealing with model outputs.
+
+```{r, eval=FALSE}
+## Extract results of interest, write TAF output tables
+
+## Before:
+## After:
+
+library(icesTAF)
+
+mkdir("output")
+
+## Extract results of interest, write TAF output tables
+
+## Before:
+## After: csv tables of assessment output
+
+library(icesTAF)
+library(stockassessment)
+
+mkdir("output")
+
+# load fit
+(load("model/fit.rData"))
+
+# Model Parameters
+partab <- partable(fit)
+
+# Fs
+fatage <- faytable(fit)
+fatage <- fatage[, -1]
+fatage <- as.data.frame(fatage)
+
+# Ns
+natage <- as.data.frame(ntable(fit))
+
+# Catch
+catab <- as.data.frame(catchtable(fit))
+colnames(catab) <- c("Catch", "Low", "High")
+
+# TSB
+tsb <- as.data.frame(tsbtable(fit))
+colnames(tsb) <- c("TSB", "Low", "High")
+
+# Summary Table
+tab.summary <- cbind(as.data.frame(summary(fit)), tsb)
+tab.summary <- cbind(tab.summary, rbind(catab, NA))
+# should probably make Low and High column names unique R_Low etc.
+
+mohns_rho <- mohn(retro_fit)
+mohns_rho <- as.data.frame(t(mohns_rho))
+
+## Write tables to output directory
+write.taf(
+  c("partab", "tab.summary", "natage", "fatage", "mohns_rho"),
+  dir = "output"
+)
+```
+
+This concludes the ouput script. To test the script you can run `sourceTAF("output")`
+
+```{r, echo=3}
+cp(file.path(run_dir, "output.R"), file.path(tafdir))
+setwd(tafdir)
+sourceTAF("output")
+```
+your project should now look like this:
+
+```{r, echo = FALSE, results="asis"}
+paths <- dir(tafdir, full.names = TRUE, recursive = TRUE)
+printDir(paths)
+```
+
+
+
+
+
+
+
 ## Formatted output for reporting 
 
 ```{r, echo = FALSE}
