@@ -433,12 +433,13 @@ The code is found here: [report.Rmd](https://github.com/ices-taf-dev/wiki-exampl
 
 Once all this code is in place the whole report section can be run `sourceTAF("report")`
 
-```{r, echo=7}
+```{r, echo=8}
 cp(file.path(run_dir, "report.R"), file.path(tafdir))
 cp(file.path(run_dir, "report_plots.R"), file.path(tafdir))
 cp(file.path(run_dir, "report_tables.R"), file.path(tafdir))
 cp(file.path(run_dir, "report_doc.R"), file.path(tafdir))
 cp(file.path(run_dir, "report.Rmd"), file.path(tafdir))
+cp(file.path(run_dir, "utilities.R"), file.path(tafdir))
 setwd(tafdir)
 sourceTAF("report")
 ```

@@ -87,15 +87,15 @@ and after running
 taf.bootstrap()
 ```
 
-    ## [09:10:48] Bootstrap procedure running...
+    ## [09:12:36] Bootstrap procedure running...
 
     ## Processing DATA.bib
 
-    ## [09:10:48] * sam_data
+    ## [09:12:36] * sam_data
 
-    ## [09:10:49] * sam_fit
+    ## [09:12:37] * sam_fit
 
-    ## [09:10:49] Bootstrap procedure done
+    ## [09:12:37] Bootstrap procedure done
 
 your project should now look like this:
 
@@ -247,9 +247,9 @@ And this concludes the data script. To test the script you can run
 sourceTAF("data")
 ```
 
-    ## [09:10:50] data.R running...
+    ## [09:12:38] data.R running...
 
-    ## [09:10:50]   data.R done
+    ## [09:12:38]   data.R done
 
 your project should now look like this:
 
@@ -324,9 +324,9 @@ And this concludes the model script. To test the script you can run
 sourceTAF("model")
 ```
 
-    ## [09:10:50] model.R running...
+    ## [09:12:38] model.R running...
 
-    ## [09:11:06]   model.R done
+    ## [09:12:53]   model.R done
 
 your project should now look like this:
 
@@ -442,11 +442,11 @@ This concludes the ouput script. To test the script you can run
 sourceTAF("output")
 ```
 
-    ## [09:11:06] output.R running...
+    ## [09:12:53] output.R running...
 
     ## Warning in FUN(X[[i]], ...): duplicated column names
 
-    ## [09:11:06]   output.R done
+    ## [09:12:53]   output.R done
 
 your project should now look like this:
 
@@ -627,26 +627,91 @@ Once all this code is in place the whole report section can be run
 sourceTAF("report")
 ```
 
-    ## [09:11:06] report.R running...
+    ## [09:12:54] report.R running...
 
-    ## [09:11:06] report_plots.R running...
+    ## [09:12:54] report_plots.R running...
 
-    ## [09:11:08]   report_plots.R done
+    ## [09:12:55]   report_plots.R done
 
-    ## [09:11:08] report_tables.R running...
+    ## [09:12:55] report_tables.R running...
 
-    ## [09:11:08]   report_tables.R done
+    ## [09:12:55]   report_tables.R done
 
-    ## [09:11:08] report_doc.R running...
+    ## [09:12:55] report_doc.R running...
 
-    ## Warning in file(filename, "r", encoding = encoding): cannot open file 'utilities.R': No such file or directory
+    ## 
+    ## 
+    ## processing file: report.Rmd
 
-    ## Error in file(filename, "r", encoding = encoding) : 
-    ##   cannot open the connection
+    ##   |                                                                                                                                               |                                                                                                                                       |   0%  |                                                                                                                                               |........                                                                                                                               |   6%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                                                               |................                                                                                                                       |  12%
+    ## label: libraries (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                                                               |........................                                                                                                               |  18%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                                                               |................................                                                                                                       |  24%
+    ## label: chunk_setup (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                                                               |........................................                                                                                               |  29%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                                                               |................................................                                                                                       |  35%
+    ## label: pander_settings (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                                                               |........................................................                                                                               |  41%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                                                               |................................................................                                                                       |  47%
+    ## label: caption_counters (with options) 
+    ## List of 1
+    ##  $ include: logi FALSE
+    ## 
+    ##   |                                                                                                                                               |.......................................................................                                                                |  53%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                                                               |...............................................................................                                                        |  59%
+    ## label: catch_table
+    ##   |                                                                                                                                               |.......................................................................................                                                |  65%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                                                               |...............................................................................................                                        |  71%
+    ## label: mohns
+    ##   |                                                                                                                                               |.......................................................................................................                                |  76%
+    ##    inline R code fragments
+    ## 
+    ##   |                                                                                                                                               |...............................................................................................................                        |  82%
+    ## label: retro_plot (with options) 
+    ## List of 1
+    ##  $ fig.cap: symbol cap_in
+    ## 
+    ##   |                                                                                                                                               |.......................................................................................................................                |  88%
+    ##   ordinary text without R code
+    ## 
+    ##   |                                                                                                                                               |...............................................................................................................................        |  94%
+    ## label: catch_plot (with options) 
+    ## List of 1
+    ##  $ fig.cap: symbol cap_in
+    ## 
+    ##   |                                                                                                                                               |.......................................................................................................................................| 100%
+    ##   ordinary text without R code
 
-    ## [09:11:08]   report_doc.R failed
+    ## output file: report.knit.md
 
-    ## [09:11:08]   report.R done
+    ## "C:/Users/colin/AppData/Local/CONTIN~1/MINICO~1/Library/bin/pandoc" +RTS -K512m -RTS report.knit.md --to docx --from markdown+autolink_bare_uris+tex_math_single_backslash --output report.docx --lua-filter "D:\R\win-library\4.2\rmarkdown\rmarkdown\lua\pagebreak.lua" --table-of-contents --toc-depth 3 --highlight-style tango --reference-doc "bootstrap\data\reportTemplate.docx" --filter "C:/Users/colin/AppData/Local/CONTIN~1/MINICO~1/Library/bin/pandoc-citeproc.exe" 
+    ## Error : pandoc document conversion failed with error 1
+
+    ## [09:13:01]   report_doc.R failed
+
+    ## [09:13:01]   report.R done
 
 your completed project should now look like this:
 
@@ -707,5 +772,6 @@ your completed project should now look like this:
   ¦   °--summary.png       
   ¦--report_doc.R          
   ¦--report_plots.R        
-  °--report_tables.R       
+  ¦--report_tables.R       
+  °--utilities.R           
 ```
